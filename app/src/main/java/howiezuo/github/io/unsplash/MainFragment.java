@@ -2,7 +2,10 @@ package howiezuo.github.io.unsplash;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import butterknife.BindView;
 import howiezuo.github.io.unsplash.api.ApiClient;
 import howiezuo.github.io.unsplash.api.Photos;
 import howiezuo.github.io.unsplash.model.Photo;
@@ -23,7 +27,12 @@ import retrofit2.Response;
  * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends BaseFragment {
+
+    @BindView(R.id.view_recycler)
+    RecyclerView recyclerView;
+
+    private PhotoAdapter mAdapter = new PhotoAdapter();
 
     public MainFragment() {
         // Required empty public constructor
@@ -48,7 +57,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
                 if (response != null && response.body() != null) {
-                    Log.d("ddddd", response.toString());
+                    mAdapter.updateDateset(response.body());
                 }
             }
 
@@ -62,10 +71,16 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(mAdapter);
+    }
 }
