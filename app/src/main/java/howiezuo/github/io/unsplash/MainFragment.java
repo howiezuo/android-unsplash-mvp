@@ -3,6 +3,7 @@ package howiezuo.github.io.unsplash;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
                 if (response != null && response.body() != null) {
-
+                    Log.d("ddddd", response.toString());
                 }
             }
 

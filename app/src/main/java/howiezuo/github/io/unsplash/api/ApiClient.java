@@ -7,6 +7,7 @@ public class ApiClient {
 
     private static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.unsplash.com")
+            .client(HttpClient.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
