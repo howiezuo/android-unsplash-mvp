@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.image_view)
-        ImageView photo;
+        ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -51,6 +53,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
         public void bindView(Photo photo) {
+            Picasso.with(this.itemView.getContext())
+                    .load(photo.getUrls().getRegular())
+                    .into(imageView);
         }
     }
 }

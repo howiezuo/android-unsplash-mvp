@@ -14,4 +14,8 @@ public class Photo {
     Links links;
     Urls urls;
 
+
+    public Urls getUrls() {
+        return urls;
+    }
 }

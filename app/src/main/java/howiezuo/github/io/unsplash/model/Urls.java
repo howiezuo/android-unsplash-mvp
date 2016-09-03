@@ -9,4 +9,7 @@ public class Urls {
     String small;
     String thumb;
 
+    public String getRegular() {
+        return regular;
+    }
 }
