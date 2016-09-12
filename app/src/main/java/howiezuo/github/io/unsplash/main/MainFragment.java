@@ -1,4 +1,4 @@
-package howiezuo.github.io.unsplash;
+package howiezuo.github.io.unsplash.main;
 
 
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +13,10 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import butterknife.BindView;
-import howiezuo.github.io.unsplash.api.ApiClient;
-import howiezuo.github.io.unsplash.api.Photos;
+import howiezuo.github.io.unsplash.BaseFragment;
+import howiezuo.github.io.unsplash.PhotoAdapter;
+import howiezuo.github.io.unsplash.R;
 import howiezuo.github.io.unsplash.model.Photo;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 /**
@@ -27,7 +24,9 @@ import retrofit2.Response;
  * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainFragment extends BaseFragment {
+public class MainFragment extends BaseFragment implements MainContract.View {
+
+    MainContract.Presenter mPresenter;
 
     @BindView(R.id.view_recycler)
     RecyclerView recyclerView;
@@ -51,23 +50,7 @@ public class MainFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Photos photos = ApiClient.createService(Photos.class);
-        Call<List<Photo>> task = photos.getPhotos();
-        task.enqueue(new Callback<List<Photo>>() {
-            @Override
-            public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
-                if (response != null && response.body() != null) {
-                    mAdapter.updateDateset(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Photo>> call, Throwable t) {
-                if (t == null) {
-
-                }
-            }
-        });
+        mPresenter.loadPhotos();
     }
 
     @Override
@@ -82,5 +65,15 @@ public class MainFragment extends BaseFragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void setPresenter(MainContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void refreshList(List<Photo> list) {
+        mAdapter.updateDateset(list);
     }
 }

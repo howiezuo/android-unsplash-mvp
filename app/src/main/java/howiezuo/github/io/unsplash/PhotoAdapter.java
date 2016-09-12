@@ -15,7 +15,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import howiezuo.github.io.unsplash.model.Photo;
-import howiezuo.github.io.unsplash.util.DeviceUtil;
+import howiezuo.github.io.unsplash.util.DeviceUtils;
 
 public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -55,13 +55,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
         public void bindView(Photo photo) {
-            Point point = DeviceUtil.getDisplaySize(itemView.getContext());
+            Point point = DeviceUtils.getDisplaySize(itemView.getContext());
             ViewGroup.LayoutParams params = imageView.getLayoutParams();
-            params.height = point.x / 2;
+            int h = (int) (point.x / 1.6);
+            params.height = h;
             imageView.setLayoutParams(params);
             Picasso.with(itemView.getContext())
                     .load(photo.getUrls().getRegular())
-                    .resize(point.x, point.x / 2)
+                    .resize(point.x, h)
                     .centerCrop()
                     .into(imageView);
         }
