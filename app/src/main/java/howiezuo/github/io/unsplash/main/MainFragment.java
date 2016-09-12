@@ -29,9 +29,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     MainContract.Presenter mPresenter;
 
     @BindView(R.id.view_recycler)
-    RecyclerView recyclerView;
+    RecyclerView mRecyclerView;
 
     private PhotoAdapter mAdapter = new PhotoAdapter();
+    private boolean isLoading = false;
 
     public MainFragment() {
         // Required empty public constructor
@@ -50,6 +51,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        isLoading = true;
         mPresenter.loadPhotos();
     }
 
@@ -63,8 +65,20 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
+        final LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(llm);
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                int last = llm.findLastCompletelyVisibleItemPosition();
+
+                if (dy > 0 && !isLoading && last + 1 >= mAdapter.getItemCount()) {
+                    isLoading = true;
+                    mPresenter.loadMorePhotos();
+                }
+            }
+        });
     }
 
     @Override
@@ -73,7 +87,14 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     }
 
     @Override
-    public void refreshList(List<Photo> list) {
-        mAdapter.updateDateset(list);
+    public void refreshPhotos(List<Photo> list) {
+        mAdapter.updateDataset(list);
+        isLoading = false;
+    }
+
+    @Override
+    public void addPhotos(List<Photo> list) {
+        mAdapter.addDataset(list);
+        isLoading = false;
     }
 }

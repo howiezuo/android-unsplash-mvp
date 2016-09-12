@@ -15,6 +15,9 @@ public class MainPresenter implements MainContract.Presenter {
 
     private final MainContract.View mView;
 
+    Photos photos = ApiClient.createService(Photos.class);
+    private int mCurrentPage = 1;
+
     public MainPresenter(@NonNull MainContract.View view) {
         mView = view;
         mView.setPresenter(this);
@@ -22,13 +25,32 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void loadPhotos() {
-        Photos photos = ApiClient.createService(Photos.class);
         Call<List<Photo>> task = photos.getPhotos();
         task.enqueue(new Callback<List<Photo>>() {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
                 if (response != null && response.body() != null) {
-                    mView.refreshList(response.body());
+                    mView.refreshPhotos(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Photo>> call, Throwable t) {
+                if (t == null) {
+
+                }
+            }
+        });
+    }
+
+    @Override
+    public void loadMorePhotos() {
+        Call<List<Photo>> task = photos.getPhotos(++mCurrentPage);
+        task.enqueue(new Callback<List<Photo>>() {
+            @Override
+            public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
+                if (response != null && response.body() != null) {
+                    mView.addPhotos(response.body());
                 }
             }
 

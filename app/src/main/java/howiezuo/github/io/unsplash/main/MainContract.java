@@ -12,11 +12,15 @@ public interface MainContract {
 
         void loadPhotos();
 
+        void loadMorePhotos();
+
     }
 
     interface View extends BaseView<Presenter> {
 
-        void refreshList(List<Photo> list);
+        void refreshPhotos(List<Photo> list);
+
+        void addPhotos(List<Photo> list);
 
     }
 

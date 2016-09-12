@@ -39,8 +39,13 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return mDataset.size();
     }
 
-    public void updateDateset(List<Photo> dateset) {
-        mDataset = dateset;
+    public void updateDataset(List<Photo> dataset) {
+        mDataset = dataset;
+        this.notifyDataSetChanged();
+    }
+
+    public void addDataset(List<Photo> dataset) {
+        mDataset.addAll(dataset);
         this.notifyDataSetChanged();
     }
 
