@@ -1,7 +1,8 @@
-package howiezuo.github.io.unsplash;
+package howiezuo.github.io.unsplash.main;
 
 import android.graphics.Color;
 import android.graphics.Point;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,17 +16,23 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import howiezuo.github.io.unsplash.R;
 import howiezuo.github.io.unsplash.model.Photo;
 import howiezuo.github.io.unsplash.util.DeviceUtils;
 
-public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Photo> mDataset = new ArrayList<>();
+    private MainListener mListener;
+
+    public MainAdapter(MainListener listener) {
+        mListener = listener;
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.photo_item, parent, false);
-        RecyclerView.ViewHolder vh = new ViewHolder(v);
+        RecyclerView.ViewHolder vh = new ViewHolder(v, mListener);
         return vh;
     }
 
@@ -53,14 +60,19 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.image_view)
         ImageView imageView;
+        @BindView(R.id.card_view)
+        CardView cardView;
 
-        public ViewHolder(View itemView) {
+        MainListener mListener;
+
+        public ViewHolder(View itemView, MainListener listener) {
             super(itemView);
+            mListener = listener;
 
             ButterKnife.bind(this, itemView);
         }
 
-        public void bindView(Photo photo) {
+        public void bindView(final Photo photo) {
             Point point = DeviceUtils.getDisplaySize(itemView.getContext());
             ViewGroup.LayoutParams params = imageView.getLayoutParams();
             int h = (int) (point.x / 1.6);
@@ -68,10 +80,17 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             imageView.setLayoutParams(params);
             imageView.setBackgroundColor(Color.parseColor(photo.getColor()));
             Picasso.with(itemView.getContext())
-                    .load(photo.getUrls().getRegular())
+                    .load(photo.getUrls().getSmall())
                     .resize(point.x, h)
                     .centerCrop()
                     .into(imageView);
+
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onPhotoClick(photo);
+                }
+            });
         }
     }
 }

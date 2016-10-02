@@ -14,7 +14,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import howiezuo.github.io.unsplash.BaseFragment;
-import howiezuo.github.io.unsplash.PhotoAdapter;
 import howiezuo.github.io.unsplash.R;
 import howiezuo.github.io.unsplash.model.Photo;
 
@@ -31,7 +30,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     @BindView(R.id.view_recycler)
     RecyclerView mRecyclerView;
 
-    private PhotoAdapter mAdapter = new PhotoAdapter();
+    MainListener mListener = new MainListener() {
+        @Override
+        public void onPhotoClick(Photo photo) {
+            mPresenter.openPhotoDetail();
+        }
+    };
+    private MainAdapter mAdapter = new MainAdapter(mListener);
     private boolean isLoading = false;
 
     public MainFragment() {

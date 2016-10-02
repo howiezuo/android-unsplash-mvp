@@ -14,6 +14,8 @@ public interface MainContract {
 
         void loadMorePhotos();
 
+        void openPhotoDetail();
+
     }
 
     interface View extends BaseView<Presenter> {

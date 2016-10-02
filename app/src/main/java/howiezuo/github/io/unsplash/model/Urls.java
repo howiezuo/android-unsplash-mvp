@@ -12,4 +12,12 @@ public class Urls {
     public String getRegular() {
         return regular;
     }
+
+    public String getSmall() {
+        return small;
+    }
+
+    public String getThumb() {
+        return thumb;
+    }
 }
