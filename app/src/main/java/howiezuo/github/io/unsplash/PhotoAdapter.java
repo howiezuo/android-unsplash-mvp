@@ -1,5 +1,6 @@
 package howiezuo.github.io.unsplash;
 
+import android.graphics.Color;
 import android.graphics.Point;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -65,6 +66,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             int h = (int) (point.x / 1.6);
             params.height = h;
             imageView.setLayoutParams(params);
+            imageView.setBackgroundColor(Color.parseColor(photo.getColor()));
             Picasso.with(itemView.getContext())
                     .load(photo.getUrls().getRegular())
                     .resize(point.x, h)

@@ -15,6 +15,10 @@ public class Photo {
     Urls urls;
 
 
+    public String getColor() {
+        return color;
+    }
+
     public Urls getUrls() {
         return urls;
     }
