@@ -1,9 +1,9 @@
 package howiezuo.github.io.unsplash.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,14 +15,10 @@ import java.util.List;
 import butterknife.BindView;
 import howiezuo.github.io.unsplash.BaseFragment;
 import howiezuo.github.io.unsplash.R;
+import howiezuo.github.io.unsplash.detail.DetailActivity;
 import howiezuo.github.io.unsplash.model.Photo;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MainFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MainFragment extends BaseFragment implements MainContract.View {
 
     MainContract.Presenter mPresenter;
@@ -33,7 +29,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     MainListener mListener = new MainListener() {
         @Override
         public void onPhotoClick(Photo photo) {
-            mPresenter.openPhotoDetail();
+            mPresenter.openPhotoDetails(photo);
         }
     };
     private MainAdapter mAdapter = new MainAdapter(mListener);
@@ -43,10 +39,6 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * @return A new instance of fragment MainFragment.
-     */
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
         return fragment;
@@ -101,5 +93,12 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public void addPhotos(List<Photo> list) {
         mAdapter.addDataset(list);
         isLoading = false;
+    }
+
+    @Override
+    public void showPhotoDetails(Photo photo) {
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        intent.putExtra(DetailActivity.EXTRA_PHOTO, photo);
+        startActivity(intent);
     }
 }

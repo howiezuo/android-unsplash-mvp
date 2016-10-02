@@ -14,7 +14,7 @@ public interface MainContract {
 
         void loadMorePhotos();
 
-        void openPhotoDetail();
+        void openPhotoDetails(Photo photo);
 
     }
 
@@ -23,6 +23,8 @@ public interface MainContract {
         void refreshPhotos(List<Photo> list);
 
         void addPhotos(List<Photo> list);
+
+        void showPhotoDetails(Photo photo);
 
     }
 

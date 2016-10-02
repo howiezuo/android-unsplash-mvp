@@ -64,7 +64,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void openPhotoDetail() {
-
+    public void openPhotoDetails(Photo photo) {
+        mView.showPhotoDetails(photo);
     }
 }
