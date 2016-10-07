@@ -1,14 +1,20 @@
 package howiezuo.github.io.unsplash.main;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
+import javax.inject.Inject;
+
+import howiezuo.github.io.unsplash.AppApplication;
 import howiezuo.github.io.unsplash.R;
+import howiezuo.github.io.unsplash.api.Photos;
 import howiezuo.github.io.unsplash.util.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
 
     private MainPresenter mPresenter;
+    @Inject
+    Photos mPhotos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.fragment_container);
         }
 
-        mPresenter = new MainPresenter(fragment);
+        AppApplication.getInstance().getApiComponent().inject(this);
+
+        mPresenter = new MainPresenter(fragment, mPhotos);
     }
 }

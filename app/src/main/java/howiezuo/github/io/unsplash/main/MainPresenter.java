@@ -1,10 +1,9 @@
 package howiezuo.github.io.unsplash.main;
 
-import android.support.annotation.NonNull;
-
 import java.util.List;
 
-import howiezuo.github.io.unsplash.api.ApiClient;
+import javax.inject.Inject;
+
 import howiezuo.github.io.unsplash.api.Photos;
 import howiezuo.github.io.unsplash.model.Photo;
 import retrofit2.Call;
@@ -14,18 +13,21 @@ import retrofit2.Response;
 public class MainPresenter implements MainContract.Presenter {
 
     private final MainContract.View mView;
+    private Photos mPhotos;
 
-    Photos photos = ApiClient.createService(Photos.class);
     private int mCurrentPage = 1;
 
-    public MainPresenter(@NonNull MainContract.View view) {
+    @Inject
+    public MainPresenter(MainContract.View view, Photos photos) {
         mView = view;
         mView.setPresenter(this);
+
+        mPhotos = photos;
     }
 
     @Override
     public void loadPhotos() {
-        Call<List<Photo>> task = photos.getPhotos();
+        Call<List<Photo>> task = mPhotos.getPhotos();
         task.enqueue(new Callback<List<Photo>>() {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
@@ -45,7 +47,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void loadMorePhotos() {
-        Call<List<Photo>> task = photos.getPhotos(++mCurrentPage);
+        Call<List<Photo>> task = mPhotos.getPhotos(++mCurrentPage);
         task.enqueue(new Callback<List<Photo>>() {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
