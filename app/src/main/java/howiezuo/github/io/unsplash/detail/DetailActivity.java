@@ -3,6 +3,8 @@ package howiezuo.github.io.unsplash.detail;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import javax.inject.Inject;
+
 import howiezuo.github.io.unsplash.R;
 import howiezuo.github.io.unsplash.model.Photo;
 import howiezuo.github.io.unsplash.util.ActivityUtils;
@@ -10,6 +12,9 @@ import howiezuo.github.io.unsplash.util.ActivityUtils;
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_PHOTO = "photo";
+
+    @Inject
+    DetailPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,8 @@ public class DetailActivity extends AppCompatActivity {
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.fragment_container);
         }
 
-        new DetailPresenter(fragment, photo);
+        DaggerDetailComponent.builder()
+                .detailPresenterModule(new DetailPresenterModule(fragment, photo))
+                .build();
     }
 }
