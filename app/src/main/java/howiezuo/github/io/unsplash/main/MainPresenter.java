@@ -1,5 +1,7 @@
 package howiezuo.github.io.unsplash.main;
 
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,20 +11,20 @@ import howiezuo.github.io.unsplash.model.Photo;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainPresenter implements MainContract.Presenter {
 
     private final MainContract.View mView;
-    private Photos mPhotos;
+    @Inject
+    Photos mPhotos;
 
     private int mCurrentPage = 1;
 
     @Inject
-    public MainPresenter(MainContract.View view, Photos photos) {
+    public MainPresenter(MainContract.View view) {
         mView = view;
         mView.setPresenter(this);
-
-        mPhotos = photos;
     }
 
     @Override

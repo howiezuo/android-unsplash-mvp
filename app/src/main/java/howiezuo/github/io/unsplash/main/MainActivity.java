@@ -7,14 +7,12 @@ import javax.inject.Inject;
 
 import howiezuo.github.io.unsplash.AppApplication;
 import howiezuo.github.io.unsplash.R;
-import howiezuo.github.io.unsplash.api.Photos;
 import howiezuo.github.io.unsplash.util.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MainPresenter mPresenter;
     @Inject
-    Photos mPhotos;
+    MainPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +29,10 @@ public class MainActivity extends AppCompatActivity {
             ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.fragment_container);
         }
 
-        AppApplication.getInstance().getApiComponent().inject(this);
-
-        mPresenter = new MainPresenter(fragment, mPhotos);
+        DaggerMainComponent.builder()
+                .apiComponent(AppApplication.getInstance().getApiComponent())
+                .mainPresenterModule(new MainPresenterModule(fragment))
+                .build()
+                .inject(this);
     }
 }
