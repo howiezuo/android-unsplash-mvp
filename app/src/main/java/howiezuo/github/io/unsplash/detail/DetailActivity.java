@@ -35,6 +35,7 @@ public class DetailActivity extends AppCompatActivity {
 
         DaggerDetailComponent.builder()
                 .detailPresenterModule(new DetailPresenterModule(fragment, photo))
-                .build();
+                .build()
+                .inject(this);
     }
 }
