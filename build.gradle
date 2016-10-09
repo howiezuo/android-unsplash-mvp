@@ -33,4 +33,8 @@ ext {
 
     // dependencies
     supportLibraryVersion = '24.2.1'
+    okhttpVersion = '3.4.1'
+    retrofitVersion = '2.1.0'
+    butterknifeVersion = '8.4.0'
+    daggerVersion = '2.7'
 }

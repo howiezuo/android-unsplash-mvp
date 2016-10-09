@@ -1,17 +1,14 @@
 package howiezuo.github.io.unsplash.main;
 
-import android.support.annotation.NonNull;
-
 import java.util.List;
 
 import javax.inject.Inject;
 
 import howiezuo.github.io.unsplash.api.Photos;
 import howiezuo.github.io.unsplash.model.Photo;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class MainPresenter implements MainContract.Presenter {
 
@@ -29,42 +26,48 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void loadPhotos() {
-        Call<List<Photo>> task = mPhotos.getPhotos();
-        task.enqueue(new Callback<List<Photo>>() {
-            @Override
-            public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
-                if (response != null && response.body() != null) {
-                    mView.refreshPhotos(response.body());
-                }
-            }
+        mPhotos.getPhotos()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<Photo>>() {
+                    @Override
+                    public void onCompleted() {
 
-            @Override
-            public void onFailure(Call<List<Photo>> call, Throwable t) {
-                if (t == null) {
+                    }
 
-                }
-            }
-        });
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<Photo> photos) {
+                        mView.refreshPhotos(photos);
+                    }
+                });
     }
 
     @Override
     public void loadMorePhotos() {
-        Call<List<Photo>> task = mPhotos.getPhotos(++mCurrentPage);
-        task.enqueue(new Callback<List<Photo>>() {
-            @Override
-            public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
-                if (response != null && response.body() != null) {
-                    mView.addPhotos(response.body());
-                }
-            }
+        mPhotos.getPhotos(++mCurrentPage)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<Photo>>() {
+                    @Override
+                    public void onCompleted() {
 
-            @Override
-            public void onFailure(Call<List<Photo>> call, Throwable t) {
-                if (t == null) {
+                    }
 
-                }
-            }
-        });
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<Photo> photos) {
+                        mView.addPhotos(photos);
+                    }
+                });
     }
 
     @Override
