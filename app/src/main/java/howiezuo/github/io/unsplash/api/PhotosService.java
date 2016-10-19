@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
-public interface Photos {
+public interface PhotosService {
 
     @GET("photos?per_page=20")
     Observable<List<Photo>> getPhotos();

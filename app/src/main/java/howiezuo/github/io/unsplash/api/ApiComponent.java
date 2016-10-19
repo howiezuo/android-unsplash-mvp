@@ -8,5 +8,5 @@ import dagger.Component;
 @Component(modules = ApiModule.class)
 public interface ApiComponent {
 
-    Photos photos();
+    PhotosService photosService();
 }

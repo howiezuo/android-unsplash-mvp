@@ -56,7 +56,7 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    Photos providePhotos(Retrofit retrofit) {
-        return retrofit.create(Photos.class);
+    PhotosService providePhotosService(Retrofit retrofit) {
+        return retrofit.create(PhotosService.class);
     }
 }

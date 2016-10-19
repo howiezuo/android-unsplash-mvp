@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import howiezuo.github.io.unsplash.api.Photos;
+import howiezuo.github.io.unsplash.api.PhotosService;
 import howiezuo.github.io.unsplash.model.Photo;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -14,7 +14,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     private final MainContract.View mView;
     @Inject
-    Photos mPhotos;
+    PhotosService mPhotosService;
 
     private int mCurrentPage = 1;
 
@@ -26,7 +26,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void loadPhotos() {
-        mPhotos.getPhotos()
+        mPhotosService.getPhotos()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<Photo>>() {
@@ -49,7 +49,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void loadMorePhotos() {
-        mPhotos.getPhotos(++mCurrentPage)
+        mPhotosService.getPhotos(++mCurrentPage)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<Photo>>() {
