@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
-import howiezuo.github.io.unsplash.BaseFragment;
+import howiezuo.github.io.unsplash.base.BaseFragment;
 import howiezuo.github.io.unsplash.R;
 import howiezuo.github.io.unsplash.model.Photo;
 

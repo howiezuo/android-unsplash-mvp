@@ -1,4 +1,4 @@
-package howiezuo.github.io.unsplash;
+package howiezuo.github.io.unsplash.base;
 
 
 import android.os.Bundle;
@@ -7,15 +7,26 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public abstract class BaseFragment extends Fragment {
 
+    private Unbinder mUnbinder;
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+
+        mUnbinder = ButterKnife.bind(this, view);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        mUnbinder.unbind();
     }
 }

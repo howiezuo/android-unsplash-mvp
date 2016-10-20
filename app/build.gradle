@@ -34,21 +34,24 @@ dependencies {
     compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
 
     compile 'com.google.code.gson:gson:2.7'
+
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
+
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.ext.retrofitVersion"
-    compile 'com.squareup.picasso:picasso:2.5.2'
 
-    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
-    apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
 
     compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
     apt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
 
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile "com.jakewharton:butterknife:$rootProject.ext.butterknifeVersion"
+    apt "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
 
     compile 'com.orhanobut:logger:1.15'
 

@@ -2,8 +2,8 @@ package howiezuo.github.io.unsplash.main;
 
 import java.util.List;
 
-import howiezuo.github.io.unsplash.BasePresenter;
-import howiezuo.github.io.unsplash.BaseView;
+import howiezuo.github.io.unsplash.base.BasePresenter;
+import howiezuo.github.io.unsplash.base.BaseView;
 import howiezuo.github.io.unsplash.model.Photo;
 
 public interface MainContract {

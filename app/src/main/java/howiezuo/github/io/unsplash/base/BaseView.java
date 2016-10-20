@@ -1,4 +1,4 @@
-package howiezuo.github.io.unsplash;
+package howiezuo.github.io.unsplash.base;
 
 public interface BaseView<T> {
 

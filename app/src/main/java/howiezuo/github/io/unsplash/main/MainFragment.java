@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import butterknife.BindView;
-import howiezuo.github.io.unsplash.BaseFragment;
+import howiezuo.github.io.unsplash.base.BaseFragment;
 import howiezuo.github.io.unsplash.R;
 import howiezuo.github.io.unsplash.detail.DetailActivity;
 import howiezuo.github.io.unsplash.model.Photo;
@@ -71,8 +71,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
         isLoading = true;
         mPresenter.loadPhotos();

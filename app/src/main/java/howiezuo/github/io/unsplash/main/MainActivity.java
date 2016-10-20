@@ -1,15 +1,15 @@
 package howiezuo.github.io.unsplash.main;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
 import howiezuo.github.io.unsplash.AppApplication;
+import howiezuo.github.io.unsplash.base.BaseActivity;
 import howiezuo.github.io.unsplash.R;
 import howiezuo.github.io.unsplash.util.ActivityUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Inject
     MainPresenter mPresenter;
@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         if (savedInstanceState != null) {
             return;
@@ -34,5 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 .mainPresenterModule(new MainPresenterModule(fragment))
                 .build()
                 .inject(this);
+
+//        showLogin();
     }
 }

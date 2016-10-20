@@ -1,15 +1,15 @@
 package howiezuo.github.io.unsplash.detail;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import javax.inject.Inject;
 
+import howiezuo.github.io.unsplash.base.BaseActivity;
 import howiezuo.github.io.unsplash.R;
 import howiezuo.github.io.unsplash.model.Photo;
 import howiezuo.github.io.unsplash.util.ActivityUtils;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends BaseActivity {
 
     public static final String EXTRA_PHOTO = "photo";
 
@@ -19,7 +19,8 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState != null) {
             return;

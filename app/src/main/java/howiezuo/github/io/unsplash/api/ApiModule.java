@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import howiezuo.github.io.unsplash.Config;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -26,8 +27,8 @@ public class ApiModule {
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
                 Request request = original.newBuilder()
-                        .addHeader("Accept-Version", "v1")
-                        .addHeader("Authorization", "Client-ID bb0b8493dba89c5b8765bdca724c00c3766b20971017f3315536ba19856e6287")
+                        .addHeader("Accept-Version", Config.API_VERSION)
+                        .addHeader("Authorization", "Client-ID " + Config.CLIENT_ID)
                         .build();
                 return chain.proceed(request);
             }
@@ -47,7 +48,7 @@ public class ApiModule {
     @Singleton
     Retrofit provideRetrofit(OkHttpClient httpClient) {
         return new Retrofit.Builder()
-                .baseUrl("https://api.unsplash.com")
+                .baseUrl(Config.API_URL)
                 .client(httpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -59,4 +60,11 @@ public class ApiModule {
     PhotosService providePhotosService(Retrofit retrofit) {
         return retrofit.create(PhotosService.class);
     }
+
+    @Provides
+    @Singleton
+    OAuthService provideOAuthService(Retrofit retrofit) {
+        return retrofit.create(OAuthService.class);
+    }
+
 }
