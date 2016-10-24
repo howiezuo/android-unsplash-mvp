@@ -1,4 +1,7 @@
 <resources>
+
     <string name="app_name">Unsplash</string>
+
+    <string name="action_profile">Profile</string>
 
 </resources>

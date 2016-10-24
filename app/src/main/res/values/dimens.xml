@@ -1,2 +1,8 @@
 <resources>
+
+    <dimen name="action_bar_elevation">4dp</dimen>
+
+    <dimen name="action_icon_size">32dp</dimen>
+    <dimen name="action_icon_padding">12dp</dimen>
+
 </resources>

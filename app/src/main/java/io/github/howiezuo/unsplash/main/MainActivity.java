@@ -5,8 +5,8 @@ import android.os.Bundle;
 import javax.inject.Inject;
 
 import io.github.howiezuo.unsplash.AppApplication;
-import io.github.howiezuo.unsplash.base.BaseActivity;
 import io.github.howiezuo.unsplash.R;
+import io.github.howiezuo.unsplash.base.BaseActivity;
 import io.github.howiezuo.unsplash.util.ActivityUtils;
 
 public class MainActivity extends BaseActivity {

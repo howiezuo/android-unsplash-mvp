@@ -31,7 +31,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.photo_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false);
         RecyclerView.ViewHolder vh = new ViewHolder(v, mListener);
         return vh;
     }

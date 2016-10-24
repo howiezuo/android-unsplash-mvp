@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import butterknife.BindView;
@@ -15,6 +16,8 @@ import io.github.howiezuo.unsplash.util.ActivityUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    @BindView(R.id.tool_bar)
+    Toolbar mToolbar;
     @BindView(R.id.fragment_login)
     View mLoginFragment;
 
@@ -24,6 +27,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         setContentView(getLayoutId());
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolbar);
     }
 
     protected @LayoutRes int getLayoutId() {
