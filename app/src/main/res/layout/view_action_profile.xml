@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<io.github.howiezuo.unsplash.widget.FontIconView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="@dimen/action_icon_padding">
-
-    <io.github.howiezuo.unsplash.widget.FontIconView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fa_user"
-        android:textColor="@color/titleTextColor"
-        android:textSize="@dimen/action_icon_size"/>
-
-</FrameLayout>
+    android:text="@string/fa_user"
+    android:textColor="@color/titleTextColor"
+    android:textSize="@dimen/action_icon_size"/>

@@ -39,18 +39,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return R.layout.activity_base;
     }
 
-    protected void setHomeIcon(@LayoutRes int layoutId) {
-        View v = LayoutInflater.from(this).inflate(layoutId, null);
-        v.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
-
-        v.setDrawingCacheEnabled(true);
-        Bitmap bmp = v.getDrawingCache();
-        Drawable drawable = new BitmapDrawable(getResources(), bmp);
-        getSupportActionBar().setHomeAsUpIndicator(drawable);
-    }
-
     protected void showLogin() {
         LoginFragment fragment = (LoginFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_login);
         if (fragment == null) {

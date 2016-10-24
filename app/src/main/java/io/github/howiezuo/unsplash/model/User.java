@@ -8,8 +8,20 @@ public class User implements Parcelable{
 
     String id;
     String username;
+    String first_name;
+    String last_name;
     String name;
     String portfolio_url;
+    String bio;
+    String location;
+    int total_likes;
+    int total_photos;
+    int total_collections;
+    boolean followed_by_user;
+    int downloads;
+    int uploads_remaining;
+    String instagram_username;
+    String email;
     ProfileImage profile_image;
     Links links;
 

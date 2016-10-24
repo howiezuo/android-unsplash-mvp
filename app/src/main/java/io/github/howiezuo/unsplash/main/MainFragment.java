@@ -20,6 +20,8 @@ import io.github.howiezuo.unsplash.base.BaseFragment;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.detail.DetailActivity;
 import io.github.howiezuo.unsplash.model.Photo;
+import io.github.howiezuo.unsplash.user.UserActivity;
+import io.github.howiezuo.unsplash.util.UIUtils;
 
 
 public class MainFragment extends BaseFragment implements MainContract.View {
@@ -45,6 +47,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -77,24 +86,24 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        setHasOptionsMenu(true);
-
         isLoading = true;
         mPresenter.loadPhotos();
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-
         inflater.inflate(R.menu.main, menu);
-        menu.findItem(R.id.action_profile).setActionView(R.layout.view_action_profile);
+
+        final MenuItem item = menu.findItem(R.id.action_profile);
+        item.setIcon(UIUtils.view2Drawable(getActivity(), R.layout.view_action_profile));
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_profile:
+                Intent intent = new Intent(getActivity(), UserActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
