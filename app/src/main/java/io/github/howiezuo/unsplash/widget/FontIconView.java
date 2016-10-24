@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.view;
+package io.github.howiezuo.unsplash.widget;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -34,4 +34,5 @@ public class FontIconView extends TextView {
         Typeface tf = FontUtils.get(FONT_NAME, context);
         setTypeface(tf);
     }
+
 }

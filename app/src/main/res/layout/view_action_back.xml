@@ -8,7 +8,7 @@
     <io.github.howiezuo.unsplash.widget.FontIconView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fa_user"
+        android:text="@string/fa_arrow_left"
         android:textColor="@color/titleTextColor"
         android:textSize="@dimen/action_icon_size"/>
 

@@ -2,5 +2,6 @@
 <resources>
 
     <string name="fa_user">&#xf007;</string>
+    <string name="fa_arrow_left">&#xf060;</string>
 
 </resources>

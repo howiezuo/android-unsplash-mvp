@@ -21,6 +21,7 @@ public class DetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setHomeIcon(R.layout.view_action_back);
 
         if (savedInstanceState != null) {
             return;

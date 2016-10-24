@@ -1,10 +1,14 @@
 package io.github.howiezuo.unsplash.base;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import butterknife.BindView;
@@ -33,6 +37,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected @LayoutRes int getLayoutId() {
         return R.layout.activity_base;
+    }
+
+    protected void setHomeIcon(@LayoutRes int layoutId) {
+        View v = LayoutInflater.from(this).inflate(layoutId, null);
+        v.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+
+        v.setDrawingCacheEnabled(true);
+        Bitmap bmp = v.getDrawingCache();
+        Drawable drawable = new BitmapDrawable(getResources(), bmp);
+        getSupportActionBar().setHomeAsUpIndicator(drawable);
     }
 
     protected void showLogin() {
