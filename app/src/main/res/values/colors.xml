@@ -2,7 +2,16 @@
 <resources>
     <color name="colorPrimary">#9E9E9E</color>
     <color name="colorPrimaryDark">#616161</color>
+    <color name="colorPrimaryLight">#F5F5F5</color>
     <color name="colorAccent">#7C4DFF</color>
+
+    <color name="titleTextColor">@color/colorPrimaryLight</color>
+    <color name="textColor">#212121</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+
+    <color name="colorDivider">#BDBDBD</color>
+    <color name="colorBackground">@color/colorPrimaryLight</color>
 
     <color name="colorSelected">#809E9E9E</color>
 </resources>
