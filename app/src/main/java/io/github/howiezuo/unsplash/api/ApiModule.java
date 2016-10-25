@@ -2,6 +2,7 @@ package io.github.howiezuo.unsplash.api;
 
 import java.io.IOException;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -57,14 +58,31 @@ public class ApiModule {
 
     @Provides
     @Singleton
+    @Named("oauth")
+    Retrofit provideOAuthRetrofit(OkHttpClient httpClient) {
+        return new Retrofit.Builder()
+                .baseUrl(Config.OAUTH_URL)
+                .client(httpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+    }
+
+    @Provides
+    @Singleton
     PhotosService providePhotosService(Retrofit retrofit) {
         return retrofit.create(PhotosService.class);
     }
 
     @Provides
     @Singleton
-    OAuthService provideOAuthService(Retrofit retrofit) {
+    OAuthService provideOAuthService(@Named("oauth") Retrofit retrofit) {
         return retrofit.create(OAuthService.class);
     }
 
+    @Provides
+    @Singleton
+    MeService provideMeService(Retrofit retrofit) {
+        return retrofit.create(MeService.class);
+    }
 }

@@ -7,4 +7,7 @@ public class Token {
     String scope;
     long created_at;
 
+    public String getAccessToken() {
+        return access_token;
+    }
 }

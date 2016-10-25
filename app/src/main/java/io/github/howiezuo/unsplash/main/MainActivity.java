@@ -12,7 +12,7 @@ import io.github.howiezuo.unsplash.util.ActivityUtils;
 public class MainActivity extends BaseActivity {
 
     @Inject
-    MainPresenter mPresenter;
+    MainPresenter mMainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,8 @@ public class MainActivity extends BaseActivity {
         DaggerMainComponent.builder()
                 .apiComponent(AppApplication.getInstance().getApiComponent())
                 .mainPresenterModule(new MainPresenterModule(fragment))
-                .build()
-                .inject(this);
+                .loginPresenterModule(getLoginPresenterModule())
+                .build().inject(this);
 
 //        showLogin();
     }

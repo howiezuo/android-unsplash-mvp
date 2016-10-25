@@ -12,4 +12,6 @@ public interface AppComponent {
 
     void inject(Context context);
 
+    Context context();
+
 }

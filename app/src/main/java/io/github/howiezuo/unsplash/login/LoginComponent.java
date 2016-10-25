@@ -1,8 +1,8 @@
-package io.github.howiezuo.unsplash.main;
+package io.github.howiezuo.unsplash.login;
 
 import dagger.Component;
 import io.github.howiezuo.unsplash.api.ApiComponent;
-import io.github.howiezuo.unsplash.login.LoginPresenterModule;
+import io.github.howiezuo.unsplash.base.BaseActivity;
 import io.github.howiezuo.unsplash.util.FragmentScoped;
 
 @FragmentScoped
@@ -11,12 +11,11 @@ import io.github.howiezuo.unsplash.util.FragmentScoped;
                 ApiComponent.class
         },
         modules = {
-                MainPresenterModule.class,
                 LoginPresenterModule.class
         }
 )
-public interface MainComponent {
+public interface LoginComponent {
 
-    void inject(MainActivity activity);
+    void inject(BaseActivity activity);
 
 }

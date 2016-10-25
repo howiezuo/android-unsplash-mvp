@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import javax.inject.Inject;
 
+import io.github.howiezuo.unsplash.AppApplication;
 import io.github.howiezuo.unsplash.base.BaseActivity;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.model.Photo;
@@ -37,7 +38,9 @@ public class DetailActivity extends BaseActivity {
         }
 
         DaggerDetailComponent.builder()
+                .apiComponent(AppApplication.getInstance().getApiComponent())
                 .detailPresenterModule(new DetailPresenterModule(fragment, photo))
+                .loginPresenterModule(getLoginPresenterModule())
                 .build()
                 .inject(this);
     }

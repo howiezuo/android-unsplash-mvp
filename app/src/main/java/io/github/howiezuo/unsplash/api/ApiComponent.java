@@ -9,4 +9,9 @@ import dagger.Component;
 public interface ApiComponent {
 
     PhotosService photosService();
+
+    OAuthService oauthService();
+
+    MeService meService();
+
 }

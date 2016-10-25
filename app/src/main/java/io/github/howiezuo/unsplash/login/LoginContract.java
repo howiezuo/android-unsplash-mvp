@@ -1,13 +1,13 @@
-package io.github.howiezuo.unsplash.user;
+package io.github.howiezuo.unsplash.login;
 
 import io.github.howiezuo.unsplash.base.BasePresenter;
 import io.github.howiezuo.unsplash.base.BaseView;
 
-public interface UserContract {
+public interface LoginContract {
 
     interface Presenter extends BasePresenter {
 
-        void loadMe();
+        void getToken(String code);
 
     }
 
