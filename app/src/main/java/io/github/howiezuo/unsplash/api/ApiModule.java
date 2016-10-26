@@ -8,6 +8,9 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.github.howiezuo.unsplash.Config;
+import io.github.howiezuo.unsplash.api.service.MeService;
+import io.github.howiezuo.unsplash.api.service.OAuthService;
+import io.github.howiezuo.unsplash.api.service.PhotosService;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -48,20 +51,19 @@ public class ApiModule {
     @Provides
     @Singleton
     Retrofit provideRetrofit(OkHttpClient httpClient) {
-        return new Retrofit.Builder()
-                .baseUrl(Config.API_URL)
-                .client(httpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
+        return provideRetrofit(httpClient, Config.API_URL);
     }
 
     @Provides
     @Singleton
     @Named("oauth")
     Retrofit provideOAuthRetrofit(OkHttpClient httpClient) {
+        return provideRetrofit(httpClient, Config.OAUTH_URL);
+    }
+
+    private static Retrofit provideRetrofit(OkHttpClient httpClient, String url) {
         return new Retrofit.Builder()
-                .baseUrl(Config.OAUTH_URL)
+                .baseUrl(url)
                 .client(httpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

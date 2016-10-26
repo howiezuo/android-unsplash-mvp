@@ -6,7 +6,7 @@ import com.orhanobut.logger.Logger;
 
 import javax.inject.Inject;
 
-import io.github.howiezuo.unsplash.api.OAuthService;
+import io.github.howiezuo.unsplash.api.service.OAuthService;
 import io.github.howiezuo.unsplash.helper.PreferencesHelper;
 import io.github.howiezuo.unsplash.model.oauth.Token;
 import io.github.howiezuo.unsplash.model.oauth.token.Post;

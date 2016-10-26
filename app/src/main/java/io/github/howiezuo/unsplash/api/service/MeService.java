@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.api;
+package io.github.howiezuo.unsplash.api.service;
 
 import io.github.howiezuo.unsplash.model.User;
 import retrofit2.http.GET;

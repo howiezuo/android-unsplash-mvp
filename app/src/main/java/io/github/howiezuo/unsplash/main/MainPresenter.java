@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.github.howiezuo.unsplash.api.PhotosService;
+import io.github.howiezuo.unsplash.api.service.PhotosService;
 import io.github.howiezuo.unsplash.model.Photo;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;

@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.api;
+package io.github.howiezuo.unsplash.api.service;
 
 import java.util.List;
 

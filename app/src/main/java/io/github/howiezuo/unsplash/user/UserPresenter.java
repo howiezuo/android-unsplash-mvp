@@ -6,7 +6,7 @@ import com.orhanobut.logger.Logger;
 
 import javax.inject.Inject;
 
-import io.github.howiezuo.unsplash.api.MeService;
+import io.github.howiezuo.unsplash.api.service.MeService;
 import io.github.howiezuo.unsplash.model.User;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
