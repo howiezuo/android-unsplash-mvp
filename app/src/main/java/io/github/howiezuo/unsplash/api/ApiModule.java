@@ -11,6 +11,7 @@ import io.github.howiezuo.unsplash.Config;
 import io.github.howiezuo.unsplash.api.service.MeService;
 import io.github.howiezuo.unsplash.api.service.OAuthService;
 import io.github.howiezuo.unsplash.api.service.PhotosService;
+import io.github.howiezuo.unsplash.helper.PreferencesHelper;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -25,15 +26,22 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    Interceptor provideHttpInterceptor() {
+    Interceptor provideHttpInterceptor(final PreferencesHelper helper) {
         return new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
-                Request request = original.newBuilder()
-                        .addHeader("Accept-Version", Config.API_VERSION)
-                        .addHeader("Authorization", "Client-ID " + Config.CLIENT_ID)
-                        .build();
+
+                Request.Builder builder = original.newBuilder()
+                        .addHeader("Accept-Version", Config.API_VERSION);
+                String token = helper.getToken();
+                if (token != null) {
+                    builder.addHeader("Authorization", "Bearer " + token);
+                } else {
+                    builder.addHeader("Authorization", "Client-ID " + Config.CLIENT_ID);
+                }
+                Request request = builder.build();
+
                 return chain.proceed(request);
             }
         };

@@ -8,6 +8,7 @@ import io.github.howiezuo.unsplash.AppApplication;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.base.BaseActivity;
 import io.github.howiezuo.unsplash.util.ActivityUtils;
+import io.github.howiezuo.unsplash.util.UIUtils;
 
 public class MainActivity extends BaseActivity {
 
@@ -17,6 +18,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(UIUtils.view2Drawable(this, R.layout.view_logo));
 
         if (savedInstanceState != null) {
             return;

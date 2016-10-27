@@ -6,9 +6,13 @@ import dagger.Component;
 import io.github.howiezuo.unsplash.api.service.MeService;
 import io.github.howiezuo.unsplash.api.service.OAuthService;
 import io.github.howiezuo.unsplash.api.service.PhotosService;
+import io.github.howiezuo.unsplash.helper.HelperComponent;
 
 @Singleton
-@Component(modules = ApiModule.class)
+@Component(
+        dependencies = HelperComponent.class,
+        modules = ApiModule.class
+)
 public interface ApiComponent {
 
     PhotosService photosService();

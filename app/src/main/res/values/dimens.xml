@@ -1,8 +1,22 @@
 <resources>
 
-    <dimen name="action_bar_elevation">4dp</dimen>
+    <!-- Basic -->
+    <dimen name="size0">0dp</dimen>
+    <dimen name="size4">4dp</dimen>
+    <dimen name="size8">8dp</dimen>
+    <dimen name="size16">16dp</dimen>
+    <dimen name="size24">24dp</dimen>
+    <dimen name="size48">48dp</dimen>
+    <dimen name="size72">72dp</dimen>
+
+
+    <dimen name="layout_padding">@dimen/size16</dimen>
+
+    <dimen name="action_bar_elevation">0dp</dimen>
 
     <dimen name="action_icon_size">24dp</dimen>
     <dimen name="action_icon_padding">16dp</dimen>
+
+    <dimen name="profile_image_size">120dp</dimen>
 
 </resources>

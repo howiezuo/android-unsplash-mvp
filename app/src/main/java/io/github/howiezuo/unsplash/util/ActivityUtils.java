@@ -13,4 +13,11 @@ public class ActivityUtils {
         transaction.add(id, fragment);
         transaction.commit();
     }
+
+    public static void addFragmentToBackStack(@NonNull FragmentManager manager, @NonNull Fragment fragment, @IdRes int id) {
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(id, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

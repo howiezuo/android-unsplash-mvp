@@ -43,7 +43,7 @@ public class UserPresenter implements UserContract.Presenter {
 
                     @Override
                     public void onNext(User user) {
-                        Logger.d(user);
+                        mView.showMe(user);
                     }
                 });
     }

@@ -36,6 +36,7 @@ public class AppApplication extends Application {
                 .build();
 
         mApiComponent = DaggerApiComponent.builder()
+                .helperComponent(mHelperComponent)
                 .build();
     }
 

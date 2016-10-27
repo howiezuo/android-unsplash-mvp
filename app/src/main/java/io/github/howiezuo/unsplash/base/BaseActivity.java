@@ -56,8 +56,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         mLoginFragment = (LoginFragment) getSupportFragmentManager().findFragmentById(R.id.login_container);
         if (mLoginFragment == null) {
             mLoginFragment = LoginFragment.newInstance();
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), mLoginFragment, R.id.login_container);
+            ActivityUtils.addFragmentToBackStack(getSupportFragmentManager(), mLoginFragment, R.id.login_container);
         }
+
         mLoginPresenterModule.setView(mLoginFragment);
         mLoginPresenter.get();
         mLoginContainer.setVisibility(View.VISIBLE);

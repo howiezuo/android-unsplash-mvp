@@ -34,6 +34,14 @@ public class User implements Parcelable{
         links = in.readParcelable(Links.class.getClassLoader());
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public ProfileImage getProfileImage() {
+        return profile_image;
+    }
+
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
         public User createFromParcel(Parcel in) {
@@ -60,4 +68,5 @@ public class User implements Parcelable{
         dest.writeParcelable(profile_image, flags);
         dest.writeParcelable(links, flags);
     }
+
 }

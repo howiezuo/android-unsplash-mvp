@@ -15,6 +15,18 @@ public class ProfileImage implements Parcelable {
         large = in.readString();
     }
 
+    public String getSmall() {
+        return small;
+    }
+
+    public String getMedium() {
+        return medium;
+    }
+
+    public String getLarge() {
+        return large;
+    }
+
     public static final Creator<ProfileImage> CREATOR = new Creator<ProfileImage>() {
         @Override
         public ProfileImage createFromParcel(Parcel in) {

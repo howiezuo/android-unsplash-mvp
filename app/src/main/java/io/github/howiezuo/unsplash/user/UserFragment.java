@@ -6,14 +6,25 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import butterknife.BindView;
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.base.BaseFragment;
+import io.github.howiezuo.unsplash.model.User;
 
 
 public class UserFragment extends BaseFragment implements UserContract.View {
 
     UserContract.Presenter mPresenter;
+
+    @BindView(R.id.tv_name)
+    TextView mTextViewName;
+    @BindView(R.id.iv_profile)
+    CircleImageView mImageViewProfile;
 
     public UserFragment() {
 
@@ -57,5 +68,14 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     @Override
     public void setPresenter(UserContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void showMe(User user) {
+        mTextViewName.setText(user.getName());
+        Picasso.with(getActivity())
+                .load(user.getProfileImage().getMedium())
+                .noFade()
+                .into(mImageViewProfile);
     }
 }

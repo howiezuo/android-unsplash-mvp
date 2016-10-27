@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Basic -->
+    <dimen name="font_size12">12sp</dimen>
+    <dimen name="font_size14">14sp</dimen>
+    <dimen name="font_size16">16sp</dimen>
+    <dimen name="font_size20">20sp</dimen>
+    <dimen name="font_size24">24sp</dimen>
+
+    <dimen name="font_size_large">@dimen/font_size24</dimen>
+
+</resources>

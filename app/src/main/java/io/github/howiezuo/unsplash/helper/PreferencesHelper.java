@@ -25,5 +25,8 @@ public class PreferencesHelper {
     public void saveToken(String token) {
         mSharedPreferences.edit().putString(TOKEN_KEY, token).commit();
     }
-    
+
+    public String getToken() {
+        return mSharedPreferences.getString(TOKEN_KEY, null);
+    }
 }

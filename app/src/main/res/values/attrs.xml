@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RobotoTextView">
+        <attr name="textStyle" format="enum">
+            <enum name="bold" value="5" />
+        </attr>
+    </declare-styleable>
+
+</resources>
