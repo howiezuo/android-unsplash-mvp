@@ -2,13 +2,15 @@ package io.github.howiezuo.unsplash.detail;
 
 import dagger.Component;
 import io.github.howiezuo.unsplash.api.ApiComponent;
+import io.github.howiezuo.unsplash.helper.HelperComponent;
 import io.github.howiezuo.unsplash.login.LoginPresenterModule;
 import io.github.howiezuo.unsplash.util.FragmentScoped;
 
 @FragmentScoped
 @Component(
         dependencies = {
-                ApiComponent.class
+                ApiComponent.class,
+                HelperComponent.class
         },
         modules = {
                 DetailPresenterModule.class,

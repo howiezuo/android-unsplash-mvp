@@ -6,8 +6,13 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.github.howiezuo.unsplash.helper.HelperComponent;
 
-@Module
+@Module(
+        subcomponents = {
+                HelperComponent.class
+        }
+)
 public class AppModule {
 
     private final Context mContext;

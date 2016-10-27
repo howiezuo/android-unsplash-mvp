@@ -21,6 +21,8 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Inject
     OAuthService mOAuthService;
+    @Inject
+    PreferencesHelper mPreferencesHelper;
 
     @Inject
     public LoginPresenter(LoginContract.View view, Context context) {
@@ -48,7 +50,8 @@ public class LoginPresenter implements LoginContract.Presenter {
                     @Override
                     public void onNext(Token token) {
                         Logger.d(token);
-                        PreferencesHelper.getInstance(mContext).saveToken(token.getAccessToken());
+                        Logger.d(mPreferencesHelper);
+                        mPreferencesHelper.saveToken(token.getAccessToken());
                     }
                 });
 

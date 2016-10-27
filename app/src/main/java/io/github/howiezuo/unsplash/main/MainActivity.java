@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity {
 
         DaggerMainComponent.builder()
                 .apiComponent(AppApplication.getInstance().getApiComponent())
+                .helperComponent(AppApplication.getInstance().getHelperComponent())
                 .mainPresenterModule(new MainPresenterModule(fragment))
                 .loginPresenterModule(getLoginPresenterModule())
                 .build().inject(this);
