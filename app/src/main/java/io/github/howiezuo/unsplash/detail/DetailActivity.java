@@ -39,6 +39,7 @@ public class DetailActivity extends BaseActivity {
 
         DaggerDetailComponent.builder()
                 .apiComponent(AppApplication.getInstance().getApiComponent())
+                .helperComponent(AppApplication.getInstance().getHelperComponent())
                 .detailPresenterModule(new DetailPresenterModule(fragment, photo))
                 .loginPresenterModule(getLoginPresenterModule())
                 .build()

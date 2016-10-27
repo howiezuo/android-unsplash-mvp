@@ -37,4 +37,5 @@ ext {
     retrofitVersion = '2.1.0'
     butterknifeVersion = '8.4.0'
     daggerVersion = '2.7'
+    leakcanaryVersion = '1.5'
 }

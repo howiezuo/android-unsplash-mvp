@@ -36,6 +36,7 @@ public class UserActivity extends BaseActivity {
 
         DaggerUserComponent.builder()
                 .apiComponent(AppApplication.getInstance().getApiComponent())
+                .helperComponent(AppApplication.getInstance().getHelperComponent())
                 .userPresenterModule(new UserPresenterModule(fragment))
                 .loginPresenterModule(getLoginPresenterModule())
                 .build().inject(this);

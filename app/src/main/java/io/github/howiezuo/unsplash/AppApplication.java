@@ -2,6 +2,8 @@ package io.github.howiezuo.unsplash;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
+
 import io.github.howiezuo.unsplash.api.ApiComponent;
 import io.github.howiezuo.unsplash.api.DaggerApiComponent;
 import io.github.howiezuo.unsplash.helper.HelperComponent;
@@ -19,6 +21,11 @@ public class AppApplication extends Application {
         super.onCreate();
 
         sInstance = this;
+
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return;
+        }
+        LeakCanary.install(this);
 
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
