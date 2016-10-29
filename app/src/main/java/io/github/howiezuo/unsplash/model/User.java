@@ -38,6 +38,18 @@ public class User implements Parcelable{
         return name;
     }
 
+    public int getTotalLikes() {
+        return total_likes;
+    }
+
+    public int getTotalPhotos() {
+        return total_photos;
+    }
+
+    public int getTotalCollections() {
+        return total_collections;
+    }
+
     public ProfileImage getProfileImage() {
         return profile_image;
     }

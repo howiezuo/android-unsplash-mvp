@@ -61,6 +61,7 @@ public class RobotoTextView extends TextView {
 
     private enum TextStyle {
         REGULAR("Regular", 0),
+        MEDIUM("Medium", 4),
         BOLD("Bold", 5);
 
         private final String name;

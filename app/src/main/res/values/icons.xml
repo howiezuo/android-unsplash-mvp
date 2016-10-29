@@ -3,6 +3,8 @@
 
     <string name="fa_arrow_left">&#xf060;</string>
     <string name="fa_camera">&#xf030;</string>
+    <string name="fa_heart">&#xf004;</string>
+    <string name="fa_plus_square">&#xf0fe;</string>
     <string name="fa_user">&#xf007;</string>
 
     <string name="icon_logo">@string/fa_camera</string>

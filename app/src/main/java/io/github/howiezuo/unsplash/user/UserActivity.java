@@ -23,6 +23,7 @@ public class UserActivity extends BaseActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(UIUtils.view2Drawable(this, R.layout.view_action_back));
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         if (savedInstanceState != null) {
             return;

@@ -30,6 +30,22 @@ public class Photo implements Parcelable {
         urls = in.readParcelable(Urls.class.getClassLoader());
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Urls getUrls() {
+        return urls;
+    }
+
     public static final Creator<Photo> CREATOR = new Creator<Photo>() {
         @Override
         public Photo createFromParcel(Parcel in) {
@@ -60,11 +76,4 @@ public class Photo implements Parcelable {
         dest.writeParcelable(urls, flags);
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public Urls getUrls() {
-        return urls;
-    }
 }

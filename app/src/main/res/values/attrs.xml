@@ -3,6 +3,7 @@
 
     <declare-styleable name="RobotoTextView">
         <attr name="textStyle" format="enum">
+            <enum name="medium" value="4" />
             <enum name="bold" value="5" />
         </attr>
     </declare-styleable>

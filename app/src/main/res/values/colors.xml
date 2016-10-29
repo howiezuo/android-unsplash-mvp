@@ -5,10 +5,10 @@
     <color name="colorPrimaryLight">#FAFAFA</color>
     <color name="colorAccent">#FF5252</color>
 
-    <color name="titleTextColor">@color/textColorSecondary</color>
     <color name="textColor">#212121</color>
-    <color name="textColorPrimary">#212121</color>
+    <color name="textColorPrimary">@color/textColor</color>
     <color name="textColorSecondary">#9E9E9E</color>
+    <color name="titleTextColor">@color/textColorSecondary</color>
 
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorBackground">@color/colorPrimaryLight</color>

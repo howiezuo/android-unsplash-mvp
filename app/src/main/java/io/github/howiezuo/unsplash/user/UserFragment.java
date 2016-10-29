@@ -25,6 +25,12 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     TextView mTextViewName;
     @BindView(R.id.iv_profile)
     CircleImageView mImageViewProfile;
+    @BindView(R.id.tv_total_photos)
+    TextView mTextViewPhotos;
+    @BindView(R.id.tv_total_likes)
+    TextView mTextViewLikes;
+    @BindView(R.id.tv_total_collections)
+    TextView mTextViewCollections;
 
     public UserFragment() {
 
@@ -77,5 +83,8 @@ public class UserFragment extends BaseFragment implements UserContract.View {
                 .load(user.getProfileImage().getMedium())
                 .noFade()
                 .into(mImageViewProfile);
+        mTextViewPhotos.setText(String.valueOf(user.getTotalPhotos()));
+        mTextViewLikes.setText(String.valueOf(user.getTotalLikes()));
+        mTextViewCollections.setText(String.valueOf(user.getTotalCollections()));
     }
 }

@@ -4,4 +4,8 @@
 
     <string name="action_profile">Profile</string>
 
+    <string name="label_photos">Photos</string>
+    <string name="label_likes">Likes</string>
+    <string name="label_collections">Collections</string>
+
 </resources>
