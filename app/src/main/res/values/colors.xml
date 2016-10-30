@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimary">#EEFAFAFA</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorPrimaryLight">#FAFAFA</color>
     <color name="colorAccent">#FF5252</color>
@@ -14,5 +14,5 @@
     <color name="colorBackground">@color/colorPrimaryLight</color>
 
     <color name="titleLogoColor">@color/textColor</color>
-    <color name="colorSelected">#809E9E9E</color>
+    <color name="colorSelected">#CC9E9E9E</color>
 </resources>

@@ -9,9 +9,10 @@
     <dimen name="font_size24">24sp</dimen>
     <dimen name="font_size32">32sp</dimen>
 
-    <dimen name="font_size_small">@dimen/font_size12</dimen>
-    <dimen name="font_size_normal">@dimen/font_size16</dimen>
+    <dimen name="font_size_s_small">@dimen/font_size12</dimen>
+    <dimen name="font_size_small">@dimen/font_size16</dimen>
+    <dimen name="font_size_normal">@dimen/font_size20</dimen>
     <dimen name="font_size_large">@dimen/font_size24</dimen>
-    <dimen name="font_size_x_large">@dimen/font_size32</dimen>
+    <dimen name="font_size_l_large">@dimen/font_size32</dimen>
 
 </resources>

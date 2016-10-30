@@ -32,20 +32,35 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false);
-        RecyclerView.ViewHolder vh = new ViewHolder(v, mListener);
-        return vh;
+        if (viewType == ViewType.HEADER.ordinal()) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_header, parent, false);
+            RecyclerView.ViewHolder vh = new HeaderHolder(v);
+            return vh;
+        } else if (viewType == ViewType.NORMAL.ordinal()) {
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false);
+            RecyclerView.ViewHolder vh = new ViewHolder(v, mListener);
+            return vh;
+        }
+        return null;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ViewHolder vh = (ViewHolder) holder;
-        vh.bindView(mDataset.get(position));
+        if (getItemViewType(position) == ViewType.NORMAL.ordinal()) {
+            ViewHolder vh = (ViewHolder) holder;
+            vh.bindView(mDataset.get(position - 1));
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0) return ViewType.HEADER.ordinal();
+        return ViewType.NORMAL.ordinal();
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.size();
+        return mDataset.size() + 1;
     }
 
     public void updateDataset(List<Photo> dataset) {
@@ -56,6 +71,12 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void addDataset(List<Photo> dataset) {
         mDataset.addAll(dataset);
         this.notifyDataSetChanged();
+    }
+
+    public static class HeaderHolder extends RecyclerView.ViewHolder {
+        public HeaderHolder(View itemView) {
+            super(itemView);
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -112,5 +133,10 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvName.setText(user.getName());
             tvLikes.setText(String.valueOf(photo.getLikes()));
         }
+    }
+
+    private enum ViewType {
+        HEADER,
+        NORMAL
     }
 }

@@ -38,6 +38,10 @@ public class User implements Parcelable{
         return name;
     }
 
+    public String getBio() {
+        return bio;
+    }
+
     public int getTotalLikes() {
         return total_likes;
     }

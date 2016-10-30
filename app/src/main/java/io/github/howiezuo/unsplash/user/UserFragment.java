@@ -22,15 +22,17 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     UserContract.Presenter mPresenter;
 
     @BindView(R.id.tv_name)
-    TextView mTextViewName;
-    @BindView(R.id.iv_profile)
-    CircleImageView mImageViewProfile;
+    TextView mTVName;
+    @BindView(R.id.tv_bio)
+    TextView mTVBio;
+    @BindView(R.id.civ_profile)
+    CircleImageView mCIVProfile;
     @BindView(R.id.tv_total_photos)
-    TextView mTextViewPhotos;
+    TextView mTVPhotos;
     @BindView(R.id.tv_total_likes)
-    TextView mTextViewLikes;
+    TextView mTVLikes;
     @BindView(R.id.tv_total_collections)
-    TextView mTextViewCollections;
+    TextView mTVCollections;
 
     public UserFragment() {
 
@@ -78,13 +80,14 @@ public class UserFragment extends BaseFragment implements UserContract.View {
 
     @Override
     public void showMe(User user) {
-        mTextViewName.setText(user.getName());
+        mTVName.setText(user.getName());
+        mTVBio.setText(user.getBio());
         Picasso.with(getActivity())
                 .load(user.getProfileImage().getMedium())
                 .noFade()
-                .into(mImageViewProfile);
-        mTextViewPhotos.setText(String.valueOf(user.getTotalPhotos()));
-        mTextViewLikes.setText(String.valueOf(user.getTotalLikes()));
-        mTextViewCollections.setText(String.valueOf(user.getTotalCollections()));
+                .into(mCIVProfile);
+        mTVPhotos.setText(String.valueOf(user.getTotalPhotos()));
+        mTVLikes.setText(String.valueOf(user.getTotalLikes()));
+        mTVCollections.setText(String.valueOf(user.getTotalCollections()));
     }
 }
