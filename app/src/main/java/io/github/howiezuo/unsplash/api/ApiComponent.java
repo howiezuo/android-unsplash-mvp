@@ -3,7 +3,7 @@ package io.github.howiezuo.unsplash.api;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import io.github.howiezuo.unsplash.api.service.MeService;
+import io.github.howiezuo.unsplash.api.service.UsersService;
 import io.github.howiezuo.unsplash.api.service.OAuthService;
 import io.github.howiezuo.unsplash.api.service.PhotosService;
 import io.github.howiezuo.unsplash.helper.HelperComponent;
@@ -19,6 +19,6 @@ public interface ApiComponent {
 
     OAuthService oauthService();
 
-    MeService meService();
+    UsersService usersService();
 
 }

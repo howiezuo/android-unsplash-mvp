@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import io.github.howiezuo.unsplash.Config;
-import io.github.howiezuo.unsplash.api.service.MeService;
+import io.github.howiezuo.unsplash.api.service.UsersService;
 import io.github.howiezuo.unsplash.api.service.OAuthService;
 import io.github.howiezuo.unsplash.api.service.PhotosService;
 import io.github.howiezuo.unsplash.helper.PreferencesHelper;
@@ -92,7 +92,7 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    MeService provideMeService(Retrofit retrofit) {
-        return retrofit.create(MeService.class);
+    UsersService provideUsersService(Retrofit retrofit) {
+        return retrofit.create(UsersService.class);
     }
 }

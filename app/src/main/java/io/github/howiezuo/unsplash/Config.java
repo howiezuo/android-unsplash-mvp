@@ -17,6 +17,7 @@ public class Config {
             "&response_type=code" +
             "&scope=public+read_user+read_photos+read_collections+write_likes+write_followers";
 
+    public static final int DEFAULT_PER_PAGE = 20;
 
     public static final float PHOTO_RATIO = 1.6f;
 }

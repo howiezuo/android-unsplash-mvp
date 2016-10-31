@@ -40,16 +40,6 @@
                     android:layout_alignParentTop="true"/>
 
                 <io.github.howiezuo.unsplash.widget.RobotoTextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/layout_margin_small"
-                    android:layout_toRightOf="@id/civ_profile"
-                    android:textColor="@color/textColorSecondary"
-                    android:textSize="@dimen/font_size_normal"
-                    app:textStyle="medium"/>
-
-                <io.github.howiezuo.unsplash.widget.RobotoTextView
                     android:id="@+id/tv_likes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,10 +55,11 @@
                     android:layout_marginRight="@dimen/layout_margin_small"
                     android:layout_toLeftOf="@id/tv_likes"
                     android:text="@string/fa_heart"
-                    android:textColor="@color/textColorSecondary"
+                    android:textColor="@color/colorUnliked"
                     android:textSize="@dimen/icon_size"/>
 
                 <io.github.howiezuo.unsplash.widget.FontIconView
+                    android:id="@+id/fiv_collection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/layout_margin"
@@ -76,6 +67,18 @@
                     android:text="@string/fa_plus_square"
                     android:textColor="@color/textColorSecondary"
                     android:textSize="@dimen/icon_size"/>
+
+                <io.github.howiezuo.unsplash.widget.RobotoTextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_small"
+                    android:layout_toLeftOf="@id/fiv_collection"
+                    android:layout_toRightOf="@id/civ_profile"
+                    android:textColor="@color/textColorSecondary"
+                    android:textSize="@dimen/font_size_normal"
+                    android:lines="1"
+                    app:textStyle="medium"/>
 
             </RelativeLayout>
 

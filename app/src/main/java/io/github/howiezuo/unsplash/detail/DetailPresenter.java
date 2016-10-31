@@ -9,8 +9,8 @@ import io.github.howiezuo.unsplash.model.Photo;
 
 public class DetailPresenter implements DetailContract.Presenter {
 
-    private DetailContract.View mView;
-    private Photo mPhoto;
+    private final DetailContract.View mView;
+    private final Photo mPhoto;
 
     @Inject
     public DetailPresenter(@NonNull DetailContract.View view, Photo photo) {

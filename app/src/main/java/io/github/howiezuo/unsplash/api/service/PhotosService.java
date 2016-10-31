@@ -2,6 +2,9 @@ package io.github.howiezuo.unsplash.api.service;
 
 import java.util.List;
 
+import io.github.howiezuo.unsplash.Config;
+import io.github.howiezuo.unsplash.model.Liked;
+import io.github.howiezuo.unsplash.model.Unliked;
 import io.github.howiezuo.unsplash.model.photo.Download;
 import io.github.howiezuo.unsplash.model.Photo;
 import io.github.howiezuo.unsplash.model.photo.Stats;
@@ -16,14 +19,17 @@ import rx.Observable;
 
 public interface PhotosService {
 
-    @GET("photos?per_page=20")
+    @GET("photos?per_page=" + Config.DEFAULT_PER_PAGE)
     Observable<List<Photo>> getPhotos();
 
-    @GET("photos?per_page=20")
+    @GET("photos?per_page=" + Config.DEFAULT_PER_PAGE)
     Observable<List<Photo>> getPhotos(@Query("page") int page);
 
-    @GET("photos/curated")
-    Call<List<Photo>> getCurated();
+    @GET("photos/curated?per_page=" + Config.DEFAULT_PER_PAGE)
+    Observable<List<Photo>> getCurated();
+
+    @GET("photos/curated?per_page=" + Config.DEFAULT_PER_PAGE)
+    Observable<List<Photo>> getCurated(@Query("page") int page);
 
     @GET("photos/{id}")
     Call<Photo> getPhoto(@Path("id") String id);
@@ -41,9 +47,9 @@ public interface PhotosService {
     Call<Photo> update(@Path("id") String id);
 
     @POST("photos/{id}/like")
-    Call<Photo> like(@Path("id") String id);
+    Observable<Liked> like(@Path("id") String id);
 
     @DELETE("photos/{id}/like")
-    Call<Photo> unlike(@Path("id") String id);
+    Observable<Unliked> unlike(@Path("id") String id);
 
 }

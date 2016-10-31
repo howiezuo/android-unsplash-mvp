@@ -60,7 +60,8 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mPresenter.loadMe();
+//        mPresenter.loadMe();
+        mPresenter.showUser();
     }
 
     @Override
@@ -83,7 +84,20 @@ public class UserFragment extends BaseFragment implements UserContract.View {
         mTVName.setText(user.getName());
         mTVBio.setText(user.getBio());
         Picasso.with(getActivity())
-                .load(user.getProfileImage().getMedium())
+                .load(user.getProfileImage().getLarge())
+                .noFade()
+                .into(mCIVProfile);
+        mTVPhotos.setText(String.valueOf(user.getTotalPhotos()));
+        mTVLikes.setText(String.valueOf(user.getTotalLikes()));
+        mTVCollections.setText(String.valueOf(user.getTotalCollections()));
+    }
+
+    @Override
+    public void showUser(User user) {
+        mTVName.setText(user.getName());
+        mTVBio.setText(user.getBio());
+        Picasso.with(getActivity())
+                .load(user.getProfileImage().getLarge())
                 .noFade()
                 .into(mCIVProfile);
         mTVPhotos.setText(String.valueOf(user.getTotalPhotos()));

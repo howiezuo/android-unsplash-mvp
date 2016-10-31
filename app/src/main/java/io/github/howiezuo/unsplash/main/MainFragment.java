@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +21,7 @@ import io.github.howiezuo.unsplash.base.BaseFragment;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.detail.DetailActivity;
 import io.github.howiezuo.unsplash.model.Photo;
+import io.github.howiezuo.unsplash.model.User;
 import io.github.howiezuo.unsplash.user.UserActivity;
 import io.github.howiezuo.unsplash.util.UIUtils;
 
@@ -35,6 +37,20 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         @Override
         public void onPhotoClick(Photo photo) {
             mPresenter.openPhotoDetails(photo);
+        }
+
+        @Override
+        public void onUserClick(User user) {
+            mPresenter.openUserDetails(user);
+        }
+
+        @Override
+        public void onLikeClick(Photo photo, int index) {
+            if (photo.isLikedByUser()) {
+                mPresenter.unlikePhoto(photo, index);
+            } else {
+                mPresenter.likePhoto(photo, index);
+            }
         }
     };
     private MainAdapter mAdapter = new MainAdapter(mListener);
@@ -80,6 +96,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 }
             }
         });
+        RecyclerView.ItemAnimator anim = mRecyclerView.getItemAnimator();
+        if (anim instanceof SimpleItemAnimator) {
+            ((SimpleItemAnimator) anim).setSupportsChangeAnimations(false);
+        }
     }
 
     @Override
@@ -131,5 +151,22 @@ public class MainFragment extends BaseFragment implements MainContract.View {
         Intent intent = new Intent(getActivity(), DetailActivity.class);
         intent.putExtra(DetailActivity.EXTRA_PHOTO, photo);
         startActivity(intent);
+    }
+
+    @Override
+    public void showUserDetails(User user) {
+        Intent intent = new Intent(getActivity(), UserActivity.class);
+        intent.putExtra(UserActivity.EXTRA_USER, user);
+        startActivity(intent);
+    }
+
+    @Override
+    public void likedPhoto(Photo photo, int index) {
+        mAdapter.likePhoto(photo, index);
+    }
+
+    @Override
+    public void unlikedPhoto(Photo photo, int index) {
+        mAdapter.likePhoto(photo, index);
     }
 }

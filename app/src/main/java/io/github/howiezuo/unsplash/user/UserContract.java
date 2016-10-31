@@ -10,11 +10,15 @@ public interface UserContract {
 
         void loadMe();
 
+        void showUser();
+
     }
 
     interface View extends BaseView<Presenter> {
 
         void showMe(User user);
+
+        void showUser(User user);
 
     }
 }

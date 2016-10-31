@@ -20,7 +20,8 @@ public class DetailPresenterModule {
         return mView;
     }
 
-    @Provides Photo providePhoto() {
+    @Provides
+    Photo providePhoto() {
         return mPhoto;
     }
 }

@@ -1,6 +1,7 @@
 package io.github.howiezuo.unsplash.main;
 
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,9 +47,10 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        int index = position - 1; // because of header
         if (getItemViewType(position) == ViewType.NORMAL.ordinal()) {
             ViewHolder vh = (ViewHolder) holder;
-            vh.bindView(mDataset.get(position - 1));
+            vh.bindView(mDataset.get(index), index);
         }
     }
 
@@ -73,6 +75,17 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.notifyDataSetChanged();
     }
 
+    public void likePhoto(Photo photo, int index) {
+        Photo item = mDataset.get(index);
+        if (item != null) {
+            item.setLikedByUser(photo.isLikedByUser());
+            item.setLikes(photo.getLikes());
+            mDataset.set(index, item);
+
+            this.notifyItemChanged(index + 1);
+        }
+    }
+
     public static class HeaderHolder extends RecyclerView.ViewHolder {
         public HeaderHolder(View itemView) {
             super(itemView);
@@ -88,6 +101,8 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView tvName;
         @BindView(R.id.tv_likes)
         TextView tvLikes;
+        @BindView(R.id.fiv_like)
+        TextView fivLike;
 
         MainListener mListener;
 
@@ -98,7 +113,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             ButterKnife.bind(this, itemView);
         }
 
-        public void bindView(final Photo photo) {
+        public void bindView(final Photo photo, final int index) {
             ivPhoto.post(new Runnable() {
                 @Override
                 public void run() {
@@ -113,6 +128,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 .load(photo.getUrls().getSmall())
                                 .resize(w, h)
                                 .centerCrop()
+                                .noFade()
                                 .into(ivPhoto);
                     }
                 }
@@ -125,13 +141,30 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             });
 
-            User user = photo.getUser();
+            final User user = photo.getUser();
             Picasso.with(itemView.getContext())
                     .load(user.getProfileImage().getSmall())
                     .noFade()
                     .into(civProfile);
             tvName.setText(user.getName());
+            tvName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onUserClick(user);
+                }
+            });
             tvLikes.setText(String.valueOf(photo.getLikes()));
+            if (photo.isLikedByUser()) {
+                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorLiked));
+            } else {
+                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorUnliked));
+            }
+            fivLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onLikeClick(photo, index);
+                }
+            });
         }
     }
 

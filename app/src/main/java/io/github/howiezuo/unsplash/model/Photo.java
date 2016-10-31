@@ -30,12 +30,28 @@ public class Photo implements Parcelable {
         urls = in.readParcelable(Urls.class.getClassLoader());
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getColor() {
         return color;
     }
 
     public int getLikes() {
         return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public boolean isLikedByUser() {
+        return liked_by_user;
+    }
+
+    public void setLikedByUser(boolean liked) {
+        liked_by_user = liked;
     }
 
     public User getUser() {

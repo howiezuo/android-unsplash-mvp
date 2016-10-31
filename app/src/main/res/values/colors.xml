@@ -14,5 +14,9 @@
     <color name="colorBackground">@color/colorPrimaryLight</color>
 
     <color name="titleLogoColor">@color/textColor</color>
+
     <color name="colorSelected">#CC9E9E9E</color>
+    <color name="colorLiked">@color/colorAccent</color>
+    <color name="colorUnliked">@color/textColorSecondary</color>
+
 </resources>
