@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,8 +16,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import butterknife.BindView;
-import io.github.howiezuo.unsplash.base.BaseFragment;
 import io.github.howiezuo.unsplash.R;
+import io.github.howiezuo.unsplash.base.BaseFragment;
 import io.github.howiezuo.unsplash.detail.DetailActivity;
 import io.github.howiezuo.unsplash.model.Photo;
 import io.github.howiezuo.unsplash.model.User;
@@ -30,8 +29,8 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     MainContract.Presenter mPresenter;
 
-    @BindView(R.id.view_recycler)
-    RecyclerView mRecyclerView;
+    @BindView(R.id.rv_photos)
+    RecyclerView mRVPhotos;
 
     MainListener mListener = new MainListener() {
         @Override
@@ -82,10 +81,10 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerView.setAdapter(mAdapter);
+        mRVPhotos.setAdapter(mAdapter);
         final LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        mRecyclerView.setLayoutManager(llm);
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        mRVPhotos.setLayoutManager(llm);
+        mRVPhotos.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 int last = llm.findLastCompletelyVisibleItemPosition();
@@ -96,10 +95,6 @@ public class MainFragment extends BaseFragment implements MainContract.View {
                 }
             }
         });
-        RecyclerView.ItemAnimator anim = mRecyclerView.getItemAnimator();
-        if (anim instanceof SimpleItemAnimator) {
-            ((SimpleItemAnimator) anim).setSupportsChangeAnimations(false);
-        }
     }
 
     @Override

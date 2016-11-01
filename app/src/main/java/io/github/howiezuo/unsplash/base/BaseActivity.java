@@ -21,6 +21,7 @@ import io.github.howiezuo.unsplash.util.ActivityUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    @Nullable
     @BindView(R.id.tool_bar)
     Toolbar mToolbar;
     @BindView(R.id.login_container)
@@ -39,7 +40,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutId());
         ButterKnife.bind(this);
 
-        setSupportActionBar(mToolbar);
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+        }
 
         mLoginPresenterModule = new LoginPresenterModule(mLoginFragment, this);
     }

@@ -46,7 +46,7 @@ public class RobotoTextView extends TextView {
         );
 
         try {
-            int style = ta.getInt(R.styleable.RobotoTextView_textStyle, 0);
+            int style = ta.getInt(R.styleable.RobotoTextView_rtv_textStyle, 0);
             mTextStyle = TextStyle.getName(style);
         } finally {
             ta.recycle();

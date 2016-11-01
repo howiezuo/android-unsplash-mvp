@@ -46,7 +46,7 @@
                     android:layout_alignParentRight="true"
                     android:textColor="@color/textColorSecondary"
                     android:textSize="@dimen/font_size_normal"
-                    app:textStyle="medium"/>
+                    app:rtv_textStyle="medium"/>
 
                 <io.github.howiezuo.unsplash.widget.FontIconView
                     android:id="@+id/fiv_like"
@@ -78,7 +78,7 @@
                     android:textColor="@color/textColorSecondary"
                     android:textSize="@dimen/font_size_normal"
                     android:lines="1"
-                    app:textStyle="medium"/>
+                    app:rtv_textStyle="medium"/>
 
             </RelativeLayout>
 

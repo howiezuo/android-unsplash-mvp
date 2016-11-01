@@ -7,17 +7,24 @@ import io.github.howiezuo.unsplash.model.User;
 @Module
 public class UserPresenterModule {
 
-    private final UserContract.View mView;
+    private final UserContract.View mUserView;
+    private final UserPhotosContract.View mPhotosView;
     private final User mUser;
 
-    public UserPresenterModule(UserContract.View view, User user) {
-        mView = view;
+    public UserPresenterModule(UserContract.View userView, UserPhotosContract.View photosView, User user) {
+        mUserView = userView;
+        mPhotosView = photosView;
         mUser = user;
     }
 
     @Provides
-    UserContract.View provideUserContractView() {
-        return mView;
+    UserContract.View provideUserView() {
+        return mUserView;
+    }
+
+    @Provides
+    UserPhotosContract.View providePhotosView() {
+        return mPhotosView;
     }
 
     @Provides

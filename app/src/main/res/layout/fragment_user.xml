@@ -1,129 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:RobotoTextView="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.UserActivity">
+    android:orientation="vertical"
+    android:padding="@dimen/layout_padding">
 
-    <ScrollView
+    <include layout="@layout/layout_header"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/layout_margin">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_profile"
+            android:layout_width="@dimen/profile_image_size"
+            android:layout_height="@dimen/profile_image_size"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"/>
+
+        <io.github.howiezuo.unsplash.widget.RobotoTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/civ_profile"
+            android:textSize="@dimen/font_size_l_large"
+            app:rtv_textStyle="medium"/>
+
+        <io.github.howiezuo.unsplash.widget.RobotoTextView
+            android:id="@+id/tv_bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/tv_name"
+            android:layout_toLeftOf="@id/civ_profile"
+            android:textSize="@dimen/font_size_normal"
+            app:rtv_textStyle="medium"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/layout_padding">
+            android:layout_width="@dimen/layout_status_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <include layout="@layout/layout_header"/>
-
-            <RelativeLayout
+            <io.github.howiezuo.unsplash.widget.RobotoTextView
+                android:id="@+id/tv_total_photos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/layout_margin">
+                android:textSize="@dimen/font_size_large"
+                app:rtv_textStyle="medium"/>
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/civ_profile"
-                    android:layout_width="@dimen/profile_image_size"
-                    android:layout_height="@dimen/profile_image_size"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"/>
-
-                <io.github.howiezuo.unsplash.widget.RobotoTextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_toLeftOf="@id/civ_profile"
-                    android:layout_weight="1.0"
-                    android:textSize="@dimen/font_size_l_large"
-                    RobotoTextView:textStyle="medium"/>
-
-                <io.github.howiezuo.unsplash.widget.RobotoTextView
-                    android:id="@+id/tv_bio"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@id/tv_name"
-                    android:layout_toLeftOf="@id/civ_profile"
-                    android:layout_weight="1.0"
-                    android:textSize="@dimen/font_size_normal"
-                    RobotoTextView:textStyle="medium"/>
-
-            </RelativeLayout>
-
-            <LinearLayout
+            <io.github.howiezuo.unsplash.widget.RobotoTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="@dimen/layout_status_width"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <io.github.howiezuo.unsplash.widget.RobotoTextView
-                        android:id="@+id/tv_total_photos"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/font_size_large"
-                        RobotoTextView:textStyle="medium"/>
-
-                    <io.github.howiezuo.unsplash.widget.RobotoTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_photos"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/font_size_s_small"
-                        RobotoTextView:textStyle="medium"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="@dimen/layout_status_width"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <io.github.howiezuo.unsplash.widget.RobotoTextView
-                        android:id="@+id/tv_total_likes"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/font_size_large"
-                        RobotoTextView:textStyle="medium"/>
-
-                    <io.github.howiezuo.unsplash.widget.RobotoTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_likes"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/font_size_s_small"
-                        RobotoTextView:textStyle="medium"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="@dimen/layout_status_width"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <io.github.howiezuo.unsplash.widget.RobotoTextView
-                        android:id="@+id/tv_total_collections"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/font_size_large"
-                        RobotoTextView:textStyle="medium"/>
-
-                    <io.github.howiezuo.unsplash.widget.RobotoTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/label_collections"
-                        android:textColor="@color/textColorSecondary"
-                        android:textSize="@dimen/font_size_s_small"
-                        RobotoTextView:textStyle="medium"/>
-                </LinearLayout>
-            </LinearLayout>
+                android:text="@string/label_photos"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/font_size_s_small"
+                app:rtv_textStyle="medium"/>
         </LinearLayout>
-    </ScrollView>
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="@dimen/layout_status_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <io.github.howiezuo.unsplash.widget.RobotoTextView
+                android:id="@+id/tv_total_likes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_large"
+                app:rtv_textStyle="medium"/>
+
+            <io.github.howiezuo.unsplash.widget.RobotoTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_likes"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/font_size_s_small"
+                app:rtv_textStyle="medium"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/layout_status_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <io.github.howiezuo.unsplash.widget.RobotoTextView
+                android:id="@+id/tv_total_collections"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_size_large"
+                app:rtv_textStyle="medium"/>
+
+            <io.github.howiezuo.unsplash.widget.RobotoTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_collections"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="@dimen/font_size_s_small"
+                app:rtv_textStyle="medium"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

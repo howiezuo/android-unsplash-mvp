@@ -104,4 +104,5 @@ public class UserFragment extends BaseFragment implements UserContract.View {
         mTVLikes.setText(String.valueOf(user.getTotalLikes()));
         mTVCollections.setText(String.valueOf(user.getTotalCollections()));
     }
+
 }
