@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EEFAFAFA</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorPrimaryLight">#FAFAFA</color>
-    <color name="colorAccent">#FF5252</color>
 
-    <color name="textColor">#212121</color>
-    <color name="textColorPrimary">@color/textColor</color>
-    <color name="textColorSecondary">#9E9E9E</color>
-    <color name="titleTextColor">@color/textColorSecondary</color>
+    <color name="color_primary">#FAFAFA</color>
+    <color name="color_primary_dark">#000000</color>
+    <color name="color_primary_light">#FAFAFA</color>
+    <color name="color_accent">#FF5252</color>
 
-    <color name="colorDivider">#BDBDBD</color>
-    <color name="colorBackground">@color/colorPrimaryLight</color>
+    <color name="color_text">#212121</color>
+    <color name="color_text_primary">@color/color_text</color>
+    <color name="color_text_secondary">#9E9E9E</color>
+    <color name="color_title_text">@color/color_text_secondary</color>
 
-    <color name="titleLogoColor">@color/textColor</color>
+    <color name="color_divider">#BDBDBD</color>
+    <color name="color_background">@color/color_primary_light</color>
 
-    <color name="colorSelected">#CC9E9E9E</color>
-    <color name="colorLiked">@color/colorAccent</color>
-    <color name="colorUnliked">@color/textColorSecondary</color>
+    <color name="color_logo">@color/color_text_primary</color>
+
+    <color name="color_selected">#CC9E9E9E</color>
+    <color name="color_liked">@color/color_accent</color>
+    <color name="color_unliked">@color/color_text_secondary</color>
 
 </resources>

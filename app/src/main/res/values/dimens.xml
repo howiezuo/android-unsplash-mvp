@@ -10,8 +10,8 @@
     <dimen name="dimen72">72dp</dimen>
 
     <dimen name="layout_padding">@dimen/dimen16</dimen>
-    <dimen name="layout_margin">@dimen/dimen16</dimen>
     <dimen name="layout_margin_small">@dimen/dimen8</dimen>
+    <dimen name="layout_margin">@dimen/dimen16</dimen>
 
     <dimen name="layout_status_width">72dp</dimen>
 

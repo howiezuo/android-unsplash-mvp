@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/label_photos"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="@color/color_text_secondary"
                 android:textSize="@dimen/font_size_s_small"
                 app:rtv_textStyle="medium"/>
         </LinearLayout>
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/label_likes"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="@color/color_text_secondary"
                 android:textSize="@dimen/font_size_s_small"
                 app:rtv_textStyle="medium"/>
         </LinearLayout>
@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/label_collections"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="@color/color_text_secondary"
                 android:textSize="@dimen/font_size_s_small"
                 app:rtv_textStyle="medium"/>
         </LinearLayout>

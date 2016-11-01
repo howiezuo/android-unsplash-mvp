@@ -16,17 +16,18 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:contentScrim="@color/color_primary">
 
                 <FrameLayout
                     android:id="@+id/user_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <include layout="@layout/layout_toolbar"
-                    app:layout_collapseMode="pin"/>
+                <include layout="@layout/layout_toolbar"/>
 
             </android.support.design.widget.CollapsingToolbarLayout>
 

@@ -103,9 +103,9 @@ public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             tvName.setText(user.getName());
             tvLikes.setText(String.valueOf(photo.getLikes()));
             if (photo.isLikedByUser()) {
-                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorLiked));
+                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_liked));
             } else {
-                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.colorUnliked));
+                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_unliked));
             }
             fivLike.setOnClickListener(new View.OnClickListener() {
                 @Override

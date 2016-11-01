@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBackground"
+            android:background="@color/color_background"
             android:orientation="vertical"
             android:paddingLeft="@dimen/layout_padding"
             android:paddingRight="@dimen/layout_padding"
@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/textColorSecondary"
+                    android:textColor="@color/color_text_secondary"
                     android:textSize="@dimen/font_size_normal"
                     app:rtv_textStyle="medium"/>
 
@@ -55,7 +55,7 @@
                     android:layout_marginRight="@dimen/layout_margin_small"
                     android:layout_toLeftOf="@id/tv_likes"
                     android:text="@string/fa_heart"
-                    android:textColor="@color/colorUnliked"
+                    android:textColor="@color/color_unliked"
                     android:textSize="@dimen/icon_size"/>
 
                 <io.github.howiezuo.unsplash.widget.FontIconView
@@ -65,7 +65,7 @@
                     android:layout_marginRight="@dimen/layout_margin"
                     android:layout_toLeftOf="@id/fiv_like"
                     android:text="@string/fa_plus_square"
-                    android:textColor="@color/textColorSecondary"
+                    android:textColor="@color/color_text_secondary"
                     android:textSize="@dimen/icon_size"/>
 
                 <io.github.howiezuo.unsplash.widget.RobotoTextView
@@ -75,7 +75,7 @@
                     android:layout_marginLeft="@dimen/layout_margin_small"
                     android:layout_toLeftOf="@id/fiv_collection"
                     android:layout_toRightOf="@id/civ_profile"
-                    android:textColor="@color/textColorSecondary"
+                    android:textColor="@color/color_text_secondary"
                     android:textSize="@dimen/font_size_normal"
                     android:lines="1"
                     app:rtv_textStyle="medium"/>
