@@ -28,7 +28,7 @@ public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photo, parent, false);
         RecyclerView.ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -103,9 +103,9 @@ public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             textName.setText(user.getName());
             textLikes.setText(String.valueOf(photo.getLikes()));
             if (photo.isLikedByUser()) {
-                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_liked));
+                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.liked));
             } else {
-                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_unliked));
+                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.unliked));
             }
             textIconLike.setOnClickListener(new View.OnClickListener() {
                 @Override

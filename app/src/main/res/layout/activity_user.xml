@@ -20,7 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:contentScrim="@color/color_primary">
+                android:elevation="@dimen/elevation_toolbar"
+                app:contentScrim="?attr/colorPrimary">
 
                 <FrameLayout
                     android:id="@+id/container_user"

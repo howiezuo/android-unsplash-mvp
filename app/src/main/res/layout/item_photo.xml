@@ -13,11 +13,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_background"
+            android:background="@color/background"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/layout_padding"
-            android:paddingRight="@dimen/layout_padding"
-            android:paddingTop="@dimen/layout_padding">
+            android:paddingLeft="@dimen/padding_layout"
+            android:paddingRight="@dimen/padding_layout"
+            android:paddingTop="@dimen/padding_layout">
 
             <ImageView
                 android:id="@+id/image_photo"
@@ -29,13 +29,13 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin_small"
+                android:layout_marginTop="@dimen/margin_layout_small"
                 android:gravity="center_vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image_profile"
-                    android:layout_width="@dimen/profile_image_size_small"
-                    android:layout_height="@dimen/profile_image_size_small"
+                    android:layout_width="@dimen/size_profile_image_small"
+                    android:layout_height="@dimen/size_profile_image_small"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"/>
 
@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="@color/text_secondary"
                     android:textSize="@dimen/font_size_normal"
                     app:rtv_textStyle="medium"/>
 
@@ -52,30 +52,30 @@
                     android:id="@+id/text_icon_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/layout_margin_small"
+                    android:layout_marginRight="@dimen/margin_layout_small"
                     android:layout_toLeftOf="@id/text_likes"
                     android:text="@string/fa_heart"
-                    android:textColor="@color/color_unliked"
-                    android:textSize="@dimen/icon_size"/>
+                    android:textColor="@color/unliked"
+                    android:textSize="@dimen/size_icon"/>
 
                 <io.github.howiezuo.unsplash.widget.FontIconView
                     android:id="@+id/text_icon_collection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/layout_margin"
+                    android:layout_marginRight="@dimen/margin_layout"
                     android:layout_toLeftOf="@id/text_icon_like"
                     android:text="@string/fa_plus_square"
-                    android:textColor="@color/color_text_secondary"
-                    android:textSize="@dimen/icon_size"/>
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/size_icon"/>
 
                 <io.github.howiezuo.unsplash.widget.RobotoTextView
                     android:id="@+id/text_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/layout_margin_small"
+                    android:layout_marginLeft="@dimen/margin_layout_small"
                     android:layout_toLeftOf="@id/text_icon_collection"
                     android:layout_toRightOf="@id/image_profile"
-                    android:textColor="@color/color_text_secondary"
+                    android:textColor="@color/text_secondary"
                     android:textSize="@dimen/font_size_normal"
                     android:lines="1"
                     app:rtv_textStyle="medium"/>

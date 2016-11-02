@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="color_primary">#FAFAFA</color>
-    <color name="color_primary_dark">#000000</color>
-    <color name="color_primary_light">#FAFAFA</color>
-    <color name="color_accent">#FF5252</color>
+    <color name="primary">#FAFAFA</color>
+    <color name="primary_dark">#000000</color>
+    <color name="primary_light">#FAFAFA</color>
+    <color name="accent">#FF5252</color>
 
-    <color name="color_text">#212121</color>
-    <color name="color_text_primary">@color/color_text</color>
-    <color name="color_text_secondary">#9E9E9E</color>
-    <color name="color_title_text">@color/color_text_secondary</color>
+    <color name="text">#212121</color>
+    <color name="text_primary">@color/text</color>
+    <color name="text_secondary">#9E9E9E</color>
+    <color name="text_title">@color/text_secondary</color>
 
-    <color name="color_divider">#BDBDBD</color>
-    <color name="color_background">@color/color_primary_light</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="background">@color/primary_light</color>
 
-    <color name="color_logo">@color/color_text_primary</color>
+    <color name="logo">@color/text_primary</color>
 
-    <color name="color_selected">#CC9E9E9E</color>
-    <color name="color_liked">@color/color_accent</color>
-    <color name="color_unliked">@color/color_text_secondary</color>
+    <color name="selected">#CC9E9E9E</color>
+    <color name="liked">@color/accent</color>
+    <color name="unliked">@color/text_secondary</color>
 
 </resources>

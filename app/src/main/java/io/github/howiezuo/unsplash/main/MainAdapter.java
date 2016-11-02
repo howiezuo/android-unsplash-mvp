@@ -38,7 +38,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             RecyclerView.ViewHolder vh = new HeaderHolder(v);
             return vh;
         } else if (viewType == ViewType.NORMAL.ordinal()) {
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_photo, parent, false);
             RecyclerView.ViewHolder vh = new ViewHolder(v, mListener);
             return vh;
         }
@@ -155,9 +155,9 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             });
             textLikes.setText(String.valueOf(photo.getLikes()));
             if (photo.isLikedByUser()) {
-                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_liked));
+                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.liked));
             } else {
-                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_unliked));
+                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.unliked));
             }
             textIconLike.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -6,6 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
-    android:elevation="@dimen/action_bar_elevation"
+    android:elevation="@dimen/elevation_toolbar"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:layout_collapseMode="pin"/>

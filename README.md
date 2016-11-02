@@ -1,6 +1,6 @@
 # AndroidUnsplash
 
-Android App using unsplash [API](https://unsplash.com/developers) for study and play.
+Android App using Unsplash [API](https://unsplash.com/developers) for study and play.
 
 *This is an endless project so the status is always on progress*
 
@@ -18,6 +18,7 @@ Android App using unsplash [API](https://unsplash.com/developers) for study and 
 ## Project structure
 
 Traditionally we organize the packages by layers, but I'm trying a new [way](https://medium.com/@cesarmcferreira/package-by-features-not-layers-2d076df1964d#.crq09v17m).
+
 Still can not say which is better.
 
 ## Before playing
@@ -30,7 +31,7 @@ You need put `private.properties` under the `assets` folder first.
 client.id=[YOUR_CLIENT_ID]
 client.secret=[YOUR_CLIENT_SECRET]
 ```
-Get your `client id` and `client secret` from unsplash [API](https://unsplash.com/developers)
+Get your `client id` and `client secret` from Unsplash [API](https://unsplash.com/developers)
 
 ## TODO
 - [ ] Test

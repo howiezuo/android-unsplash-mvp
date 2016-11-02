@@ -2,17 +2,17 @@
 <resources>
 
     <!-- Basic -->
-    <dimen name="font_size12">12sp</dimen>
-    <dimen name="font_size14">14sp</dimen>
-    <dimen name="font_size16">16sp</dimen>
-    <dimen name="font_size20">20sp</dimen>
-    <dimen name="font_size24">24sp</dimen>
-    <dimen name="font_size32">32sp</dimen>
+    <dimen name="font_size_12">12sp</dimen>
+    <dimen name="font_size_14">14sp</dimen>
+    <dimen name="font_size_16">16sp</dimen>
+    <dimen name="font_size_20">20sp</dimen>
+    <dimen name="font_size_24">24sp</dimen>
+    <dimen name="font_size_32">32sp</dimen>
 
-    <dimen name="font_size_s_small">@dimen/font_size12</dimen>
-    <dimen name="font_size_small">@dimen/font_size16</dimen>
-    <dimen name="font_size_normal">@dimen/font_size20</dimen>
-    <dimen name="font_size_large">@dimen/font_size24</dimen>
-    <dimen name="font_size_l_large">@dimen/font_size32</dimen>
+    <dimen name="font_size_x_small">@dimen/font_size_12</dimen>
+    <dimen name="font_size_small">@dimen/font_size_16</dimen>
+    <dimen name="font_size_normal">@dimen/font_size_20</dimen>
+    <dimen name="font_size_large">@dimen/font_size_24</dimen>
+    <dimen name="font_size_x_large">@dimen/font_size_32</dimen>
 
 </resources>

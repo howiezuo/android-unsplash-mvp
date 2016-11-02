@@ -1,28 +1,27 @@
 <resources>
 
     <!-- Basic -->
-    <dimen name="dimen0">0dp</dimen>
-    <dimen name="dimen4">4dp</dimen>
-    <dimen name="dimen8">8dp</dimen>
-    <dimen name="dimen16">16dp</dimen>
-    <dimen name="dimen24">24dp</dimen>
-    <dimen name="dimen48">48dp</dimen>
-    <dimen name="dimen72">72dp</dimen>
+    <dimen name="dimen_0">0dp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_24">24dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
+    <dimen name="dimen_72">72dp</dimen>
 
-    <dimen name="layout_padding">@dimen/dimen16</dimen>
-    <dimen name="layout_margin_small">@dimen/dimen8</dimen>
-    <dimen name="layout_margin">@dimen/dimen16</dimen>
+    <dimen name="margin_layout_small">@dimen/dimen_8</dimen>
+    <dimen name="margin_layout">@dimen/dimen_16</dimen>
+    <dimen name="padding_layout">@dimen/dimen_16</dimen>
 
-    <dimen name="layout_status_width">72dp</dimen>
+    <dimen name="width_status_layout">@dimen/dimen_72</dimen>
 
-    <dimen name="icon_size">@dimen/dimen24</dimen>
+    <dimen name="size_icon">@dimen/dimen_24</dimen>
 
-    <dimen name="action_bar_elevation">@dimen/dimen0</dimen>
+    <dimen name="elevation_toolbar">@dimen/dimen_0</dimen>
 
-    <dimen name="action_icon_size">@dimen/dimen24</dimen>
-    <dimen name="action_icon_padding">@dimen/dimen16</dimen>
+    <dimen name="size_action_icon">@dimen/dimen_24</dimen>
 
-    <dimen name="profile_image_size_small">@dimen/dimen24</dimen>
-    <dimen name="profile_image_size">120dp</dimen>
+    <dimen name="size_profile_image_small">@dimen/dimen_24</dimen>
+    <dimen name="size_profile_image">120dp</dimen>
 
 </resources>
