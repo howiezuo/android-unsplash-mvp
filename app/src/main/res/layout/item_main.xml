@@ -20,7 +20,7 @@
             android:paddingTop="@dimen/layout_padding">
 
             <ImageView
-                android:id="@+id/iv_photo"
+                android:id="@+id/image_photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:foreground="@drawable/photo_ripple"
@@ -33,14 +33,14 @@
                 android:gravity="center_vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/civ_profile"
+                    android:id="@+id/image_profile"
                     android:layout_width="@dimen/profile_image_size_small"
                     android:layout_height="@dimen/profile_image_size_small"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"/>
 
                 <io.github.howiezuo.unsplash.widget.RobotoTextView
-                    android:id="@+id/tv_likes"
+                    android:id="@+id/text_likes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -49,32 +49,32 @@
                     app:rtv_textStyle="medium"/>
 
                 <io.github.howiezuo.unsplash.widget.FontIconView
-                    android:id="@+id/fiv_like"
+                    android:id="@+id/text_icon_like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/layout_margin_small"
-                    android:layout_toLeftOf="@id/tv_likes"
+                    android:layout_toLeftOf="@id/text_likes"
                     android:text="@string/fa_heart"
                     android:textColor="@color/color_unliked"
                     android:textSize="@dimen/icon_size"/>
 
                 <io.github.howiezuo.unsplash.widget.FontIconView
-                    android:id="@+id/fiv_collection"
+                    android:id="@+id/text_icon_collection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/layout_margin"
-                    android:layout_toLeftOf="@id/fiv_like"
+                    android:layout_toLeftOf="@id/text_icon_like"
                     android:text="@string/fa_plus_square"
                     android:textColor="@color/color_text_secondary"
                     android:textSize="@dimen/icon_size"/>
 
                 <io.github.howiezuo.unsplash.widget.RobotoTextView
-                    android:id="@+id/tv_name"
+                    android:id="@+id/text_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/layout_margin_small"
-                    android:layout_toLeftOf="@id/fiv_collection"
-                    android:layout_toRightOf="@id/civ_profile"
+                    android:layout_toLeftOf="@id/text_icon_collection"
+                    android:layout_toRightOf="@id/image_profile"
                     android:textColor="@color/color_text_secondary"
                     android:textSize="@dimen/font_size_normal"
                     android:lines="1"
@@ -83,7 +83,6 @@
             </RelativeLayout>
 
         </LinearLayout>
-
 
     </android.support.v7.widget.CardView>
 

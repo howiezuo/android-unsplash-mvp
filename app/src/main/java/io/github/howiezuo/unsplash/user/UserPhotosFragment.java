@@ -20,8 +20,8 @@ public class UserPhotosFragment extends BaseFragment implements UserPhotosContra
 
     private UserPhotosContract.Presenter mPresenter;
 
-    @BindView(R.id.rv_photos)
-    RecyclerView mRVPhotos;
+    @BindView(R.id.recycler_photos)
+    RecyclerView mRecyclerPhotos;
 
     private UserPhotosAdapter mAdapter = new UserPhotosAdapter();
 
@@ -44,9 +44,9 @@ public class UserPhotosFragment extends BaseFragment implements UserPhotosContra
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRVPhotos.setAdapter(mAdapter);
+        mRecyclerPhotos.setAdapter(mAdapter);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
-        mRVPhotos.setLayoutManager(llm);
+        mRecyclerPhotos.setLayoutManager(llm);
     }
 
     @Override

@@ -23,7 +23,7 @@
                 app:contentScrim="@color/color_primary">
 
                 <FrameLayout
-                    android:id="@+id/user_container"
+                    android:id="@+id/container_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -34,7 +34,7 @@
         </android.support.design.widget.AppBarLayout>
 
         <FrameLayout
-            android:id="@+id/photos_container"
+            android:id="@+id/container_photos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
@@ -42,7 +42,7 @@
     </android.support.design.widget.CoordinatorLayout>
 
     <FrameLayout
-        android:id="@+id/login_container"
+        android:id="@+id/container_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"/>

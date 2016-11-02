@@ -36,16 +36,16 @@ public class UserActivity extends BaseActivity {
 
         User user = getIntent().getParcelableExtra(EXTRA_USER);
 
-        UserFragment userFragment = (UserFragment) getSupportFragmentManager().findFragmentById(R.id.user_container);
+        UserFragment userFragment = (UserFragment) getSupportFragmentManager().findFragmentById(R.id.container_user);
         if (userFragment == null) {
             userFragment = UserFragment.newInstance();
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), userFragment, R.id.user_container);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), userFragment, R.id.container_user);
         }
 
-        UserPhotosFragment photosFragment = (UserPhotosFragment) getSupportFragmentManager().findFragmentById(R.id.photos_container);
+        UserPhotosFragment photosFragment = (UserPhotosFragment) getSupportFragmentManager().findFragmentById(R.id.container_photos);
         if (photosFragment == null) {
             photosFragment = UserPhotosFragment.newInstance();
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), photosFragment, R.id.photos_container);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), photosFragment, R.id.container_photos);
         }
 
         DaggerUserComponent.builder()
@@ -60,4 +60,5 @@ public class UserActivity extends BaseActivity {
     protected int getLayoutId() {
         return R.layout.activity_user;
     }
+
 }

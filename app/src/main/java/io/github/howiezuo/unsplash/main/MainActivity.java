@@ -26,10 +26,10 @@ public class MainActivity extends BaseActivity {
             return;
         }
 
-        MainFragment fragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        MainFragment fragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.container_fragment);
         if (fragment == null) {
             fragment = MainFragment.newInstance();
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.fragment_container);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.container_fragment);
         }
 
         DaggerMainComponent.builder()

@@ -31,10 +31,10 @@ public class DetailActivity extends BaseActivity {
 
         Photo photo = getIntent().getParcelableExtra(EXTRA_PHOTO);
 
-        DetailFragment fragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        DetailFragment fragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.container_fragment);
         if (fragment == null) {
             fragment = DetailFragment.newInstance();
-            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.fragment_container);
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), fragment, R.id.container_fragment);
         }
 
         DaggerDetailComponent.builder()

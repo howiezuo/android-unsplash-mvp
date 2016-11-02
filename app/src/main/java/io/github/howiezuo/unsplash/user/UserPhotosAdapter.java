@@ -50,16 +50,16 @@ public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.iv_photo)
-        ImageView ivPhoto;
-        @BindView(R.id.civ_profile)
-        CircleImageView civProfile;
-        @BindView(R.id.tv_name)
-        TextView tvName;
-        @BindView(R.id.tv_likes)
-        TextView tvLikes;
-        @BindView(R.id.fiv_like)
-        TextView fivLike;
+        @BindView(R.id.image_photo)
+        ImageView imagePhoto;
+        @BindView(R.id.image_profile)
+        CircleImageView imageProfile;
+        @BindView(R.id.text_name)
+        TextView textName;
+        @BindView(R.id.text_likes)
+        TextView textLikes;
+        @BindView(R.id.text_icon_like)
+        TextView textIconLike;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -68,27 +68,27 @@ public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         public void bindView(final Photo photo, final int index) {
-            ivPhoto.post(new Runnable() {
+            imagePhoto.post(new Runnable() {
                 @Override
                 public void run() {
-                    if (ivPhoto != null && itemView != null) {
-                        int w = ivPhoto.getWidth();
+                    if (imagePhoto != null && itemView != null) {
+                        int w = imagePhoto.getWidth();
                         int h = (int) (w / Config.PHOTO_RATIO);
 
-                        ViewGroup.LayoutParams params = ivPhoto.getLayoutParams();
+                        ViewGroup.LayoutParams params = imagePhoto.getLayoutParams();
                         params.height = h;
-                        ivPhoto.setLayoutParams(params);
+                        imagePhoto.setLayoutParams(params);
                         Picasso.with(itemView.getContext())
                                 .load(photo.getUrls().getSmall())
                                 .resize(w, h)
                                 .centerCrop()
                                 .noFade()
-                                .into(ivPhoto);
+                                .into(imagePhoto);
                     }
                 }
             });
-            ivPhoto.setBackgroundColor(Color.parseColor(photo.getColor()));
-            ivPhoto.setOnClickListener(new View.OnClickListener() {
+            imagePhoto.setBackgroundColor(Color.parseColor(photo.getColor()));
+            imagePhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 //                    mListener.onPhotoClick(photo);
@@ -99,15 +99,15 @@ public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             Picasso.with(itemView.getContext())
                     .load(user.getProfileImage().getSmall())
                     .noFade()
-                    .into(civProfile);
-            tvName.setText(user.getName());
-            tvLikes.setText(String.valueOf(photo.getLikes()));
+                    .into(imageProfile);
+            textName.setText(user.getName());
+            textLikes.setText(String.valueOf(photo.getLikes()));
             if (photo.isLikedByUser()) {
-                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_liked));
+                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_liked));
             } else {
-                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_unliked));
+                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_unliked));
             }
-            fivLike.setOnClickListener(new View.OnClickListener() {
+            textIconLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 //                    mListener.onLikeClick(photo, index);

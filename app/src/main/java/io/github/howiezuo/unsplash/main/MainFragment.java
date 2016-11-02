@@ -131,13 +131,13 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     @Override
     public void refreshPhotos(List<Photo> list) {
-        mAdapter.updateDataset(list);
+        mAdapter.updateDataSet(list);
         isLoading = false;
     }
 
     @Override
     public void addPhotos(List<Photo> list) {
-        mAdapter.addDataset(list);
+        mAdapter.addDataSet(list);
         isLoading = false;
     }
 

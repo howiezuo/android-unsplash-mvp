@@ -24,8 +24,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Nullable
     @BindView(R.id.tool_bar)
     Toolbar mToolbar;
-    @BindView(R.id.login_container)
-    View mLoginContainer;
+    @BindView(R.id.container_login)
+    View mContainerLogin;
 
     @Inject
     Lazy<LoginPresenter> mLoginPresenter;
@@ -56,14 +56,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void showLogin() {
-        mLoginFragment = (LoginFragment) getSupportFragmentManager().findFragmentById(R.id.login_container);
+        mLoginFragment = (LoginFragment) getSupportFragmentManager().findFragmentById(R.id.container_login);
         if (mLoginFragment == null) {
             mLoginFragment = LoginFragment.newInstance();
-            ActivityUtils.addFragmentToBackStack(getSupportFragmentManager(), mLoginFragment, R.id.login_container);
+            ActivityUtils.addFragmentToBackStack(getSupportFragmentManager(), mLoginFragment, R.id.container_login);
         }
 
         mLoginPresenterModule.setView(mLoginFragment);
         mLoginPresenter.get();
-        mLoginContainer.setVisibility(View.VISIBLE);
+        mContainerLogin.setVisibility(View.VISIBLE);
     }
 }

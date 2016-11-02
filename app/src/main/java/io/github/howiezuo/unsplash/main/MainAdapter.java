@@ -24,7 +24,7 @@ import io.github.howiezuo.unsplash.model.User;
 
 public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Photo> mDataset = new ArrayList<>();
+    private List<Photo> mDataSet = new ArrayList<>();
     private MainListener mListener;
 
     public MainAdapter(MainListener listener) {
@@ -50,7 +50,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         int index = position - 1; // because of header
         if (getItemViewType(position) == ViewType.NORMAL.ordinal()) {
             ViewHolder vh = (ViewHolder) holder;
-            vh.bindView(mDataset.get(index), index);
+            vh.bindView(mDataSet.get(index), index);
         }
     }
 
@@ -62,25 +62,25 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mDataset.size() + 1;
+        return mDataSet.size() + 1;
     }
 
-    public void updateDataset(List<Photo> dataset) {
-        mDataset = dataset;
+    public void updateDataSet(List<Photo> dataSet) {
+        mDataSet = dataSet;
         this.notifyDataSetChanged();
     }
 
-    public void addDataset(List<Photo> dataset) {
-        mDataset.addAll(dataset);
+    public void addDataSet(List<Photo> dataset) {
+        mDataSet.addAll(dataset);
         this.notifyDataSetChanged();
     }
 
     public void likePhoto(Photo photo, int index) {
-        Photo item = mDataset.get(index);
+        Photo item = mDataSet.get(index);
         if (item != null) {
             item.setLikedByUser(photo.isLikedByUser());
             item.setLikes(photo.getLikes());
-            mDataset.set(index, item);
+            mDataSet.set(index, item);
 
             this.notifyItemChanged(index + 1);
         }
@@ -93,16 +93,16 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.iv_photo)
-        ImageView ivPhoto;
-        @BindView(R.id.civ_profile)
-        CircleImageView civProfile;
-        @BindView(R.id.tv_name)
-        TextView tvName;
-        @BindView(R.id.tv_likes)
-        TextView tvLikes;
-        @BindView(R.id.fiv_like)
-        TextView fivLike;
+        @BindView(R.id.image_photo)
+        ImageView imagePhoto;
+        @BindView(R.id.image_profile)
+        CircleImageView imageProfile;
+        @BindView(R.id.text_name)
+        TextView textName;
+        @BindView(R.id.text_likes)
+        TextView textLikes;
+        @BindView(R.id.text_icon_like)
+        TextView textIconLike;
 
         MainListener mListener;
 
@@ -114,27 +114,27 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void bindView(final Photo photo, final int index) {
-            ivPhoto.post(new Runnable() {
+            imagePhoto.post(new Runnable() {
                 @Override
                 public void run() {
-                    if (ivPhoto != null && itemView != null) {
-                        int w = ivPhoto.getWidth();
+                    if (imagePhoto != null && itemView != null) {
+                        int w = imagePhoto.getWidth();
                         int h = (int) (w / Config.PHOTO_RATIO);
 
-                        ViewGroup.LayoutParams params = ivPhoto.getLayoutParams();
+                        ViewGroup.LayoutParams params = imagePhoto.getLayoutParams();
                         params.height = h;
-                        ivPhoto.setLayoutParams(params);
+                        imagePhoto.setLayoutParams(params);
                         Picasso.with(itemView.getContext())
                                 .load(photo.getUrls().getSmall())
                                 .resize(w, h)
                                 .centerCrop()
                                 .noFade()
-                                .into(ivPhoto);
+                                .into(imagePhoto);
                     }
                 }
             });
-            ivPhoto.setBackgroundColor(Color.parseColor(photo.getColor()));
-            ivPhoto.setOnClickListener(new View.OnClickListener() {
+            imagePhoto.setBackgroundColor(Color.parseColor(photo.getColor()));
+            imagePhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mListener.onPhotoClick(photo);
@@ -145,21 +145,21 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             Picasso.with(itemView.getContext())
                     .load(user.getProfileImage().getSmall())
                     .noFade()
-                    .into(civProfile);
-            tvName.setText(user.getName());
-            tvName.setOnClickListener(new View.OnClickListener() {
+                    .into(imageProfile);
+            textName.setText(user.getName());
+            textName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mListener.onUserClick(user);
                 }
             });
-            tvLikes.setText(String.valueOf(photo.getLikes()));
+            textLikes.setText(String.valueOf(photo.getLikes()));
             if (photo.isLikedByUser()) {
-                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_liked));
+                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_liked));
             } else {
-                fivLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_unliked));
+                textIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_unliked));
             }
-            fivLike.setOnClickListener(new View.OnClickListener() {
+            textIconLike.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mListener.onLikeClick(photo, index);

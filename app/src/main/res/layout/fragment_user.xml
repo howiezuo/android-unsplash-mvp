@@ -2,7 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -16,29 +15,29 @@
         android:layout_marginBottom="@dimen/layout_margin">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_profile"
+            android:id="@+id/image_profile"
             android:layout_width="@dimen/profile_image_size"
             android:layout_height="@dimen/profile_image_size"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"/>
 
         <io.github.howiezuo.unsplash.widget.RobotoTextView
-            android:id="@+id/tv_name"
+            android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@id/civ_profile"
+            android:layout_toLeftOf="@id/image_profile"
             android:textSize="@dimen/font_size_l_large"
             app:rtv_textStyle="medium"/>
 
         <io.github.howiezuo.unsplash.widget.RobotoTextView
-            android:id="@+id/tv_bio"
+            android:id="@+id/text_bio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/tv_name"
-            android:layout_toLeftOf="@id/civ_profile"
+            android:layout_below="@id/text_name"
+            android:layout_toLeftOf="@id/image_profile"
             android:textSize="@dimen/font_size_normal"
             app:rtv_textStyle="medium"/>
 
@@ -55,7 +54,7 @@
             android:orientation="vertical">
 
             <io.github.howiezuo.unsplash.widget.RobotoTextView
-                android:id="@+id/tv_total_photos"
+                android:id="@+id/text_photos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_large"
@@ -76,7 +75,7 @@
             android:orientation="vertical">
 
             <io.github.howiezuo.unsplash.widget.RobotoTextView
-                android:id="@+id/tv_total_likes"
+                android:id="@+id/text_likes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_large"
@@ -97,7 +96,7 @@
             android:orientation="vertical">
 
             <io.github.howiezuo.unsplash.widget.RobotoTextView
-                android:id="@+id/tv_total_collections"
+                android:id="@+id/text_collections"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/font_size_large"

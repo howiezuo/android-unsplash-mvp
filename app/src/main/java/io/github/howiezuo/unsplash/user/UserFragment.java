@@ -21,18 +21,18 @@ public class UserFragment extends BaseFragment implements UserContract.View {
 
     UserContract.Presenter mPresenter;
 
-    @BindView(R.id.tv_name)
-    TextView mTVName;
-    @BindView(R.id.tv_bio)
-    TextView mTVBio;
-    @BindView(R.id.civ_profile)
-    CircleImageView mCIVProfile;
-    @BindView(R.id.tv_total_photos)
-    TextView mTVPhotos;
-    @BindView(R.id.tv_total_likes)
-    TextView mTVLikes;
-    @BindView(R.id.tv_total_collections)
-    TextView mTVCollections;
+    @BindView(R.id.image_profile)
+    CircleImageView mImageProfile;
+    @BindView(R.id.text_name)
+    TextView mTextName;
+    @BindView(R.id.text_bio)
+    TextView mTextBio;
+    @BindView(R.id.text_photos)
+    TextView mTextPhotos;
+    @BindView(R.id.text_likes)
+    TextView mTextLikes;
+    @BindView(R.id.text_collections)
+    TextView mTextCollections;
 
     public UserFragment() {
 
@@ -81,28 +81,28 @@ public class UserFragment extends BaseFragment implements UserContract.View {
 
     @Override
     public void showMe(User user) {
-        mTVName.setText(user.getName());
-        mTVBio.setText(user.getBio());
         Picasso.with(getActivity())
                 .load(user.getProfileImage().getLarge())
                 .noFade()
-                .into(mCIVProfile);
-        mTVPhotos.setText(String.valueOf(user.getTotalPhotos()));
-        mTVLikes.setText(String.valueOf(user.getTotalLikes()));
-        mTVCollections.setText(String.valueOf(user.getTotalCollections()));
+                .into(mImageProfile);
+        mTextName.setText(user.getName());
+        mTextBio.setText(user.getBio());
+        mTextPhotos.setText(String.valueOf(user.getTotalPhotos()));
+        mTextLikes.setText(String.valueOf(user.getTotalLikes()));
+        mTextCollections.setText(String.valueOf(user.getTotalCollections()));
     }
 
     @Override
     public void showUser(User user) {
-        mTVName.setText(user.getName());
-        mTVBio.setText(user.getBio());
         Picasso.with(getActivity())
                 .load(user.getProfileImage().getLarge())
                 .noFade()
-                .into(mCIVProfile);
-        mTVPhotos.setText(String.valueOf(user.getTotalPhotos()));
-        mTVLikes.setText(String.valueOf(user.getTotalLikes()));
-        mTVCollections.setText(String.valueOf(user.getTotalCollections()));
+                .into(mImageProfile);
+        mTextName.setText(user.getName());
+        mTextBio.setText(user.getBio());
+        mTextPhotos.setText(String.valueOf(user.getTotalPhotos()));
+        mTextLikes.setText(String.valueOf(user.getTotalLikes()));
+        mTextCollections.setText(String.valueOf(user.getTotalCollections()));
     }
 
 }
