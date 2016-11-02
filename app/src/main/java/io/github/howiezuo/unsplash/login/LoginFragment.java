@@ -11,9 +11,8 @@ import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.orhanobut.logger.Logger;
-
 import butterknife.BindView;
+import io.github.howiezuo.unsplash.AppApplication;
 import io.github.howiezuo.unsplash.Config;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.base.BaseFragment;
@@ -45,12 +44,13 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // TODO need to remove
         CookieManager.getInstance().removeAllCookie();
+
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
-
                 if (uri.getScheme().equals(Config.APP_SCHEME) && uri.getHost().equals(Config.APP_HOST)) {
                     String code = uri.getQueryParameter("code");
                     mPresenter.getToken(code);
@@ -58,9 +58,8 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
                 }
                 return false;
             }
-
         });
-        mWebView.loadUrl(Config.LOGIN_URL);
+        mWebView.loadUrl(String.format(Config.LOGIN_URL, AppApplication.getInstance().getClientId()));
     }
 
     @Override

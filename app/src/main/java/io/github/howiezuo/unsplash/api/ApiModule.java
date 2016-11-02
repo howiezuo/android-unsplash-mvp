@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.github.howiezuo.unsplash.AppApplication;
 import io.github.howiezuo.unsplash.Config;
 import io.github.howiezuo.unsplash.api.service.UsersService;
 import io.github.howiezuo.unsplash.api.service.OAuthService;
@@ -38,7 +39,7 @@ public class ApiModule {
                 if (token != null) {
                     builder.addHeader("Authorization", "Bearer " + token);
                 } else {
-                    builder.addHeader("Authorization", "Client-ID " + Config.CLIENT_ID);
+                    builder.addHeader("Authorization", "Client-ID " + AppApplication.getInstance().getClientId());
                 }
                 Request request = builder.build();
 

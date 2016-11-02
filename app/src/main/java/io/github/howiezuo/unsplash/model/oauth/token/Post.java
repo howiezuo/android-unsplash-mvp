@@ -10,9 +10,9 @@ public class Post {
     private String code;
     private String grant_type;
 
-    public Post(String code) {
-        this.client_id = Config.CLIENT_ID;
-        this.client_secret = Config.CLIENT_SECRET;
+    public Post(String clientId, String clientSecret, String code) {
+        this.client_id = clientId;
+        this.client_secret = clientSecret;
         this.redirect_uri = Config.REDIRECT_URI;
         this.code = code;
         this.grant_type = "authorization_code";

@@ -40,3 +40,7 @@ captures/
 
 # Keystore files
 *.jks
+
+
+# Information that you don't want to upload
+app/src/main/assets/private.properties
