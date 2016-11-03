@@ -39,6 +39,8 @@ public interface MainContract {
 
         void unlikedPhoto(Photo photo, int index);
 
+        void showError();
+
     }
 
 }

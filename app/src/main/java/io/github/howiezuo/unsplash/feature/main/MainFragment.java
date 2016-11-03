@@ -165,4 +165,9 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public void unlikedPhoto(Photo photo, int index) {
         mAdapter.likePhoto(photo, index);
     }
+
+    @Override
+    public void showError() {
+        showErrorSnackbar(getView(), R.string.error_api);
+    }
 }

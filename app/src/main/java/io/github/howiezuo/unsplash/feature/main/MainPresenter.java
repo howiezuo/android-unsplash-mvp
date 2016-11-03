@@ -43,7 +43,7 @@ public class MainPresenter implements MainContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         Logger.e(e, e.getMessage());
-                        // TODO error handling
+                        mView.showError();
                     }
 
                     @Override
@@ -67,7 +67,7 @@ public class MainPresenter implements MainContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         Logger.e(e, e.getMessage());
-                        // TODO error handling
+                        mView.showError();
                     }
 
                     @Override
@@ -101,7 +101,7 @@ public class MainPresenter implements MainContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         Logger.e(e, e.getMessage());
-                        // TODO error handling
+                        mView.showError();
                     }
 
                     @Override
@@ -125,7 +125,7 @@ public class MainPresenter implements MainContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         Logger.e(e, e.getMessage());
-                        // TODO error handling
+                        mView.showError();
                     }
 
                     @Override

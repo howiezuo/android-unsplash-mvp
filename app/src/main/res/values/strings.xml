@@ -8,4 +8,6 @@
     <string name="label_likes">Likes</string>
     <string name="label_collections">Collections</string>
 
+    <string name="error_api">API failed!</string>
+
 </resources>

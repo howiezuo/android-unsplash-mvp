@@ -20,4 +20,8 @@
     <color name="liked">@color/accent</color>
     <color name="unliked">@color/text_secondary</color>
 
+    <!-- Error Snackbar -->
+    <color name="text_snackbar_error">@color/primary</color>
+    <color name="background_snackbar_error">@color/accent</color>
+
 </resources>
