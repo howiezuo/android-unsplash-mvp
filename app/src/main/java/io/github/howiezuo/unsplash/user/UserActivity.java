@@ -9,6 +9,8 @@ import io.github.howiezuo.unsplash.AppApplication;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.base.BaseActivity;
 import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.user.photos.UserPhotosFragment;
+import io.github.howiezuo.unsplash.user.photos.UserPhotosPresenter;
 import io.github.howiezuo.unsplash.util.ActivityUtils;
 import io.github.howiezuo.unsplash.util.UIUtils;
 

@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.user;
+package io.github.howiezuo.unsplash.user.photos;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

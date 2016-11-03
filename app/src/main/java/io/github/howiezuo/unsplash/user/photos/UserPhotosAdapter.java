@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.user;
+package io.github.howiezuo.unsplash.user.photos;
 
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;

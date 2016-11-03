@@ -3,6 +3,7 @@ package io.github.howiezuo.unsplash.user;
 import dagger.Module;
 import dagger.Provides;
 import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.user.photos.UserPhotosContract;
 
 @Module
 public class UserPresenterModule {

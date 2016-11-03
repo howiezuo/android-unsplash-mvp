@@ -34,4 +34,7 @@ client.secret=[YOUR_CLIENT_SECRET]
 Get your `client id` and `client secret` from Unsplash [API](https://unsplash.com/developers)
 
 ## TODO
+- [ ] Photo download
 - [ ] Test
+- [ ] SNS share
+- [ ] Collection
