@@ -11,10 +11,10 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
-import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
 import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.widget.CircleImageView;
 
 
 public class UserFragment extends BaseFragment implements UserContract.View {

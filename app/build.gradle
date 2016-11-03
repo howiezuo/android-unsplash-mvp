@@ -58,8 +58,6 @@ dependencies {
 
     compile 'com.orhanobut:logger:1.15'
 
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-
     debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.ext.leakcanaryVersion"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.ext.leakcanaryVersion"
     testCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.ext.leakcanaryVersion"

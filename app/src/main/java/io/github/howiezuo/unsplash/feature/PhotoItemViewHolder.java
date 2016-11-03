@@ -12,11 +12,11 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 import io.github.howiezuo.unsplash.Config;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.model.Photo;
 import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.widget.CircleImageView;
 
 
 public class PhotoItemViewHolder extends RecyclerView.ViewHolder {
