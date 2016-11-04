@@ -194,8 +194,9 @@ public class DetailFragment extends BaseFragment implements DetailContract.View 
                     googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(ll, 1, 0, 0)));
                 }
             });
+            mMapLocation.setVisibility(View.VISIBLE);
         } else {
-            mMapLocation.setVisibility(View.GONE);
+            mMapLocation.setVisibility(View.INVISIBLE);
         }
     }
 

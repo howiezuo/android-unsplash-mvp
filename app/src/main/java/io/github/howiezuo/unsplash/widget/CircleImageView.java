@@ -3,6 +3,7 @@ package io.github.howiezuo.unsplash.widget;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -18,33 +19,16 @@ import android.widget.ImageView;
  */
 public class CircleImageView extends ImageView {
 
-    private int mBackgroundColor = 0xffffffff;
-    private Paint mPaint;
-
     public CircleImageView(Context context) {
         super(context);
-
-        setUp();
     }
 
     public CircleImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        setUp();
     }
 
     public CircleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
-        setUp();
-    }
-
-    private void setUp() {
-        mPaint = new Paint();
-        mPaint.setAntiAlias(true);
-        mPaint.setFilterBitmap(true);
-        mPaint.setDither(true);
-        mPaint.setColor(mBackgroundColor);
     }
 
     @Override
@@ -59,10 +43,13 @@ public class CircleImageView extends ImageView {
             return;
         }
 
+        int w = getWidth();
+        int h = getHeight();
+
         Bitmap bmp = ((BitmapDrawable) drawable).getBitmap();
         Bitmap newBmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
 
-        Bitmap result = circleBitmap(newBmp);
+        Bitmap result = circleBitmap(newBmp, w, h);
         canvas.drawBitmap(result, 0, 0, null);
     }
 
@@ -71,18 +58,24 @@ public class CircleImageView extends ImageView {
      * @param src
      * @return
      */
-    private Bitmap circleBitmap(Bitmap src) {
-        Bitmap result = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+    private static Bitmap circleBitmap(Bitmap src, int w, int h) {
+        Bitmap result = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(result);
 
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setFilterBitmap(true);
+        paint.setDither(true);
+        paint.setColor(Color.parseColor("#000000"));
+
         canvas.drawARGB(0, 0, 0, 0);
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, Math.min(getWidth(), getHeight()) / 2, mPaint);
+        canvas.drawCircle(w / 2, h / 2, Math.min(w, h) / 2, paint);
 
         Rect srcRect = new Rect(0, 0, src.getWidth(), src.getHeight());
-        Rect dstRect = new Rect(0, 0, getWidth(), getHeight());
+        Rect dstRect = new Rect(0, 0, w, h);
 
-        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas.drawBitmap(src, srcRect, dstRect, mPaint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(src, srcRect, dstRect, paint);
 
         return result;
     }
