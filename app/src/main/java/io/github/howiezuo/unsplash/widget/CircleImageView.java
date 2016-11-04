@@ -18,16 +18,33 @@ import android.widget.ImageView;
  */
 public class CircleImageView extends ImageView {
 
+    private int mBackgroundColor = 0xffffffff;
+    private Paint mPaint;
+
     public CircleImageView(Context context) {
         super(context);
+
+        setUp();
     }
 
     public CircleImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        setUp();
     }
 
     public CircleImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        setUp();
+    }
+
+    private void setUp() {
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setFilterBitmap(true);
+        mPaint.setDither(true);
+        mPaint.setColor(mBackgroundColor);
     }
 
     @Override
@@ -58,19 +75,14 @@ public class CircleImageView extends ImageView {
         Bitmap result = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(result);
 
-        int color = 0xffffffff;
+        canvas.drawARGB(0, 0, 0, 0);
+        canvas.drawCircle(getWidth() / 2, getHeight() / 2, Math.min(getWidth(), getHeight()) / 2, mPaint);
+
         Rect srcRect = new Rect(0, 0, src.getWidth(), src.getHeight());
         Rect dstRect = new Rect(0, 0, getWidth(), getHeight());
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setFilterBitmap(true);
-        paint.setDither(true);
-        paint.setColor(color);
 
-        canvas.drawARGB(0, 0, 0, 0);
-        canvas.drawCircle(getWidth() / 2, getHeight() / 2, Math.min(getWidth(), getHeight()) / 2, paint);
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas.drawBitmap(src, srcRect, dstRect, paint);
+        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(src, srcRect, dstRect, mPaint);
 
         return result;
     }
