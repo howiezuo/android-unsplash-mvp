@@ -22,6 +22,7 @@
     <dimen name="size_action_icon">@dimen/dimen_24</dimen>
 
     <dimen name="size_profile_image_small">@dimen/dimen_24</dimen>
-    <dimen name="size_profile_image">120dp</dimen>
+    <dimen name="size_profile_image">@dimen/dimen_48</dimen>
+    <dimen name="size_profile_image_large">120dp</dimen>
 
 </resources>

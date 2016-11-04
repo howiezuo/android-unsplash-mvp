@@ -16,8 +16,8 @@
 
         <io.github.howiezuo.unsplash.widget.CircleImageView
             android:id="@+id/image_profile"
-            android:layout_width="@dimen/size_profile_image"
-            android:layout_height="@dimen/size_profile_image"
+            android:layout_width="@dimen/size_profile_image_large"
+            android:layout_height="@dimen/size_profile_image_large"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"/>
 

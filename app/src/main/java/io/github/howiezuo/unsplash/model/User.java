@@ -4,6 +4,8 @@ package io.github.howiezuo.unsplash.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import io.github.howiezuo.unsplash.model.user.ProfileImage;
+
 public class User implements Parcelable{
 
     String id;

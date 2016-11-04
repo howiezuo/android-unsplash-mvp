@@ -1,13 +1,92 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".feature.detail.DetailFragment">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/image_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".feature.detail.DetailFragment">
 
-</FrameLayout>
+        <include layout="@layout/layout_header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_layout">
+
+            <io.github.howiezuo.unsplash.widget.CircleImageView
+                android:id="@+id/image_profile"
+                android:layout_width="@dimen/size_profile_image"
+                android:layout_height="@dimen/size_profile_image"/>
+
+            <io.github.howiezuo.unsplash.widget.RobotoTextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_layout_small"
+                android:lines="1"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/font_size_normal"
+                app:rtv_textStyle="medium"/>
+
+        </LinearLayout>
+
+        <io.github.howiezuo.unsplash.widget.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
+        </io.github.howiezuo.unsplash.widget.SquareLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_layout">
+
+            <io.github.howiezuo.unsplash.widget.RobotoTextView
+                android:id="@+id/text_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/font_size_normal"
+                app:rtv_textStyle="medium"/>
+
+            <io.github.howiezuo.unsplash.widget.FontIconView
+                android:id="@+id/text_icon_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_layout_small"
+                android:layout_toLeftOf="@id/text_likes"
+                android:text="@string/fa_heart"
+                android:textColor="@color/unliked"
+                android:textSize="@dimen/size_icon"/>
+
+            <io.github.howiezuo.unsplash.widget.FontIconView
+                android:id="@+id/text_icon_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_layout"
+                android:layout_toLeftOf="@id/text_icon_like"
+                android:text="@string/fa_plus_square"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/size_icon"/>
+
+        </RelativeLayout>
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map_location"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+    </LinearLayout>
+</ScrollView>

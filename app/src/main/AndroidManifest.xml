@@ -3,6 +3,9 @@
     package="io.github.howiezuo.unsplash">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".AppApplication"
@@ -20,6 +23,12 @@
         </activity>
         <activity android:name=".feature.detail.DetailActivity"></activity>
         <activity android:name=".feature.user.UserActivity"></activity>
+
+        <!-- google map -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAPrZbW7wXe77XGGSRMtboG7MCTkLvEOG0"/>
+
     </application>
 
 </manifest>

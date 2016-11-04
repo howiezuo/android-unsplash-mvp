@@ -3,6 +3,9 @@ package io.github.howiezuo.unsplash.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import io.github.howiezuo.unsplash.model.photo.Location;
+import io.github.howiezuo.unsplash.model.photo.Urls;
+
 public class Photo implements Parcelable {
 
     String id;
@@ -12,11 +15,10 @@ public class Photo implements Parcelable {
     int likes;
     boolean liked_by_user;
 
-    User user;
-
-    Links links;
+    Location location;
     Urls urls;
-
+    Links links;
+    User user;
 
     protected Photo(Parcel in) {
         id = in.readString();
@@ -25,9 +27,10 @@ public class Photo implements Parcelable {
         color = in.readString();
         likes = in.readInt();
         liked_by_user = in.readByte() != 0;
-        user = in.readParcelable(User.class.getClassLoader());
-        links = in.readParcelable(Links.class.getClassLoader());
+        location = in.readParcelable(Location.class.getClassLoader());
         urls = in.readParcelable(Urls.class.getClassLoader());
+        links = in.readParcelable(Links.class.getClassLoader());
+        user = in.readParcelable(User.class.getClassLoader());
     }
 
     public String getId() {
@@ -54,12 +57,16 @@ public class Photo implements Parcelable {
         liked_by_user = liked;
     }
 
-    public User getUser() {
-        return user;
+    public Location getLocation() {
+        return location;
     }
 
     public Urls getUrls() {
         return urls;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public static final Creator<Photo> CREATOR = new Creator<Photo>() {
@@ -87,9 +94,10 @@ public class Photo implements Parcelable {
         dest.writeString(color);
         dest.writeInt(likes);
         dest.writeByte((byte) (liked_by_user ? 1 : 0));
-        dest.writeParcelable(user, flags);
-        dest.writeParcelable(links, flags);
+        dest.writeParcelable(location, flags);
         dest.writeParcelable(urls, flags);
+        dest.writeParcelable(links, flags);
+        dest.writeParcelable(user, flags);
     }
 
 }

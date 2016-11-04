@@ -34,6 +34,8 @@ dependencies {
     compile "com.android.support:support-v4:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
 
+    compile "com.google.android.gms:play-services-maps:$rootProject.ext.googleServiceVersion"
+
     compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
     apt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
 

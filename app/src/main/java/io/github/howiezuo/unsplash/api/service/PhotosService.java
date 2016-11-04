@@ -3,8 +3,8 @@ package io.github.howiezuo.unsplash.api.service;
 import java.util.List;
 
 import io.github.howiezuo.unsplash.Config;
-import io.github.howiezuo.unsplash.model.Liked;
-import io.github.howiezuo.unsplash.model.Unliked;
+import io.github.howiezuo.unsplash.model.photo.Liked;
+import io.github.howiezuo.unsplash.model.photo.Unliked;
 import io.github.howiezuo.unsplash.model.photo.Download;
 import io.github.howiezuo.unsplash.model.Photo;
 import io.github.howiezuo.unsplash.model.photo.Stats;
@@ -32,7 +32,7 @@ public interface PhotosService {
     Observable<List<Photo>> getCurated(@Query("page") int page);
 
     @GET("photos/{id}")
-    Call<Photo> getPhoto(@Path("id") String id);
+    Observable<Photo> getPhoto(@Path("id") String id);
 
     @GET("photos/random")
     Call<Photo> getRandom();

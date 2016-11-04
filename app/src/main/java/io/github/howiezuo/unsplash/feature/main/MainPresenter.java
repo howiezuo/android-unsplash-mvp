@@ -7,9 +7,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.github.howiezuo.unsplash.api.service.PhotosService;
-import io.github.howiezuo.unsplash.model.Liked;
+import io.github.howiezuo.unsplash.model.photo.Liked;
 import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.Unliked;
+import io.github.howiezuo.unsplash.model.photo.Unliked;
 import io.github.howiezuo.unsplash.model.User;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;

@@ -1,4 +1,7 @@
-package io.github.howiezuo.unsplash.model;
+package io.github.howiezuo.unsplash.model.photo;
+
+import io.github.howiezuo.unsplash.model.Photo;
+import io.github.howiezuo.unsplash.model.User;
 
 public class Unliked {
 
