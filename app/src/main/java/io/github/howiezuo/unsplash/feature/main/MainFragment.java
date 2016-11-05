@@ -20,6 +20,7 @@ import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
 import io.github.howiezuo.unsplash.feature.detail.DetailActivity;
 import io.github.howiezuo.unsplash.feature.PhotoItemListener;
+import io.github.howiezuo.unsplash.feature.me.MeActivity;
 import io.github.howiezuo.unsplash.model.Photo;
 import io.github.howiezuo.unsplash.model.User;
 import io.github.howiezuo.unsplash.feature.user.UserActivity;
@@ -118,7 +119,7 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_profile:
-                Intent intent = new Intent(getActivity(), UserActivity.class);
+                Intent intent = new Intent(getActivity(), MeActivity.class);
                 startActivity(intent);
                 return true;
         }

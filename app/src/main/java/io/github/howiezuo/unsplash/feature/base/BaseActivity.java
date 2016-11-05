@@ -22,7 +22,7 @@ import io.github.howiezuo.unsplash.util.ActivityUtils;
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Nullable
-    @BindView(R.id.tool_bar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.container_login)
     View mContainerLogin;
