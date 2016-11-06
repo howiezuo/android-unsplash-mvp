@@ -2,7 +2,7 @@ package io.github.howiezuo.unsplash.model;
 
 import java.util.List;
 
-public class Errors {
+public class ErrorsDto {
 
     List<String> errors;
 }

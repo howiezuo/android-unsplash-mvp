@@ -4,7 +4,7 @@ package io.github.howiezuo.unsplash.model.photo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Urls implements Parcelable {
+public class UrlsDto implements Parcelable {
 
     String raw;
     String full;
@@ -12,7 +12,7 @@ public class Urls implements Parcelable {
     String small;
     String thumb;
 
-    protected Urls(Parcel in) {
+    protected UrlsDto(Parcel in) {
         raw = in.readString();
         full = in.readString();
         regular = in.readString();
@@ -20,15 +20,15 @@ public class Urls implements Parcelable {
         thumb = in.readString();
     }
 
-    public static final Creator<Urls> CREATOR = new Creator<Urls>() {
+    public static final Creator<UrlsDto> CREATOR = new Creator<UrlsDto>() {
         @Override
-        public Urls createFromParcel(Parcel in) {
-            return new Urls(in);
+        public UrlsDto createFromParcel(Parcel in) {
+            return new UrlsDto(in);
         }
 
         @Override
-        public Urls[] newArray(int size) {
-            return new Urls[size];
+        public UrlsDto[] newArray(int size) {
+            return new UrlsDto[size];
         }
     };
 

@@ -8,10 +8,10 @@ import com.orhanobut.logger.Logger;
 import javax.inject.Inject;
 
 import io.github.howiezuo.unsplash.api.service.PhotosService;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
-import io.github.howiezuo.unsplash.model.photo.Liked;
-import io.github.howiezuo.unsplash.model.photo.Unliked;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.photo.LikedDto;
+import io.github.howiezuo.unsplash.model.photo.UnlikedDto;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -19,29 +19,29 @@ import rx.schedulers.Schedulers;
 public class DetailPresenter implements DetailContract.Presenter {
 
     private final DetailContract.View mView;
-    private final Photo mPhoto;
+    private final PhotoDto mPhotoDto;
 
     @Inject
     PhotosService mPhotosService;
 
     @Inject
-    public DetailPresenter(@NonNull DetailContract.View view, Photo photo) {
+    public DetailPresenter(@NonNull DetailContract.View view, PhotoDto photoDto) {
         mView = view;
         mView.setPresenter(this);
-        mPhoto = photo;
+        mPhotoDto = photoDto;
     }
 
     @Override
     public void showPhoto() {
-        mView.showPhoto(mPhoto);
+        mView.showPhoto(mPhotoDto);
     }
 
     @Override
     public void loadPhoto() {
-        mPhotosService.getPhoto(mPhoto.getId())
+        mPhotosService.getPhoto(mPhotoDto.getId())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Photo>() {
+                .subscribe(new Observer<PhotoDto>() {
                     @Override
                     public void onCompleted() {
 
@@ -53,24 +53,24 @@ public class DetailPresenter implements DetailContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(Photo photo) {
-                        mView.showLocation(photo);
+                    public void onNext(PhotoDto photoDto) {
+                        mView.showLocation(photoDto);
                     }
                 });
 
     }
 
     @Override
-    public void openUserDetails(User user) {
-        mView.showUserDetails(user);
+    public void openUserDetails(UserDto userDto) {
+        mView.showUserDetails(userDto);
     }
 
     @Override
-    public void likePhoto(Photo photo) {
-        mPhotosService.like(photo.getId())
+    public void likePhoto(PhotoDto photoDto) {
+        mPhotosService.like(photoDto.getId())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Liked>() {
+                .subscribe(new Observer<LikedDto>() {
                     @Override
                     public void onCompleted() {
 
@@ -83,21 +83,21 @@ public class DetailPresenter implements DetailContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(Liked liked) {
-                        mPhoto.setLikedByUser(liked.getPhoto().isLikedByUser());
-                        mPhoto.setLikes(liked.getPhoto().getLikes());
-                        mView.likedPhoto(mPhoto);
+                    public void onNext(LikedDto likedDto) {
+                        mPhotoDto.setLikedByUser(likedDto.getPhoto().isLikedByUser());
+                        mPhotoDto.setLikes(likedDto.getPhoto().getLikes());
+                        mView.likedPhoto(mPhotoDto);
                     }
                 });
 
     }
 
     @Override
-    public void unlikePhoto(Photo photo) {
-        mPhotosService.unlike(photo.getId())
+    public void unlikePhoto(PhotoDto photoDto) {
+        mPhotosService.unlike(photoDto.getId())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Unliked>() {
+                .subscribe(new Observer<UnlikedDto>() {
                     @Override
                     public void onCompleted() {
 
@@ -110,10 +110,10 @@ public class DetailPresenter implements DetailContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(Unliked unliked) {
-                        mPhoto.setLikedByUser(unliked.getPhoto().isLikedByUser());
-                        mPhoto.setLikes(unliked.getPhoto().getLikes());
-                        mView.unlikedPhoto(mPhoto);
+                    public void onNext(UnlikedDto unlikedDto) {
+                        mPhotoDto.setLikedByUser(unlikedDto.getPhoto().isLikedByUser());
+                        mPhotoDto.setLikes(unlikedDto.getPhoto().getLikes());
+                        mView.unlikedPhoto(mPhotoDto);
                     }
                 });
     }

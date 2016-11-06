@@ -1,6 +1,6 @@
 package io.github.howiezuo.unsplash.model.oauth;
 
-public class Token {
+public class TokenDto {
 
     String access_token;
     String token_type;

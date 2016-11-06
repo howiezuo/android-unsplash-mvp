@@ -1,6 +1,6 @@
 package io.github.howiezuo.unsplash.model.photo;
 
-public class Download {
+public class DownloadDto {
 
     String url;
 

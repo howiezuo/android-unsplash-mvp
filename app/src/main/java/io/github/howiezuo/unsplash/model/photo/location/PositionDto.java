@@ -3,12 +3,12 @@ package io.github.howiezuo.unsplash.model.photo.location;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Position implements Parcelable {
+public class PositionDto implements Parcelable {
 
     double latitude;
     double longitude;
 
-    protected Position(Parcel in) {
+    protected PositionDto(Parcel in) {
         latitude = in.readDouble();
         longitude = in.readDouble();
     }
@@ -21,15 +21,15 @@ public class Position implements Parcelable {
         return longitude;
     }
 
-    public static final Creator<Position> CREATOR = new Creator<Position>() {
+    public static final Creator<PositionDto> CREATOR = new Creator<PositionDto>() {
         @Override
-        public Position createFromParcel(Parcel in) {
-            return new Position(in);
+        public PositionDto createFromParcel(Parcel in) {
+            return new PositionDto(in);
         }
 
         @Override
-        public Position[] newArray(int size) {
-            return new Position[size];
+        public PositionDto[] newArray(int size) {
+            return new PositionDto[size];
         }
     };
 

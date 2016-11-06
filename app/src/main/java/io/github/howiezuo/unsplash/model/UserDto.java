@@ -4,9 +4,9 @@ package io.github.howiezuo.unsplash.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import io.github.howiezuo.unsplash.model.user.ProfileImage;
+import io.github.howiezuo.unsplash.model.user.ProfileImageDto;
 
-public class User implements Parcelable{
+public class UserDto implements Parcelable{
 
     String id;
     String username;
@@ -24,16 +24,16 @@ public class User implements Parcelable{
     int uploads_remaining;
     String instagram_username;
     String email;
-    ProfileImage profile_image;
-    Links links;
+    ProfileImageDto profile_image;
+    LinksDto links;
 
-    protected User(Parcel in) {
+    protected UserDto(Parcel in) {
         id = in.readString();
         username = in.readString();
         name = in.readString();
         portfolio_url = in.readString();
-        profile_image = in.readParcelable(ProfileImage.class.getClassLoader());
-        links = in.readParcelable(Links.class.getClassLoader());
+        profile_image = in.readParcelable(ProfileImageDto.class.getClassLoader());
+        links = in.readParcelable(LinksDto.class.getClassLoader());
     }
 
     public String getUsername() {
@@ -60,19 +60,19 @@ public class User implements Parcelable{
         return total_collections;
     }
 
-    public ProfileImage getProfileImage() {
+    public ProfileImageDto getProfileImage() {
         return profile_image;
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
+    public static final Creator<UserDto> CREATOR = new Creator<UserDto>() {
         @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
+        public UserDto createFromParcel(Parcel in) {
+            return new UserDto(in);
         }
 
         @Override
-        public User[] newArray(int size) {
-            return new User[size];
+        public UserDto[] newArray(int size) {
+            return new UserDto[size];
         }
     };
 

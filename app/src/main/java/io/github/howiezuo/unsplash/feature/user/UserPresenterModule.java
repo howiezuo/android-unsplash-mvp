@@ -2,7 +2,7 @@ package io.github.howiezuo.unsplash.feature.user;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.UserDto;
 import io.github.howiezuo.unsplash.feature.user.photos.UserPhotosContract;
 
 @Module
@@ -10,12 +10,12 @@ public class UserPresenterModule {
 
     private final UserContract.View mUserView;
     private final UserPhotosContract.View mPhotosView;
-    private final User mUser;
+    private final UserDto mUserDto;
 
-    public UserPresenterModule(UserContract.View userView, UserPhotosContract.View photosView, User user) {
+    public UserPresenterModule(UserContract.View userView, UserPhotosContract.View photosView, UserDto userDto) {
         mUserView = userView;
         mPhotosView = photosView;
-        mUser = user;
+        mUserDto = userDto;
     }
 
     @Provides
@@ -29,7 +29,7 @@ public class UserPresenterModule {
     }
 
     @Provides
-    User provideUser() {
-        return mUser;
+    UserDto provideUserDto() {
+        return mUserDto;
     }
 }

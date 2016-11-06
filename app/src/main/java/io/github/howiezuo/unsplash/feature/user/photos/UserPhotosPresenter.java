@@ -10,10 +10,10 @@ import javax.inject.Inject;
 
 import io.github.howiezuo.unsplash.api.service.PhotosService;
 import io.github.howiezuo.unsplash.api.service.UsersService;
-import io.github.howiezuo.unsplash.model.photo.Liked;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.photo.Unliked;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.photo.LikedDto;
+import io.github.howiezuo.unsplash.model.photo.UnlikedDto;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -21,7 +21,7 @@ import rx.schedulers.Schedulers;
 public class UserPhotosPresenter implements UserPhotosContract.Presenter {
 
     private final UserPhotosContract.View mView;
-    private final User mUser;
+    private final UserDto mUserDto;
 
     @Inject
     UsersService mUsersService;
@@ -29,18 +29,18 @@ public class UserPhotosPresenter implements UserPhotosContract.Presenter {
     PhotosService mPhotosService;
 
     @Inject
-    public UserPhotosPresenter(@NonNull UserPhotosContract.View view, User user) {
+    public UserPhotosPresenter(@NonNull UserPhotosContract.View view, UserDto userDto) {
         mView = view;
         mView.setPresenter(this);
-        mUser = user;
+        mUserDto = userDto;
     }
 
     @Override
     public void loadPhotos() {
-        mUsersService.getUserPhotos(mUser.getUsername())
+        mUsersService.getUserPhotos(mUserDto.getUsername())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<Photo>>() {
+                .subscribe(new Observer<List<PhotoDto>>() {
                     @Override
                     public void onCompleted() {
 
@@ -52,23 +52,23 @@ public class UserPhotosPresenter implements UserPhotosContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(List<Photo> photos) {
-                        mView.showPhotos(photos);
+                    public void onNext(List<PhotoDto> photosDto) {
+                        mView.showPhotos(photosDto);
                     }
                 });
     }
 
     @Override
-    public void openPhotoDetails(Photo photo) {
-        mView.showPhotoDetails(photo);
+    public void openPhotoDetails(PhotoDto photoDto) {
+        mView.showPhotoDetails(photoDto);
     }
 
     @Override
-    public void likePhoto(Photo photo, final int index) {
-        mPhotosService.like(photo.getId())
+    public void likePhoto(PhotoDto photoDto, final int index) {
+        mPhotosService.like(photoDto.getId())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Liked>() {
+                .subscribe(new Observer<LikedDto>() {
                     @Override
                     public void onCompleted() {
 
@@ -81,18 +81,18 @@ public class UserPhotosPresenter implements UserPhotosContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(Liked liked) {
-                        mView.likedPhoto(liked.getPhoto(), index);
+                    public void onNext(LikedDto likedDto) {
+                        mView.likedPhoto(likedDto.getPhoto(), index);
                     }
                 });
     }
 
     @Override
-    public void unlikePhoto(Photo photo, final int index) {
-        mPhotosService.unlike(photo.getId())
+    public void unlikePhoto(PhotoDto photoDto, final int index) {
+        mPhotosService.unlike(photoDto.getId())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Unliked>() {
+                .subscribe(new Observer<UnlikedDto>() {
                     @Override
                     public void onCompleted() {
 
@@ -105,8 +105,8 @@ public class UserPhotosPresenter implements UserPhotosContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(Unliked unliked) {
-                        mView.unlikedPhoto(unliked.getPhoto(), index);
+                    public void onNext(UnlikedDto unlikedDto) {
+                        mView.unlikedPhoto(unlikedDto.getPhoto(), index);
                     }
                 });
     }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import io.github.howiezuo.unsplash.feature.base.BasePresenter;
 import io.github.howiezuo.unsplash.feature.base.BaseView;
-import io.github.howiezuo.unsplash.model.Photo;
+import io.github.howiezuo.unsplash.model.PhotoDto;
 
 public interface UserPhotosContract {
 
@@ -12,23 +12,23 @@ public interface UserPhotosContract {
 
         void loadPhotos();
 
-        void openPhotoDetails(Photo photo);
+        void openPhotoDetails(PhotoDto photoDto);
 
-        void likePhoto(Photo photo, int index);
+        void likePhoto(PhotoDto photoDto, int index);
 
-        void unlikePhoto(Photo photo, int index);
+        void unlikePhoto(PhotoDto photoDto, int index);
 
     }
 
     interface View extends BaseView<Presenter> {
 
-        void showPhotos(List<Photo> photos);
+        void showPhotos(List<PhotoDto> photosDto);
 
-        void showPhotoDetails(Photo photo);
+        void showPhotoDetails(PhotoDto photoDto);
 
-        void likedPhoto(Photo photo, int index);
+        void likedPhoto(PhotoDto photoDto, int index);
 
-        void unlikedPhoto(Photo photo, int index);
+        void unlikedPhoto(PhotoDto photoDto, int index);
 
     }
 }

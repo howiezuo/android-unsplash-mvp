@@ -21,8 +21,8 @@ import io.github.howiezuo.unsplash.feature.base.BaseFragment;
 import io.github.howiezuo.unsplash.feature.detail.DetailActivity;
 import io.github.howiezuo.unsplash.feature.PhotoItemListener;
 import io.github.howiezuo.unsplash.feature.me.MeActivity;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
 import io.github.howiezuo.unsplash.feature.user.UserActivity;
 import io.github.howiezuo.unsplash.util.UIUtils;
 
@@ -36,21 +36,21 @@ public class MainFragment extends BaseFragment implements MainContract.View {
 
     PhotoItemListener mListener = new PhotoItemListener() {
         @Override
-        public void onPhotoClick(Photo photo) {
-            mPresenter.openPhotoDetails(photo);
+        public void onPhotoClick(PhotoDto photoDto) {
+            mPresenter.openPhotoDetails(photoDto);
         }
 
         @Override
-        public void onUserClick(User user) {
-            mPresenter.openUserDetails(user);
+        public void onUserClick(UserDto userDto) {
+            mPresenter.openUserDetails(userDto);
         }
 
         @Override
-        public void onLikeClick(Photo photo, int index) {
-            if (photo.isLikedByUser()) {
-                mPresenter.unlikePhoto(photo, index);
+        public void onLikeClick(PhotoDto photoDto, int index) {
+            if (photoDto.isLikedByUser()) {
+                mPresenter.unlikePhoto(photoDto, index);
             } else {
-                mPresenter.likePhoto(photo, index);
+                mPresenter.likePhoto(photoDto, index);
             }
         }
     };
@@ -132,39 +132,39 @@ public class MainFragment extends BaseFragment implements MainContract.View {
     }
 
     @Override
-    public void refreshPhotos(List<Photo> list) {
+    public void refreshPhotos(List<PhotoDto> list) {
         mAdapter.updateDataSet(list);
         isLoading = false;
     }
 
     @Override
-    public void addPhotos(List<Photo> list) {
+    public void addPhotos(List<PhotoDto> list) {
         mAdapter.addDataSet(list);
         isLoading = false;
     }
 
     @Override
-    public void showPhotoDetails(Photo photo) {
+    public void showPhotoDetails(PhotoDto photoDto) {
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-        intent.putExtra(DetailActivity.EXTRA_PHOTO, photo);
+        intent.putExtra(DetailActivity.EXTRA_PHOTO, photoDto);
         startActivity(intent);
     }
 
     @Override
-    public void showUserDetails(User user) {
+    public void showUserDetails(UserDto userDto) {
         Intent intent = new Intent(getActivity(), UserActivity.class);
-        intent.putExtra(UserActivity.EXTRA_USER, user);
+        intent.putExtra(UserActivity.EXTRA_USER, userDto);
         startActivity(intent);
     }
 
     @Override
-    public void likedPhoto(Photo photo, int index) {
-        mAdapter.likePhoto(photo, index);
+    public void likedPhoto(PhotoDto photoDto, int index) {
+        mAdapter.likePhoto(photoDto, index);
     }
 
     @Override
-    public void unlikedPhoto(Photo photo, int index) {
-        mAdapter.likePhoto(photo, index);
+    public void unlikedPhoto(PhotoDto photoDto, int index) {
+        mAdapter.likePhoto(photoDto, index);
     }
 
     @Override

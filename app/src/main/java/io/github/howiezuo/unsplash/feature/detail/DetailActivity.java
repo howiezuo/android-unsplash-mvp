@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import io.github.howiezuo.unsplash.AppApplication;
 import io.github.howiezuo.unsplash.feature.base.BaseActivity;
 import io.github.howiezuo.unsplash.R;
-import io.github.howiezuo.unsplash.model.Photo;
+import io.github.howiezuo.unsplash.model.PhotoDto;
 import io.github.howiezuo.unsplash.util.ActivityUtils;
 import io.github.howiezuo.unsplash.util.UIUtils;
 
@@ -30,7 +30,7 @@ public class DetailActivity extends BaseActivity {
             return;
         }
 
-        Photo photo = getIntent().getParcelableExtra(EXTRA_PHOTO);
+        PhotoDto photoDto = getIntent().getParcelableExtra(EXTRA_PHOTO);
 
         DetailFragment fragment = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.container_fragment);
         if (fragment == null) {
@@ -41,7 +41,7 @@ public class DetailActivity extends BaseActivity {
         DaggerDetailComponent.builder()
                 .apiComponent(AppApplication.getInstance().getApiComponent())
                 .helperComponent(AppApplication.getInstance().getHelperComponent())
-                .detailPresenterModule(new DetailPresenterModule(fragment, photo))
+                .detailPresenterModule(new DetailPresenterModule(fragment, photoDto))
                 .loginPresenterModule(getLoginPresenterModule())
                 .build()
                 .inject(this);

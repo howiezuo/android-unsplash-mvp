@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.UserDto;
 import io.github.howiezuo.unsplash.widget.CircleImageView;
 
 
@@ -60,7 +60,6 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        mPresenter.loadMe();
         mPresenter.showUser();
     }
 
@@ -80,29 +79,29 @@ public class UserFragment extends BaseFragment implements UserContract.View {
     }
 
     @Override
-    public void showMe(User user) {
+    public void showMe(UserDto userDto) {
         Picasso.with(getActivity())
-                .load(user.getProfileImage().getLarge())
+                .load(userDto.getProfileImage().getLarge())
                 .noFade()
                 .into(mImageProfile);
-        mTextName.setText(user.getName());
-        mTextBio.setText(user.getBio());
-        mTextPhotos.setText(String.valueOf(user.getTotalPhotos()));
-        mTextLikes.setText(String.valueOf(user.getTotalLikes()));
-        mTextCollections.setText(String.valueOf(user.getTotalCollections()));
+        mTextName.setText(userDto.getName());
+        mTextBio.setText(userDto.getBio());
+        mTextPhotos.setText(String.valueOf(userDto.getTotalPhotos()));
+        mTextLikes.setText(String.valueOf(userDto.getTotalLikes()));
+        mTextCollections.setText(String.valueOf(userDto.getTotalCollections()));
     }
 
     @Override
-    public void showUser(User user) {
+    public void showUser(UserDto userDto) {
         Picasso.with(getActivity())
-                .load(user.getProfileImage().getLarge())
+                .load(userDto.getProfileImage().getLarge())
                 .noFade()
                 .into(mImageProfile);
-        mTextName.setText(user.getName());
-        mTextBio.setText(user.getBio());
-        mTextPhotos.setText(String.valueOf(user.getTotalPhotos()));
-        mTextLikes.setText(String.valueOf(user.getTotalLikes()));
-        mTextCollections.setText(String.valueOf(user.getTotalCollections()));
+        mTextName.setText(userDto.getName());
+        mTextBio.setText(userDto.getBio());
+        mTextPhotos.setText(String.valueOf(userDto.getTotalPhotos()));
+        mTextLikes.setText(String.valueOf(userDto.getTotalLikes()));
+        mTextCollections.setText(String.valueOf(userDto.getTotalCollections()));
     }
 
 }

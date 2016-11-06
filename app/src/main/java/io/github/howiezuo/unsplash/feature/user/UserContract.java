@@ -2,7 +2,7 @@ package io.github.howiezuo.unsplash.feature.user;
 
 import io.github.howiezuo.unsplash.feature.base.BasePresenter;
 import io.github.howiezuo.unsplash.feature.base.BaseView;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.UserDto;
 
 public interface UserContract {
 
@@ -16,9 +16,9 @@ public interface UserContract {
 
     interface View extends BaseView<Presenter> {
 
-        void showMe(User user);
+        void showMe(UserDto userDto);
 
-        void showUser(User user);
+        void showUser(UserDto userDto);
 
     }
 }

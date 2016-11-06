@@ -3,11 +3,11 @@ package io.github.howiezuo.unsplash.api.service;
 import java.util.List;
 
 import io.github.howiezuo.unsplash.Config;
-import io.github.howiezuo.unsplash.model.photo.Liked;
-import io.github.howiezuo.unsplash.model.photo.Unliked;
-import io.github.howiezuo.unsplash.model.photo.Download;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.photo.Stats;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.photo.LikedDto;
+import io.github.howiezuo.unsplash.model.photo.UnlikedDto;
+import io.github.howiezuo.unsplash.model.photo.DownloadDto;
+import io.github.howiezuo.unsplash.model.photo.StatsDto;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -20,36 +20,36 @@ import rx.Observable;
 public interface PhotosService {
 
     @GET("photos?per_page=" + Config.DEFAULT_PER_PAGE)
-    Observable<List<Photo>> getPhotos();
+    Observable<List<PhotoDto>> getPhotos();
 
     @GET("photos?per_page=" + Config.DEFAULT_PER_PAGE)
-    Observable<List<Photo>> getPhotos(@Query("page") int page);
+    Observable<List<PhotoDto>> getPhotos(@Query("page") int page);
 
     @GET("photos/curated?per_page=" + Config.DEFAULT_PER_PAGE)
-    Observable<List<Photo>> getCurated();
+    Observable<List<PhotoDto>> getCurated();
 
     @GET("photos/curated?per_page=" + Config.DEFAULT_PER_PAGE)
-    Observable<List<Photo>> getCurated(@Query("page") int page);
+    Observable<List<PhotoDto>> getCurated(@Query("page") int page);
 
     @GET("photos/{id}")
-    Observable<Photo> getPhoto(@Path("id") String id);
+    Observable<PhotoDto> getPhoto(@Path("id") String id);
 
     @GET("photos/random")
-    Call<Photo> getRandom();
+    Call<PhotoDto> getRandom();
 
     @GET("photos/{id}/stats")
-    Call<Stats> getStats(@Path("id") String id);
+    Call<StatsDto> getStats(@Path("id") String id);
 
     @GET("photos/{id}/download")
-    Call<Download> getDownload(@Path("id") String id);
+    Call<DownloadDto> getDownload(@Path("id") String id);
 
     @PUT("photos/{id}")
-    Call<Photo> update(@Path("id") String id);
+    Call<PhotoDto> update(@Path("id") String id);
 
     @POST("photos/{id}/like")
-    Observable<Liked> like(@Path("id") String id);
+    Observable<LikedDto> like(@Path("id") String id);
 
     @DELETE("photos/{id}/like")
-    Observable<Unliked> unlike(@Path("id") String id);
+    Observable<UnlikedDto> unlike(@Path("id") String id);
 
 }

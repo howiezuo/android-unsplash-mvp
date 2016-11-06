@@ -1,14 +1,14 @@
 package io.github.howiezuo.unsplash.feature;
 
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
 
 public interface PhotoItemListener {
 
-    void onPhotoClick(Photo photo);
+    void onPhotoClick(PhotoDto photoDto);
 
-    void onUserClick(User user);
+    void onUserClick(UserDto userDto);
 
-    void onLikeClick(Photo photo, int index);
+    void onLikeClick(PhotoDto photoDto, int index);
 
 }

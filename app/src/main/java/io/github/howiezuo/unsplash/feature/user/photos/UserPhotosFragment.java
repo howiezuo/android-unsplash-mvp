@@ -16,8 +16,8 @@ import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
 import io.github.howiezuo.unsplash.feature.detail.DetailActivity;
 import io.github.howiezuo.unsplash.feature.PhotoItemListener;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
 
 
 public class UserPhotosFragment extends BaseFragment implements UserPhotosContract.View {
@@ -29,21 +29,21 @@ public class UserPhotosFragment extends BaseFragment implements UserPhotosContra
 
     PhotoItemListener mListener = new PhotoItemListener() {
         @Override
-        public void onPhotoClick(Photo photo) {
-            mPresenter.openPhotoDetails(photo);
+        public void onPhotoClick(PhotoDto photoDto) {
+            mPresenter.openPhotoDetails(photoDto);
         }
 
         @Override
-        public void onUserClick(User user) {
+        public void onUserClick(UserDto userDto) {
             // nothing to do
         }
 
         @Override
-        public void onLikeClick(Photo photo, int index) {
-            if (photo.isLikedByUser()) {
-                mPresenter.unlikePhoto(photo, index);
+        public void onLikeClick(PhotoDto photoDto, int index) {
+            if (photoDto.isLikedByUser()) {
+                mPresenter.unlikePhoto(photoDto, index);
             } else {
-                mPresenter.likePhoto(photo, index);
+                mPresenter.likePhoto(photoDto, index);
             }
         }
     };
@@ -86,25 +86,25 @@ public class UserPhotosFragment extends BaseFragment implements UserPhotosContra
     }
 
     @Override
-    public void showPhotos(List<Photo> photos) {
-        mAdapter.updateDataSet(photos);
+    public void showPhotos(List<PhotoDto> photosDto) {
+        mAdapter.updateDataSet(photosDto);
     }
 
     @Override
-    public void showPhotoDetails(Photo photo) {
+    public void showPhotoDetails(PhotoDto photoDto) {
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-        intent.putExtra(DetailActivity.EXTRA_PHOTO, photo);
+        intent.putExtra(DetailActivity.EXTRA_PHOTO, photoDto);
         startActivity(intent);
     }
 
     @Override
-    public void likedPhoto(Photo photo, int index) {
-        mAdapter.likePhoto(photo, index);
+    public void likedPhoto(PhotoDto photoDto, int index) {
+        mAdapter.likePhoto(photoDto, index);
     }
 
     @Override
-    public void unlikedPhoto(Photo photo, int index) {
-        mAdapter.likePhoto(photo, index);
+    public void unlikedPhoto(PhotoDto photoDto, int index) {
+        mAdapter.likePhoto(photoDto, index);
     }
 
 }

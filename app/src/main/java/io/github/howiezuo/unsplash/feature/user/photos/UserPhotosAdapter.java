@@ -11,11 +11,11 @@ import java.util.List;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.PhotoItemListener;
 import io.github.howiezuo.unsplash.feature.PhotoItemViewHolder;
-import io.github.howiezuo.unsplash.model.Photo;
+import io.github.howiezuo.unsplash.model.PhotoDto;
 
 public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Photo> mDataSet = new ArrayList<>();
+    private List<PhotoDto> mDataSet = new ArrayList<>();
     private PhotoItemListener mListener;
 
     public UserPhotosAdapter(PhotoItemListener listener) {
@@ -40,16 +40,16 @@ public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return mDataSet.size();
     }
 
-    public void updateDataSet(List<Photo> dataSet) {
+    public void updateDataSet(List<PhotoDto> dataSet) {
         mDataSet.addAll(dataSet);
         this.notifyDataSetChanged();
     }
 
-    public void likePhoto(Photo photo, int index) {
-        Photo item = mDataSet.get(index);
+    public void likePhoto(PhotoDto photoDto, int index) {
+        PhotoDto item = mDataSet.get(index);
         if (item != null) {
-            item.setLikedByUser(photo.isLikedByUser());
-            item.setLikes(photo.getLikes());
+            item.setLikedByUser(photoDto.isLikedByUser());
+            item.setLikes(photoDto.getLikes());
             mDataSet.set(index, item);
 
             this.notifyItemChanged(index);
@@ -63,8 +63,8 @@ public class UserPhotosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
 
         @Override
-        public void bindView(Photo photo, int index) {
-            super.bindView(photo, index);
+        public void bindView(PhotoDto photoDto, int index) {
+            super.bindView(photoDto, index);
 
             mImageProfile.setVisibility(View.GONE);
             mTextName.setVisibility(View.GONE);

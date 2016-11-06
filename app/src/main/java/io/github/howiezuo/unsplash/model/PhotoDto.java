@@ -3,10 +3,10 @@ package io.github.howiezuo.unsplash.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import io.github.howiezuo.unsplash.model.photo.Location;
-import io.github.howiezuo.unsplash.model.photo.Urls;
+import io.github.howiezuo.unsplash.model.photo.LocationDto;
+import io.github.howiezuo.unsplash.model.photo.UrlsDto;
 
-public class Photo implements Parcelable {
+public class PhotoDto implements Parcelable {
 
     String id;
     int width;
@@ -15,22 +15,22 @@ public class Photo implements Parcelable {
     int likes;
     boolean liked_by_user;
 
-    Location location;
-    Urls urls;
-    Links links;
-    User user;
+    LocationDto location;
+    UrlsDto urls;
+    LinksDto links;
+    UserDto user;
 
-    protected Photo(Parcel in) {
+    protected PhotoDto(Parcel in) {
         id = in.readString();
         width = in.readInt();
         height = in.readInt();
         color = in.readString();
         likes = in.readInt();
         liked_by_user = in.readByte() != 0;
-        location = in.readParcelable(Location.class.getClassLoader());
-        urls = in.readParcelable(Urls.class.getClassLoader());
-        links = in.readParcelable(Links.class.getClassLoader());
-        user = in.readParcelable(User.class.getClassLoader());
+        location = in.readParcelable(LocationDto.class.getClassLoader());
+        urls = in.readParcelable(UrlsDto.class.getClassLoader());
+        links = in.readParcelable(LinksDto.class.getClassLoader());
+        user = in.readParcelable(UserDto.class.getClassLoader());
     }
 
     public String getId() {
@@ -57,27 +57,27 @@ public class Photo implements Parcelable {
         liked_by_user = liked;
     }
 
-    public Location getLocation() {
+    public LocationDto getLocation() {
         return location;
     }
 
-    public Urls getUrls() {
+    public UrlsDto getUrls() {
         return urls;
     }
 
-    public User getUser() {
+    public UserDto getUser() {
         return user;
     }
 
-    public static final Creator<Photo> CREATOR = new Creator<Photo>() {
+    public static final Creator<PhotoDto> CREATOR = new Creator<PhotoDto>() {
         @Override
-        public Photo createFromParcel(Parcel in) {
-            return new Photo(in);
+        public PhotoDto createFromParcel(Parcel in) {
+            return new PhotoDto(in);
         }
 
         @Override
-        public Photo[] newArray(int size) {
-            return new Photo[size];
+        public PhotoDto[] newArray(int size) {
+            return new PhotoDto[size];
         }
     };
 

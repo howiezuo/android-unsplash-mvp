@@ -1,12 +1,12 @@
 package io.github.howiezuo.unsplash.model.photo;
 
-import io.github.howiezuo.unsplash.model.Links;
+import io.github.howiezuo.unsplash.model.LinksDto;
 
-public class Stats {
+public class StatsDto {
 
     int downloads;
     int likes;
     int view;
-    Links links;
+    LinksDto links;
 
 }

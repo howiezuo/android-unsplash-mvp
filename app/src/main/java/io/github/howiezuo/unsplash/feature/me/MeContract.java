@@ -4,8 +4,8 @@ import java.util.List;
 
 import io.github.howiezuo.unsplash.feature.base.BasePresenter;
 import io.github.howiezuo.unsplash.feature.base.BaseView;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
 
 public interface MeContract {
 
@@ -19,9 +19,9 @@ public interface MeContract {
 
     interface View extends BaseView<Presenter> {
 
-        void showMe(User user);
+        void showMe(UserDto userDto);
 
-        void showPhotos(List<Photo> photos);
+        void showPhotos(List<PhotoDto> photosDto);
 
         void showError();
 

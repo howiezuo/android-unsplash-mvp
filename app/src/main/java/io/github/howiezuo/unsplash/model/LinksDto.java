@@ -3,7 +3,7 @@ package io.github.howiezuo.unsplash.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Links implements Parcelable {
+public class LinksDto implements Parcelable {
 
     String self;
     String html;
@@ -13,7 +13,7 @@ public class Links implements Parcelable {
     String download;
     String download_location;
 
-    protected Links(Parcel in) {
+    protected LinksDto(Parcel in) {
         self = in.readString();
         html = in.readString();
         photos = in.readString();
@@ -23,15 +23,15 @@ public class Links implements Parcelable {
         download_location = in.readString();
     }
 
-    public static final Creator<Links> CREATOR = new Creator<Links>() {
+    public static final Creator<LinksDto> CREATOR = new Creator<LinksDto>() {
         @Override
-        public Links createFromParcel(Parcel in) {
-            return new Links(in);
+        public LinksDto createFromParcel(Parcel in) {
+            return new LinksDto(in);
         }
 
         @Override
-        public Links[] newArray(int size) {
-            return new Links[size];
+        public LinksDto[] newArray(int size) {
+            return new LinksDto[size];
         }
     };
 

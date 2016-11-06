@@ -25,9 +25,9 @@ import butterknife.BindView;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
 import io.github.howiezuo.unsplash.feature.user.UserActivity;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
-import io.github.howiezuo.unsplash.model.photo.Location;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.photo.LocationDto;
 
 public class DetailFragment extends BaseFragment implements DetailContract.View {
 
@@ -138,24 +138,24 @@ public class DetailFragment extends BaseFragment implements DetailContract.View 
     }
 
     @Override
-    public void showPhoto(final Photo photo) {
-        final User user = photo.getUser();
+    public void showPhoto(final PhotoDto photoDto) {
+        final UserDto userDto = photoDto.getUser();
         Picasso.with(getContext())
-                .load(user.getProfileImage().getMedium())
+                .load(userDto.getProfileImage().getMedium())
                 .noFade()
                 .into(mImageProfile);
-        mTextName.setText(user.getName());
+        mTextName.setText(userDto.getName());
         mTextName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.openUserDetails(user);
+                mPresenter.openUserDetails(userDto);
             }
         });
         Picasso.with(getContext())
-                .load(photo.getUrls().getRegular())
+                .load(photoDto.getUrls().getRegular())
                 .into(mImagePhoto);
-        mTextLikes.setText(String.valueOf(photo.getLikes()));
-        if (photo.isLikedByUser()) {
+        mTextLikes.setText(String.valueOf(photoDto.getLikes()));
+        if (photoDto.isLikedByUser()) {
             mTextIconLike.setTextColor(ContextCompat.getColor(getContext(), R.color.liked));
         } else {
             mTextIconLike.setTextColor(ContextCompat.getColor(getContext(), R.color.unliked));
@@ -163,26 +163,26 @@ public class DetailFragment extends BaseFragment implements DetailContract.View 
         mTextIconLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (photo.isLikedByUser()) {
-                    mPresenter.unlikePhoto(photo);
+                if (photoDto.isLikedByUser()) {
+                    mPresenter.unlikePhoto(photoDto);
                 } else {
-                    mPresenter.likePhoto(photo);
+                    mPresenter.likePhoto(photoDto);
                 }
             }
         });
     }
 
     @Override
-    public void showLocation(Photo photo) {
-        final Location location = photo.getLocation();
-        if (location != null) {
-            final LatLng ll = new LatLng(location.getPosition().getLat(), location.getPosition().getLng());
+    public void showLocation(PhotoDto photoDto) {
+        final LocationDto locationDto = photoDto.getLocation();
+        if (locationDto != null) {
+            final LatLng ll = new LatLng(locationDto.getPosition().getLat(), locationDto.getPosition().getLng());
             String title = null;
-            if (location.getCity() != null) {
-                title = location.getCity();
+            if (locationDto.getCity() != null) {
+                title = locationDto.getCity();
             }
-            if (location.getCountry() != null) {
-                title = title == null? location.getCountry() : title + ", " + location.getCountry();
+            if (locationDto.getCountry() != null) {
+                title = title == null? locationDto.getCountry() : title + ", " + locationDto.getCountry();
             }
             final String finalTitle = title;
 
@@ -201,22 +201,22 @@ public class DetailFragment extends BaseFragment implements DetailContract.View 
     }
 
     @Override
-    public void showUserDetails(User user) {
+    public void showUserDetails(UserDto userDto) {
         Intent intent = new Intent(getActivity(), UserActivity.class);
-        intent.putExtra(UserActivity.EXTRA_USER, user);
+        intent.putExtra(UserActivity.EXTRA_USER, userDto);
         startActivity(intent);
     }
 
     @Override
-    public void likedPhoto(Photo photo) {
+    public void likedPhoto(PhotoDto photoDto) {
         mTextIconLike.setTextColor(ContextCompat.getColor(getContext(), R.color.liked));
-        mTextLikes.setText(String.valueOf(photo.getLikes()));
+        mTextLikes.setText(String.valueOf(photoDto.getLikes()));
     }
 
     @Override
-    public void unlikedPhoto(Photo photo) {
+    public void unlikedPhoto(PhotoDto photoDto) {
         mTextIconLike.setTextColor(ContextCompat.getColor(getContext(), R.color.unliked));
-        mTextLikes.setText(String.valueOf(photo.getLikes()));
+        mTextLikes.setText(String.valueOf(photoDto.getLikes()));
     }
 
     @Override

@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import javax.inject.Inject;
 
 import io.github.howiezuo.unsplash.api.service.UsersService;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.UserDto;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -28,7 +28,7 @@ public class MePresenter implements MeContract.Presenter {
         mUsersService.getMe()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<User>() {
+                .subscribe(new Observer<UserDto>() {
                     @Override
                     public void onCompleted() {
 
@@ -40,8 +40,8 @@ public class MePresenter implements MeContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(User user) {
-                        mView.showMe(user);
+                    public void onNext(UserDto userDto) {
+                        mView.showMe(userDto);
                     }
                 });
     }

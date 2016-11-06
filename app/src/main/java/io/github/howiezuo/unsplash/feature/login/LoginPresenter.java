@@ -9,8 +9,8 @@ import javax.inject.Inject;
 import io.github.howiezuo.unsplash.AppApplication;
 import io.github.howiezuo.unsplash.api.service.OAuthService;
 import io.github.howiezuo.unsplash.helper.PreferencesHelper;
-import io.github.howiezuo.unsplash.model.oauth.Token;
-import io.github.howiezuo.unsplash.model.oauth.token.Post;
+import io.github.howiezuo.unsplash.model.oauth.TokenDto;
+import io.github.howiezuo.unsplash.model.oauth.token.PostDto;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -34,13 +34,13 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void getToken(String code) {
-        mOAuthService.postOAuth(new Post(
+        mOAuthService.postOAuth(new PostDto(
                         AppApplication.getInstance().getClientId(),
                         AppApplication.getInstance().getClientSecret(),
                         code))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Token>() {
+                .subscribe(new Observer<TokenDto>() {
                     @Override
                     public void onCompleted() {
 
@@ -52,8 +52,8 @@ public class LoginPresenter implements LoginContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(Token token) {
-                        mPreferencesHelper.saveToken(token.getAccessToken());
+                    public void onNext(TokenDto tokenDto) {
+                        mPreferencesHelper.saveToken(tokenDto.getAccessToken());
                     }
                 });
 

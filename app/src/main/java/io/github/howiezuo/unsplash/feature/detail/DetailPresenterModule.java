@@ -2,17 +2,17 @@ package io.github.howiezuo.unsplash.feature.detail;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.howiezuo.unsplash.model.Photo;
+import io.github.howiezuo.unsplash.model.PhotoDto;
 
 @Module
 public class DetailPresenterModule {
 
     private final DetailContract.View mView;
-    private final Photo mPhoto;
+    private final PhotoDto mPhotoDto;
 
-    public DetailPresenterModule(DetailContract.View view, Photo photo) {
+    public DetailPresenterModule(DetailContract.View view, PhotoDto photoDto) {
         mView = view;
-        mPhoto = photo;
+        mPhotoDto = photoDto;
     }
 
     @Provides
@@ -21,7 +21,7 @@ public class DetailPresenterModule {
     }
 
     @Provides
-    Photo providePhoto() {
-        return mPhoto;
+    PhotoDto providePhotoDto() {
+        return mPhotoDto;
     }
 }

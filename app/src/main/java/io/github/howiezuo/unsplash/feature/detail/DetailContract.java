@@ -2,8 +2,8 @@ package io.github.howiezuo.unsplash.feature.detail;
 
 import io.github.howiezuo.unsplash.feature.base.BasePresenter;
 import io.github.howiezuo.unsplash.feature.base.BaseView;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
 
 public interface DetailContract {
 
@@ -13,25 +13,25 @@ public interface DetailContract {
 
         void loadPhoto();
 
-        void openUserDetails(User user);
+        void openUserDetails(UserDto userDto);
 
-        void likePhoto(Photo photo);
+        void likePhoto(PhotoDto photoDto);
 
-        void unlikePhoto(Photo photo);
+        void unlikePhoto(PhotoDto photoDto);
 
     }
 
     interface View extends BaseView<Presenter> {
 
-        void showPhoto(Photo photo);
+        void showPhoto(PhotoDto photoDto);
 
-        void showLocation(Photo photo);
+        void showLocation(PhotoDto photoDto);
 
-        void showUserDetails(User user);
+        void showUserDetails(UserDto userDto);
 
-        void likedPhoto(Photo photo);
+        void likedPhoto(PhotoDto photoDto);
 
-        void unlikedPhoto(Photo photo);
+        void unlikedPhoto(PhotoDto photoDto);
 
         void showError();
 

@@ -16,8 +16,8 @@ import java.util.List;
 import butterknife.BindView;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
 import io.github.howiezuo.unsplash.widget.CircleImageView;
 
 
@@ -86,20 +86,20 @@ public class MeFragment extends BaseFragment implements MeContract.View {
     }
 
     @Override
-    public void showMe(User user) {
+    public void showMe(UserDto userDto) {
         Picasso.with(getActivity())
-                .load(user.getProfileImage().getLarge())
+                .load(userDto.getProfileImage().getLarge())
                 .noFade()
                 .into(mImageProfile);
-        mTextName.setText(user.getName());
-        mTextBio.setText(user.getBio());
-        mTextPhotos.setText(String.valueOf(user.getTotalPhotos()));
-        mTextLikes.setText(String.valueOf(user.getTotalLikes()));
-        mTextCollections.setText(String.valueOf(user.getTotalCollections()));
+        mTextName.setText(userDto.getName());
+        mTextBio.setText(userDto.getBio());
+        mTextPhotos.setText(String.valueOf(userDto.getTotalPhotos()));
+        mTextLikes.setText(String.valueOf(userDto.getTotalLikes()));
+        mTextCollections.setText(String.valueOf(userDto.getTotalCollections()));
     }
 
     @Override
-    public void showPhotos(List<Photo> photos) {
+    public void showPhotos(List<PhotoDto> photosDto) {
 
     }
 

@@ -3,13 +3,13 @@ package io.github.howiezuo.unsplash.model.user;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ProfileImage implements Parcelable {
+public class ProfileImageDto implements Parcelable {
 
     String small;
     String medium;
     String large;
 
-    protected ProfileImage(Parcel in) {
+    protected ProfileImageDto(Parcel in) {
         small = in.readString();
         medium = in.readString();
         large = in.readString();
@@ -27,15 +27,15 @@ public class ProfileImage implements Parcelable {
         return large;
     }
 
-    public static final Creator<ProfileImage> CREATOR = new Creator<ProfileImage>() {
+    public static final Creator<ProfileImageDto> CREATOR = new Creator<ProfileImageDto>() {
         @Override
-        public ProfileImage createFromParcel(Parcel in) {
-            return new ProfileImage(in);
+        public ProfileImageDto createFromParcel(Parcel in) {
+            return new ProfileImageDto(in);
         }
 
         @Override
-        public ProfileImage[] newArray(int size) {
-            return new ProfileImage[size];
+        public ProfileImageDto[] newArray(int size) {
+            return new ProfileImageDto[size];
         }
     };
 

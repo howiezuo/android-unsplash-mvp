@@ -14,8 +14,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.howiezuo.unsplash.Config;
 import io.github.howiezuo.unsplash.R;
-import io.github.howiezuo.unsplash.model.Photo;
-import io.github.howiezuo.unsplash.model.User;
+import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.UserDto;
 import io.github.howiezuo.unsplash.widget.CircleImageView;
 
 
@@ -41,7 +41,7 @@ public class PhotoItemViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void bindView(final Photo photo, final int index) {
+    public void bindView(final PhotoDto photoDto, final int index) {
         mImagePhoto.post(new Runnable() {
             @Override
             public void run() {
@@ -53,7 +53,7 @@ public class PhotoItemViewHolder extends RecyclerView.ViewHolder {
                     params.height = h;
                     mImagePhoto.setLayoutParams(params);
                     Picasso.with(itemView.getContext())
-                            .load(photo.getUrls().getSmall())
+                            .load(photoDto.getUrls().getSmall())
                             .resize(w, h)
                             .centerCrop()
                             .noFade()
@@ -61,28 +61,28 @@ public class PhotoItemViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         });
-        mImagePhoto.setBackgroundColor(Color.parseColor(photo.getColor()));
+        mImagePhoto.setBackgroundColor(Color.parseColor(photoDto.getColor()));
         mImagePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onPhotoClick(photo);
+                mListener.onPhotoClick(photoDto);
             }
         });
 
-        final User user = photo.getUser();
+        final UserDto userDto = photoDto.getUser();
         Picasso.with(itemView.getContext())
-                .load(user.getProfileImage().getSmall())
+                .load(userDto.getProfileImage().getSmall())
                 .noFade()
                 .into(mImageProfile);
-        mTextName.setText(user.getName());
+        mTextName.setText(userDto.getName());
         mTextName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onUserClick(user);
+                mListener.onUserClick(userDto);
             }
         });
-        mTextLikes.setText(String.valueOf(photo.getLikes()));
-        if (photo.isLikedByUser()) {
+        mTextLikes.setText(String.valueOf(photoDto.getLikes()));
+        if (photoDto.isLikedByUser()) {
             mTextIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.liked));
         } else {
             mTextIconLike.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.unliked));
@@ -90,7 +90,7 @@ public class PhotoItemViewHolder extends RecyclerView.ViewHolder {
         mTextIconLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onLikeClick(photo, index);
+                mListener.onLikeClick(photoDto, index);
             }
         });
     }

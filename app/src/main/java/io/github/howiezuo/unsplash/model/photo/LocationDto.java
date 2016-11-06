@@ -3,18 +3,18 @@ package io.github.howiezuo.unsplash.model.photo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import io.github.howiezuo.unsplash.model.photo.location.Position;
+import io.github.howiezuo.unsplash.model.photo.location.PositionDto;
 
-public class Location implements Parcelable {
+public class LocationDto implements Parcelable {
 
     String city;
     String country;
-    Position position;
+    PositionDto position;
 
-    protected Location(Parcel in) {
+    protected LocationDto(Parcel in) {
         city = in.readString();
         country = in.readString();
-        position = in.readParcelable(Position.class.getClassLoader());
+        position = in.readParcelable(PositionDto.class.getClassLoader());
     }
 
     public String getCity() {
@@ -25,19 +25,19 @@ public class Location implements Parcelable {
         return country;
     }
 
-    public Position getPosition() {
+    public PositionDto getPosition() {
         return position;
     }
 
-    public static final Creator<Location> CREATOR = new Creator<Location>() {
+    public static final Creator<LocationDto> CREATOR = new Creator<LocationDto>() {
         @Override
-        public Location createFromParcel(Parcel in) {
-            return new Location(in);
+        public LocationDto createFromParcel(Parcel in) {
+            return new LocationDto(in);
         }
 
         @Override
-        public Location[] newArray(int size) {
-            return new Location[size];
+        public LocationDto[] newArray(int size) {
+            return new LocationDto[size];
         }
     };
 
