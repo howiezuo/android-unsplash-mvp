@@ -37,6 +37,7 @@ public class MeActivity extends BaseActivity {
 
         DaggerMeComponent.builder()
                 .apiComponent(AppApplication.getInstance().getApiComponent())
+                .databaseComponent(AppApplication.getInstance().getDatabaseComponent())
                 .helperComponent(AppApplication.getInstance().getHelperComponent())
                 .mePresenterModule(new MePresenterModule(fragment))
                 .loginPresenterModule(getLoginPresenterModule())

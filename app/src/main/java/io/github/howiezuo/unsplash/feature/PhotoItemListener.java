@@ -1,7 +1,7 @@
 package io.github.howiezuo.unsplash.feature;
 
-import io.github.howiezuo.unsplash.model.PhotoDto;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 
 public interface PhotoItemListener {
 

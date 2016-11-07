@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.model.oauth;
+package io.github.howiezuo.unsplash.model.dto.oauth;
 
 public class TokenDto {
 

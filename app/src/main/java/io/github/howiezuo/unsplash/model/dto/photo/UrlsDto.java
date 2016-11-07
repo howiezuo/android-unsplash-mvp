@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.model.photo;
+package io.github.howiezuo.unsplash.model.dto.photo;
 
 
 import android.os.Parcel;

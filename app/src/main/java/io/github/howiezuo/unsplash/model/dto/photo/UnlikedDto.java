@@ -1,7 +1,7 @@
-package io.github.howiezuo.unsplash.model.photo;
+package io.github.howiezuo.unsplash.model.dto.photo;
 
-import io.github.howiezuo.unsplash.model.PhotoDto;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 
 public class UnlikedDto {
 

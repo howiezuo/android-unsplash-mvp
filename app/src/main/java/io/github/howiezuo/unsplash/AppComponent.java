@@ -5,6 +5,7 @@ import android.content.Context;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import io.github.howiezuo.unsplash.database.DatabaseComponent;
 import io.github.howiezuo.unsplash.helper.HelperComponent;
 
 @Singleton
@@ -14,5 +15,7 @@ public interface AppComponent {
     void inject(Context context);
 
     HelperComponent.Builder helperComponent();
+
+    DatabaseComponent.Builder databaseComponent();
 
 }

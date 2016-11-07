@@ -8,10 +8,10 @@ import com.orhanobut.logger.Logger;
 import javax.inject.Inject;
 
 import io.github.howiezuo.unsplash.api.service.PhotosService;
-import io.github.howiezuo.unsplash.model.PhotoDto;
-import io.github.howiezuo.unsplash.model.UserDto;
-import io.github.howiezuo.unsplash.model.photo.LikedDto;
-import io.github.howiezuo.unsplash.model.photo.UnlikedDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
+import io.github.howiezuo.unsplash.model.dto.photo.LikedDto;
+import io.github.howiezuo.unsplash.model.dto.photo.UnlikedDto;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

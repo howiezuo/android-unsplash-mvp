@@ -74,14 +74,14 @@ if [ -n "$JAVA_HOME" ] ; then
         die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
 
 Please set the JAVA_HOME variable in your environment to match the
-location of your Java installation."
+locationDto of your Java installation."
     fi
 else
     JAVACMD="java"
     which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
 
 Please set the JAVA_HOME variable in your environment to match the
-location of your Java installation."
+locationDto of your Java installation."
 fi
 
 # Increase the maximum file descriptors if we can.
@@ -119,7 +119,7 @@ if $cygwin ; then
         SEP="|"
     done
     OURCYGPATTERN="(^($ROOTDIRS))"
-    # Add a user-defined pattern to the cygpath arguments
+    # Add a userDto-defined pattern to the cygpath arguments
     if [ "$GRADLE_CYGPATTERN" != "" ] ; then
         OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGPATTERN)"
     fi

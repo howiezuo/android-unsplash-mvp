@@ -3,8 +3,8 @@ package io.github.howiezuo.unsplash.api.service;
 import java.util.List;
 
 import io.github.howiezuo.unsplash.Config;
-import io.github.howiezuo.unsplash.model.PhotoDto;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;

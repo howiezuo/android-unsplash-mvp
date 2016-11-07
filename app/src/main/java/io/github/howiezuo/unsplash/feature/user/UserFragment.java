@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 import io.github.howiezuo.unsplash.widget.CircleImageView;
 
 

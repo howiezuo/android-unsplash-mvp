@@ -10,8 +10,9 @@ import java.util.Properties;
 
 import io.github.howiezuo.unsplash.api.ApiComponent;
 import io.github.howiezuo.unsplash.api.DaggerApiComponent;
+import io.github.howiezuo.unsplash.database.DatabaseComponent;
 import io.github.howiezuo.unsplash.helper.HelperComponent;
-import io.github.howiezuo.unsplash.helper.HelperModule;
+import io.realm.Realm;
 
 public class AppApplication extends Application {
 
@@ -21,8 +22,9 @@ public class AppApplication extends Application {
     private String sClientSecret;
 
     private AppComponent mAppComponent;
-    private ApiComponent mApiComponent;
+    private DatabaseComponent mDatabaseComponent;
     private HelperComponent mHelperComponent;
+    private ApiComponent mApiComponent;
 
     @Override
     public void onCreate() {
@@ -41,6 +43,9 @@ public class AppApplication extends Application {
             e.printStackTrace();
         }
 
+        // Realm
+        Realm.init(this);
+
         if (LeakCanary.isInAnalyzerProcess(this)) {
             return;
         }
@@ -51,8 +56,9 @@ public class AppApplication extends Application {
                 .appModule(new AppModule(this))
                 .build();
         mAppComponent.inject(this);
+        mDatabaseComponent = mAppComponent.databaseComponent()
+                .build();
         mHelperComponent = mAppComponent.helperComponent()
-                .requestModule(new HelperModule())
                 .build();
 
         mApiComponent = DaggerApiComponent.builder()
@@ -74,6 +80,10 @@ public class AppApplication extends Application {
 
     public AppComponent getAppComponent() {
         return mAppComponent;
+    }
+
+    public DatabaseComponent getDatabaseComponent() {
+        return mDatabaseComponent;
     }
 
     public HelperComponent getHelperComponent() {

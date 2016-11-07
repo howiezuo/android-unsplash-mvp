@@ -16,8 +16,8 @@ import java.util.List;
 import butterknife.BindView;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
-import io.github.howiezuo.unsplash.model.PhotoDto;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 import io.github.howiezuo.unsplash.widget.CircleImageView;
 
 

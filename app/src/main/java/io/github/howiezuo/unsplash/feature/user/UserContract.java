@@ -2,7 +2,7 @@ package io.github.howiezuo.unsplash.feature.user;
 
 import io.github.howiezuo.unsplash.feature.base.BasePresenter;
 import io.github.howiezuo.unsplash.feature.base.BaseView;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 
 public interface UserContract {
 

@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import javax.inject.Inject;
 
 import io.github.howiezuo.unsplash.api.service.UsersService;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

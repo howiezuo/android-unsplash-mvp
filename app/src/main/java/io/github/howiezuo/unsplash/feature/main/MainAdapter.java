@@ -11,7 +11,7 @@ import java.util.List;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.PhotoItemListener;
 import io.github.howiezuo.unsplash.feature.PhotoItemViewHolder;
-import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
 
 public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

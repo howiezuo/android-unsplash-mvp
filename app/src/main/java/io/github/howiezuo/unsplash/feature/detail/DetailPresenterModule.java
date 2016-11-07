@@ -2,7 +2,7 @@ package io.github.howiezuo.unsplash.feature.detail;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
 
 @Module
 public class DetailPresenterModule {

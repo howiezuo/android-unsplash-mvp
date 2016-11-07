@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.model.oauth.token;
+package io.github.howiezuo.unsplash.model.dto.oauth.token;
 
 import io.github.howiezuo.unsplash.Config;
 

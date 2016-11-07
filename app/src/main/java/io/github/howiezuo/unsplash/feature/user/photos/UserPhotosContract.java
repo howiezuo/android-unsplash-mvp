@@ -4,7 +4,7 @@ import java.util.List;
 
 import io.github.howiezuo.unsplash.feature.base.BasePresenter;
 import io.github.howiezuo.unsplash.feature.base.BaseView;
-import io.github.howiezuo.unsplash.model.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
 
 public interface UserPhotosContract {
 

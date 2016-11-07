@@ -1,7 +1,7 @@
 package io.github.howiezuo.unsplash.api.service;
 
-import io.github.howiezuo.unsplash.model.oauth.TokenDto;
-import io.github.howiezuo.unsplash.model.oauth.token.PostDto;
+import io.github.howiezuo.unsplash.model.dto.oauth.TokenDto;
+import io.github.howiezuo.unsplash.model.dto.oauth.token.PostDto;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import rx.Observable;

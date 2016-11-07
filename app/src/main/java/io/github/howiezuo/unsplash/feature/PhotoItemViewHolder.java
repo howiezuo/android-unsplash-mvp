@@ -14,8 +14,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.howiezuo.unsplash.Config;
 import io.github.howiezuo.unsplash.R;
-import io.github.howiezuo.unsplash.model.PhotoDto;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 import io.github.howiezuo.unsplash.widget.CircleImageView;
 
 

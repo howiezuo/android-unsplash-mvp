@@ -2,7 +2,7 @@ package io.github.howiezuo.unsplash.feature.user;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.howiezuo.unsplash.model.UserDto;
+import io.github.howiezuo.unsplash.model.dto.UserDto;
 import io.github.howiezuo.unsplash.feature.user.photos.UserPhotosContract;
 
 @Module

@@ -3,11 +3,11 @@ package io.github.howiezuo.unsplash.api.service;
 import java.util.List;
 
 import io.github.howiezuo.unsplash.Config;
-import io.github.howiezuo.unsplash.model.PhotoDto;
-import io.github.howiezuo.unsplash.model.photo.LikedDto;
-import io.github.howiezuo.unsplash.model.photo.UnlikedDto;
-import io.github.howiezuo.unsplash.model.photo.DownloadDto;
-import io.github.howiezuo.unsplash.model.photo.StatsDto;
+import io.github.howiezuo.unsplash.model.dto.PhotoDto;
+import io.github.howiezuo.unsplash.model.dto.photo.LikedDto;
+import io.github.howiezuo.unsplash.model.dto.photo.UnlikedDto;
+import io.github.howiezuo.unsplash.model.dto.photo.DownloadDto;
+import io.github.howiezuo.unsplash.model.dto.photo.StatsDto;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;

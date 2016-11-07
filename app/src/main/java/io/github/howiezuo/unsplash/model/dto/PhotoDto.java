@@ -1,10 +1,10 @@
-package io.github.howiezuo.unsplash.model;
+package io.github.howiezuo.unsplash.model.dto;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import io.github.howiezuo.unsplash.model.photo.LocationDto;
-import io.github.howiezuo.unsplash.model.photo.UrlsDto;
+import io.github.howiezuo.unsplash.model.dto.photo.LocationDto;
+import io.github.howiezuo.unsplash.model.dto.photo.UrlsDto;
 
 public class PhotoDto implements Parcelable {
 

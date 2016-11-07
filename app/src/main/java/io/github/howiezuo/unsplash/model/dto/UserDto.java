@@ -1,10 +1,10 @@
-package io.github.howiezuo.unsplash.model;
+package io.github.howiezuo.unsplash.model.dto;
 
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import io.github.howiezuo.unsplash.model.user.ProfileImageDto;
+import io.github.howiezuo.unsplash.model.dto.user.ProfileImageDto;
 
 public class UserDto implements Parcelable{
 
@@ -36,6 +36,10 @@ public class UserDto implements Parcelable{
         links = in.readParcelable(LinksDto.class.getClassLoader());
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -46,6 +50,10 @@ public class UserDto implements Parcelable{
 
     public String getBio() {
         return bio;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public int getTotalLikes() {

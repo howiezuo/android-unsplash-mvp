@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -44,8 +43,8 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // TODO need to remove
-        CookieManager.getInstance().removeAllCookie();
+        // For debug
+//        CookieManager.getInstance().removeAllCookie();
 
         mWebView.setWebViewClient(new WebViewClient(){
             @Override

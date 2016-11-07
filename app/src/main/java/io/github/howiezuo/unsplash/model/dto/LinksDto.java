@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.model;
+package io.github.howiezuo.unsplash.model.dto;
 
 import android.os.Parcel;
 import android.os.Parcelable;
