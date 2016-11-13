@@ -14,8 +14,9 @@ import io.github.howiezuo.unsplash.helper.PreferencesHelper;
 import io.github.howiezuo.unsplash.model.dto.UserDto;
 import io.github.howiezuo.unsplash.model.dto.oauth.TokenDto;
 import io.github.howiezuo.unsplash.model.dto.oauth.token.PostDto;
+import io.github.howiezuo.unsplash.model.entity.Me;
 import rx.Observable;
-import rx.Observer;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
@@ -58,7 +59,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                                 .observeOn(AndroidSchedulers.mainThread());
                     }
                 })
-                .subscribe(new Observer<UserDto>() {
+                .subscribe(new Subscriber<UserDto>() {
                     @Override
                     public void onCompleted() {
 
@@ -71,9 +72,28 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                     @Override
                     public void onNext(UserDto userDto) {
-                        mMeDao.createOrUpdate(userDto);
+                        saveMe(userDto);
                     }
                 });
     }
 
+    private void saveMe(UserDto dto) {
+        mMeDao.createOrUpdate(dto)
+                .subscribe(new Subscriber<Me>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Logger.e(e, e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(Me me) {
+                        Logger.d(me);
+                    }
+                });
+    }
 }

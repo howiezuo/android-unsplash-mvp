@@ -1,12 +1,17 @@
 package io.github.howiezuo.unsplash.database.dao;
 
+import com.orhanobut.logger.Logger;
+
 import javax.inject.Inject;
 
 import io.github.howiezuo.unsplash.model.dto.UserDto;
 import io.github.howiezuo.unsplash.model.entity.Me;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmObject;
 import io.realm.RealmQuery;
+import rx.Observable;
+import rx.functions.Func1;
 
 public class MeDao {
 
@@ -18,28 +23,50 @@ public class MeDao {
 
     }
 
-    public void createOrUpdate(final UserDto dto) {
-        Realm realm = Realm.getInstance(mConfiguration);
-        final Me me = find();
-
-        realm.executeTransactionAsync(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                if (me == null) {
-                    Me newMe = new Me(dto);
-                    realm.copyToRealm(newMe);
-                } else {
-                    me.setDto(dto);
-                }
-            }
-        });
+    public Observable<Me> createOrUpdate(final UserDto dto) {
+        return find()
+                .concatMap(new Func1<Me, Observable<? extends Me>>() {
+                    @Override
+                    public Observable<? extends Me> call(Me me) {
+                        Observable<Me> result;
+                        Logger.d(me);
+                        Realm realm = Realm.getInstance(mConfiguration);
+                        realm.beginTransaction();
+                        if (me.isValid()) {
+                            me.setDto(dto);
+                            result = Observable.just(me);
+                        } else {
+                            me = new Me(dto);
+                            result = realm.copyToRealm(me).<Me>asObservable().filter(
+                                    new Func1<RealmObject, Boolean>() {
+                                        @Override
+                                        public Boolean call(RealmObject realmObject) {
+                                            return realmObject.isLoaded();
+                                        }
+                                    }
+                            );
+                        }
+                        realm.commitTransaction();
+                        return result;
+                    }
+                });
     }
 
-    public Me find() {
+    public Observable<Me> find() {
+        Realm realm = Realm.getInstance(mConfiguration);
+        return realm.where(Me.class).findFirstAsync().<Me>asObservable()
+                .filter(new Func1<Me, Boolean>() {
+                    @Override
+                    public Boolean call(Me me) {
+                        return me.isLoaded();
+                    }
+                })
+                .first();
+    }
+
+    public boolean isEmpty() {
         Realm realm = Realm.getInstance(mConfiguration);
         RealmQuery<Me> query = realm.where(Me.class);
-        Me result = query.findFirst();
-        realm.close();
-        return result;
+        return query.count() == 0;
     }
 }

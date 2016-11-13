@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import io.github.howiezuo.unsplash.model.dto.user.ProfileImageDto;
+import io.github.howiezuo.unsplash.model.entity.Me;
 
 public class UserDto implements Parcelable{
 
@@ -27,13 +28,16 @@ public class UserDto implements Parcelable{
     ProfileImageDto profile_image;
     LinksDto links;
 
-    protected UserDto(Parcel in) {
-        id = in.readString();
-        username = in.readString();
-        name = in.readString();
-        portfolio_url = in.readString();
-        profile_image = in.readParcelable(ProfileImageDto.class.getClassLoader());
-        links = in.readParcelable(LinksDto.class.getClassLoader());
+    public UserDto(Me entity) {
+        id = entity.getId();
+        username = entity.getUsername();
+        name = entity.getName();
+        bio = entity.getBio();
+        location = entity.getLocation();
+        total_likes = entity.getTotalLikes();
+        total_photos = entity.getTotalPhotos();
+        total_collections = entity.getTotalCollections();
+        profile_image = new ProfileImageDto(entity.getProfileImage());
     }
 
     public String getId() {
@@ -70,6 +74,15 @@ public class UserDto implements Parcelable{
 
     public ProfileImageDto getProfileImage() {
         return profile_image;
+    }
+
+    protected UserDto(Parcel in) {
+        id = in.readString();
+        username = in.readString();
+        name = in.readString();
+        portfolio_url = in.readString();
+        profile_image = in.readParcelable(ProfileImageDto.class.getClassLoader());
+        links = in.readParcelable(LinksDto.class.getClassLoader());
     }
 
     public static final Creator<UserDto> CREATOR = new Creator<UserDto>() {

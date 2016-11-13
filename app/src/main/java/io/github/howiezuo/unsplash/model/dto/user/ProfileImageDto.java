@@ -3,16 +3,18 @@ package io.github.howiezuo.unsplash.model.dto.user;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import io.github.howiezuo.unsplash.model.entity.ProfileImage;
+
 public class ProfileImageDto implements Parcelable {
 
     String small;
     String medium;
     String large;
 
-    protected ProfileImageDto(Parcel in) {
-        small = in.readString();
-        medium = in.readString();
-        large = in.readString();
+    public ProfileImageDto(ProfileImage entity) {
+        small = entity.getSmall();
+        medium = entity.getMedium();
+        large = entity.getLarge();
     }
 
     public String getSmall() {
@@ -25,6 +27,12 @@ public class ProfileImageDto implements Parcelable {
 
     public String getLarge() {
         return large;
+    }
+
+    protected ProfileImageDto(Parcel in) {
+        small = in.readString();
+        medium = in.readString();
+        large = in.readString();
     }
 
     public static final Creator<ProfileImageDto> CREATOR = new Creator<ProfileImageDto>() {

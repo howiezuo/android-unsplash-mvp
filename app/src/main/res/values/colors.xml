@@ -16,7 +16,7 @@
 
     <color name="logo">@color/text_primary</color>
 
-    <color name="selected">#CC9E9E9E</color>
+    <color name="selected">#339E9E9E</color>
     <color name="liked">@color/accent</color>
     <color name="unliked">@color/text_secondary</color>
 
