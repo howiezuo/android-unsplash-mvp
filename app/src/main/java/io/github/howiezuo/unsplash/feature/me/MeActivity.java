@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import javax.inject.Inject;
 
-import io.github.howiezuo.unsplash.AppApplication;
+import io.github.howiezuo.unsplash.app.AppApplication;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseActivity;
 import io.github.howiezuo.unsplash.util.ActivityUtils;

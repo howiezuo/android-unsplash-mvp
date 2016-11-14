@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash;
+package io.github.howiezuo.unsplash.app;
 
 import android.app.Application;
 
@@ -8,6 +8,7 @@ import com.squareup.leakcanary.LeakCanary;
 import java.io.IOException;
 import java.util.Properties;
 
+import io.github.howiezuo.unsplash.DaggerAppComponent;
 import io.github.howiezuo.unsplash.api.ApiComponent;
 import io.github.howiezuo.unsplash.api.DaggerApiComponent;
 import io.github.howiezuo.unsplash.database.DatabaseComponent;

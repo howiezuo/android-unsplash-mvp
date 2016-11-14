@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash;
+package io.github.howiezuo.unsplash.app;
 
 import android.content.Context;
 

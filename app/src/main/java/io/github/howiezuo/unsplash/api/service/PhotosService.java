@@ -2,7 +2,7 @@ package io.github.howiezuo.unsplash.api.service;
 
 import java.util.List;
 
-import io.github.howiezuo.unsplash.Config;
+import io.github.howiezuo.unsplash.app.Constants;
 import io.github.howiezuo.unsplash.model.dto.PhotoDto;
 import io.github.howiezuo.unsplash.model.dto.photo.LikedDto;
 import io.github.howiezuo.unsplash.model.dto.photo.UnlikedDto;
@@ -19,16 +19,16 @@ import rx.Observable;
 
 public interface PhotosService {
 
-    @GET("photos?per_page=" + Config.DEFAULT_PER_PAGE)
+    @GET("photos?per_page=" + Constants.DEFAULT_PER_PAGE)
     Observable<List<PhotoDto>> getPhotos();
 
-    @GET("photos?per_page=" + Config.DEFAULT_PER_PAGE)
+    @GET("photos?per_page=" + Constants.DEFAULT_PER_PAGE)
     Observable<List<PhotoDto>> getPhotos(@Query("page") int page);
 
-    @GET("photos/curated?per_page=" + Config.DEFAULT_PER_PAGE)
+    @GET("photos/curated?per_page=" + Constants.DEFAULT_PER_PAGE)
     Observable<List<PhotoDto>> getCurated();
 
-    @GET("photos/curated?per_page=" + Config.DEFAULT_PER_PAGE)
+    @GET("photos/curated?per_page=" + Constants.DEFAULT_PER_PAGE)
     Observable<List<PhotoDto>> getCurated(@Query("page") int page);
 
     @GET("photos/{id}")

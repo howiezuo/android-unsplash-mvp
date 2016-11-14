@@ -7,8 +7,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.github.howiezuo.unsplash.AppApplication;
-import io.github.howiezuo.unsplash.Config;
+import io.github.howiezuo.unsplash.app.AppApplication;
+import io.github.howiezuo.unsplash.app.Constants;
 import io.github.howiezuo.unsplash.api.service.UsersService;
 import io.github.howiezuo.unsplash.api.service.OAuthService;
 import io.github.howiezuo.unsplash.api.service.PhotosService;
@@ -34,7 +34,7 @@ public class ApiModule {
                 Request original = chain.request();
 
                 Request.Builder builder = original.newBuilder()
-                        .addHeader("Accept-Version", Config.API_VERSION);
+                        .addHeader("Accept-Version", Constants.API_VERSION);
                 String token = helper.getToken();
                 if (token != null) {
                     builder.addHeader("Authorization", "Bearer " + token);
@@ -60,14 +60,14 @@ public class ApiModule {
     @Provides
     @Singleton
     Retrofit provideRetrofit(OkHttpClient httpClient) {
-        return provideRetrofit(httpClient, Config.API_URL);
+        return provideRetrofit(httpClient, Constants.API_URL);
     }
 
     @Provides
     @Singleton
     @Named("oauth")
     Retrofit provideOAuthRetrofit(OkHttpClient httpClient) {
-        return provideRetrofit(httpClient, Config.OAUTH_URL);
+        return provideRetrofit(httpClient, Constants.OAUTH_URL);
     }
 
     private static Retrofit provideRetrofit(OkHttpClient httpClient, String url) {

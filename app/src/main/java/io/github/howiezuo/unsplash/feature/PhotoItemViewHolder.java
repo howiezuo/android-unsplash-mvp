@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.github.howiezuo.unsplash.Config;
+import io.github.howiezuo.unsplash.app.Constants;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.model.dto.PhotoDto;
 import io.github.howiezuo.unsplash.model.dto.UserDto;
@@ -47,7 +47,7 @@ public class PhotoItemViewHolder extends RecyclerView.ViewHolder {
             public void run() {
                 if (mImagePhoto != null && itemView != null) {
                     int w = mImagePhoto.getWidth();
-                    int h = (int) (w / Config.PHOTO_RATIO);
+                    int h = (int) (w / Constants.PHOTO_RATIO);
 
                     ViewGroup.LayoutParams params = mImagePhoto.getLayoutParams();
                     params.height = h;

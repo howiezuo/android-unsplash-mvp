@@ -1,6 +1,6 @@
-package io.github.howiezuo.unsplash;
+package io.github.howiezuo.unsplash.app;
 
-public class Config {
+public class Constants {
 
     // APP
     public static final String APP_SCHEME = "app";

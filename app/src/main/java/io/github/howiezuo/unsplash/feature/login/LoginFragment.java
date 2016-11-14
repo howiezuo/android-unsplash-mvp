@@ -11,8 +11,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import butterknife.BindView;
-import io.github.howiezuo.unsplash.AppApplication;
-import io.github.howiezuo.unsplash.Config;
+import io.github.howiezuo.unsplash.app.AppApplication;
+import io.github.howiezuo.unsplash.app.Constants;
 import io.github.howiezuo.unsplash.R;
 import io.github.howiezuo.unsplash.feature.base.BaseFragment;
 
@@ -50,7 +50,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
-                if (uri.getScheme().equals(Config.APP_SCHEME) && uri.getHost().equals(Config.APP_HOST)) {
+                if (uri.getScheme().equals(Constants.APP_SCHEME) && uri.getHost().equals(Constants.APP_HOST)) {
                     String code = uri.getQueryParameter("code");
                     mPresenter.getToken(code);
                     return true;
@@ -58,7 +58,7 @@ public class LoginFragment extends BaseFragment implements LoginContract.View {
                 return false;
             }
         });
-        mWebView.loadUrl(String.format(Config.LOGIN_URL, AppApplication.getInstance().getClientId()));
+        mWebView.loadUrl(String.format(Constants.LOGIN_URL, AppApplication.getInstance().getClientId()));
     }
 
     @Override

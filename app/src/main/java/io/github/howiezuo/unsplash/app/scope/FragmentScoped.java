@@ -1,4 +1,4 @@
-package io.github.howiezuo.unsplash.util;
+package io.github.howiezuo.unsplash.app.scope;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
